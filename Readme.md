@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
 * Студент: [Фарит Хабибуллин](https://up.htmlacademy.ru/react/17/user/2507127).
-* Наставник: `Неизвестно`.
+* Наставник: [Юлия Волкова](https://htmlacademy.ru/profile/julie_volkova).
 
 ---
 
