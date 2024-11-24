@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid';
 import Header from '../../components/header/header';
 import PlaceCard from '../../components/place-card/place-card';
 
@@ -5,8 +6,9 @@ type MainScreenProps = {
   cardsCount: number;
 }
 
+
 function MainScreen({cardsCount}: MainScreenProps): JSX.Element{
-  const cardsList = Array.from({length: cardsCount}).map((_, i) => <PlaceCard key={i}/>);
+  const cardsList = Array.from({length: cardsCount}).map(() => <PlaceCard key={nanoid()}/>);
 
   return (
     <div className="page page--gray page--main">
