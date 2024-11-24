@@ -1,7 +1,7 @@
 import BookmarkButton from '../bookmark-button/bookmark-button';
 
 
-function PlaceCard(): JSX.Element{
+function PlaceCardItem(): JSX.Element{
   return (
     <article className="cities__card place-card">
       <div className="place-card__mark">
@@ -36,4 +36,4 @@ function PlaceCard(): JSX.Element{
   );
 }
 
-export default PlaceCard;
+export default PlaceCardItem;
