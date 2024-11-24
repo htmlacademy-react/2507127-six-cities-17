@@ -1,3 +1,4 @@
+import BookmarkButton from '../bookmark-button/bookmark-button';
 
 
 function PlaceCard(): JSX.Element{
@@ -17,12 +18,8 @@ function PlaceCard(): JSX.Element{
             <b className="place-card__price-value">&euro;120</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className="place-card__bookmark-button button" type="button">
-            <svg className="place-card__bookmark-icon" width="18" height="19">
-              <use xlinkHref="#icon-bookmark"></use>
-            </svg>
-            <span className="visually-hidden">To bookmarks</span>
-          </button>
+          <BookmarkButton bookmarkClass='place-card'/>
+
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">

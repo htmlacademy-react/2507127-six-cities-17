@@ -1,3 +1,4 @@
+import BookmarkButton from '../../components/bookmark-button/bookmark-button';
 import Header from '../../components/header/header';
 
 
@@ -63,12 +64,8 @@ function Offer(): JSX.Element{
                 <h1 className="offer__name">
               Beautiful &amp; luxurious studio at great location
                 </h1>
-                <button className="offer__bookmark-button button" type="button">
-                  <svg className="offer__bookmark-icon" width={31} height={33}>
-                    <use xlinkHref="#icon-bookmark" />
-                  </svg>
-                  <span className="visually-hidden">To bookmarks</span>
-                </button>
+                <BookmarkButton bookmarkClass='offer'/>
+
               </div>
               <div className="offer__rating rating">
                 <div className="offer__stars rating__stars">
