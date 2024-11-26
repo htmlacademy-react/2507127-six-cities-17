@@ -1,5 +1,5 @@
 import Header from '../../components/header/header';
-import LocationsTabsList from '../../components/locations-tabs/locations-tabs-list';
+import LocationsTabsList from '../../components/locations-list/locations-list';
 import PlaceCardsList from '../../components/place-cards-list/place-cards-list';
 import PlacesSortForm from '../../components/places-sort-form/places-sort-form';
 

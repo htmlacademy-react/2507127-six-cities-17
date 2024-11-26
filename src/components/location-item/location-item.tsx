@@ -1,10 +1,10 @@
 
-type LocationsTabsItemProps = {
+type LocationItemProps = {
   locationName: string;
   active: boolean;
 }
 
-function LocationsTabsItem({locationName, active}: LocationsTabsItemProps): JSX.Element{
+function LocationItem({locationName, active}: LocationItemProps): JSX.Element{
   return (
     <li className="locations__item">
       <a className={`locations__item-link tabs__item ${active ? 'tabs__item--active' : ''}`} href="#">
@@ -14,4 +14,4 @@ function LocationsTabsItem({locationName, active}: LocationsTabsItemProps): JSX.
   );
 }
 
-export default LocationsTabsItem;
+export default LocationItem;
