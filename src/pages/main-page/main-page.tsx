@@ -23,11 +23,9 @@ function MainPage({cardsCount, offersCount}: MainPageProps): JSX.Element{
   return (
     <div className="page page--gray page--main">
       <Header/>
-
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <LocationsList/>
-
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
@@ -35,10 +33,9 @@ function MainPage({cardsCount, offersCount}: MainPageProps): JSX.Element{
               <FoundPlacesNumber offersCount={offersCount}/>
               {<PlacesSortForm/>}
               {<PlaceCardsList cardsCount={cardsCount}/>}
-
             </section>
             <div className="cities__right-section">
-              <Map/>
+              <Map mapClass='cities'/>
             </div>
           </div>
         </div>

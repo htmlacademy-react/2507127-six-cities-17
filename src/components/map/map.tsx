@@ -1,7 +1,11 @@
 
-function Map():JSX.Element {
+type MapProps = {
+  mapClass: string;
+}
+
+function Map({mapClass}: MapProps):JSX.Element {
   return (
-    <section className="cities__map map"></section>
+    <section className={`${mapClass}__map map`}></section>
   );
 }
 

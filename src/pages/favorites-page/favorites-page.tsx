@@ -1,6 +1,6 @@
 import Header from '../../components/header/header';
 
-function Favorites(): JSX.Element{
+function FavoritesPage(): JSX.Element{
   return (
     <div className="page">
       <Header/>
@@ -192,4 +192,4 @@ function Favorites(): JSX.Element{
   );
 }
 
-export default Favorites;
+export default FavoritesPage;

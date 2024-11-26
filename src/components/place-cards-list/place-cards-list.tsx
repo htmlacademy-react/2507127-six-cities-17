@@ -6,7 +6,7 @@ type PlaceCardsListProps = {
 }
 
 function PlaceCardsList({cardsCount}: PlaceCardsListProps): JSX.Element{
-  const cardsList = Array.from({length: cardsCount}).map(() => <PlaceCardItem key={nanoid()}/>);
+  const cardsList = Array.from({length: cardsCount}).map(() => <PlaceCardItem cardClass='cities' key={nanoid()}/>);
 
   return (
     <div className="cities__places-list places__list tabs__content">

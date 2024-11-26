@@ -1,36 +1,34 @@
 import BookmarkButton from '../bookmark-button/bookmark-button';
+import Mark from '../mark/mark';
+import Rating from '../rating/rating';
 
+type PlaceCardItemProps = {
+  cardClass: string;
+}
 
-function PlaceCardItem(): JSX.Element{
+function PlaceCardItem({cardClass}: PlaceCardItemProps): JSX.Element{
   return (
-    <article className="cities__card place-card">
-      <div className="place-card__mark">
-        <span>Premium</span>
-      </div>
-      <div className="cities__image-wrapper place-card__image-wrapper">
+    <article className={`${cardClass}__card place-card`}>
+      <Mark markClass='place-card'/>
+      <div className={`${cardClass}__image-wrapper place-card__image-wrapper`}>
         <a href="#">
-          <img className="place-card__image" src="img/apartment-01.jpg" width="260" height="200" alt="Place image"/>
+          <img className='place-card__image' src="img/apartment-01.jpg" width="260" height="200" alt="Place image"/>
         </a>
       </div>
-      <div className="place-card__info">
-        <div className="place-card__price-wrapper">
-          <div className="place-card__price">
-            <b className="place-card__price-value">&euro;120</b>
-            <span className="place-card__price-text">&#47;&nbsp;night</span>
+      <div className='place-card__info'>
+        <div className='place-card__price-wrapper'>
+          <div className='place-card__price'>
+            <b className='place-card__price-value'>&euro;120</b>
+            <span className='place-card__price-text'>&#47;&nbsp;night</span>
           </div>
           <BookmarkButton bookmarkClass='place-card'/>
 
         </div>
-        <div className="place-card__rating rating">
-          <div className="place-card__stars rating__stars">
-            <span style={{width: '80%'}}></span>
-            <span className="visually-hidden">Rating</span>
-          </div>
-        </div>
-        <h2 className="place-card__name">
+        <Rating ratingClass='place-card'/>
+        <h2 className='place-card__name'>
           <a href="#">Beautiful &amp; luxurious apartment at great location</a>
         </h2>
-        <p className="place-card__type">Apartment</p>
+        <p className='place-card__type'>Apartment</p>
       </div>
     </article>
   );
