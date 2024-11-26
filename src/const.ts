@@ -12,4 +12,11 @@ const Locations = {
   Dusseldorf: 'Dusseldorf'
 } as const;
 
-export {Settings, Locations};
+const SortOptions = {
+  Popular: 'Popular',
+  LowToHigh:'Price: low to high',
+  HighToLow:'Price: high to low',
+  TopRated:'Top rated first',
+} as const;
+
+export {Settings, Locations, SortOptions};

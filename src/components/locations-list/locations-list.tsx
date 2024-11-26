@@ -2,7 +2,7 @@ import { nanoid } from 'nanoid';
 import { Locations } from '../../const';
 import LocationItem from '../location-item/location-item';
 
-function LocationsTabsList(): JSX.Element {
+function LocationsList(): JSX.Element {
   const locationsList = Object.values(Locations).map((name) =>
     <LocationItem locationName={name} active={name === 'Amsterdam'} key={nanoid()}/>
   );
@@ -19,4 +19,4 @@ function LocationsTabsList(): JSX.Element {
   );
 }
 
-export default LocationsTabsList;
+export default LocationsList;
