@@ -1,7 +1,7 @@
 
 type LocationsItemProps = {
   locationName: string;
-  isActive: boolean;
+  isActive?: boolean;
   isSingle?: boolean;
 }
 
@@ -15,7 +15,7 @@ function LocationItemLink({locationName, isActive}: LocationItemLinkProps): JSX.
   );
 }
 
-function LocationsItem({locationName, isActive, isSingle = false}: LocationsItemProps): JSX.Element{
+function LocationsItem({locationName, isActive = true, isSingle = false}: LocationsItemProps): JSX.Element{
   return (
     isSingle ? (
       <div className="locations__item">

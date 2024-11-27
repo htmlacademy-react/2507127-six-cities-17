@@ -1,11 +1,11 @@
 // import MainPage from '../../pages/main-page/main-page';
-import OfferPage from '../../pages/offer-page/offer-page';
+import FavoritesPage from '../../pages/favorites-page/favorites-page';
+// import OfferPage from '../../pages/offer-page/offer-page';
 
 
 // type AppProps = {
 //   cardsCount: number;
 //   offersCount: number;
-//   GalleryImagesCount: number;
 // }
 
 // function App({cardsCount, offersCount}: AppProps): JSX.Element{
@@ -13,15 +13,11 @@ import OfferPage from '../../pages/offer-page/offer-page';
 //     <MainPage cardsCount={cardsCount} offersCount={offersCount}/>
 //   );
 // }
-
-type AppProps = {
-  galleryImagesCount: number;
-}
-
-function App({galleryImagesCount}: AppProps): JSX.Element{
+function App(): JSX.Element{
   return (
-    <OfferPage galleryImagesCount={galleryImagesCount}/>
+    <FavoritesPage/>
   );
 }
+
 
 export default App;

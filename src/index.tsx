@@ -13,7 +13,6 @@ root.render(
   <React.StrictMode>
     <App
       cardsCount = {Settings.CardsCount}
-      galleryImagesCount={Settings.GalleryImagesCount}
       offersCount = {MockData.length}
     />
   </React.StrictMode>
