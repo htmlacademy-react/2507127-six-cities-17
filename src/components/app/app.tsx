@@ -1,5 +1,5 @@
 import MainPage from '../../pages/main-page/main-page';
-import OfferPage from '../../pages/offer-page/offer-page';
+// import OfferPage from '../../pages/offer-page/offer-page';
 
 
 type AppProps = {
