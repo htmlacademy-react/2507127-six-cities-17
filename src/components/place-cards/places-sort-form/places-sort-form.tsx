@@ -1,4 +1,4 @@
-import SortOffersList from '../sort-offers-list/sort-offers-list';
+import SortOffersList from '../sort-offers/sort-offers-list/sort-offers-list';
 
 function PlacesSortForm(): JSX.Element{
   return (

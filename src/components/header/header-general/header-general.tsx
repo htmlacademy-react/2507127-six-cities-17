@@ -1,7 +1,7 @@
 import HeaderNav from '../header-nav/header-nav';
 
 
-type HeaderProps = {
+type HeaderGeneralProps = {
   isLoginPage?: boolean;
 }
 
@@ -19,7 +19,7 @@ function HeaderLogo(): JSX.Element {
   );
 }
 
-function Header({isLoginPage = false}: HeaderProps): JSX.Element {
+function HeaderGeneral({isLoginPage = false}: HeaderGeneralProps): JSX.Element {
   return (
     <header className="header">
       <div className="container">
@@ -34,4 +34,4 @@ function Header({isLoginPage = false}: HeaderProps): JSX.Element {
   );
 }
 
-export default Header;
+export default HeaderGeneral;

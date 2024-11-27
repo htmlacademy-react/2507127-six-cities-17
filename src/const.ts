@@ -1,6 +1,7 @@
 
 const Settings = {
-  CardsCount: 5
+  CardsCount: 5,
+  GalleryImagesCount: 6
 } as const;
 
 const Locations = {
@@ -19,4 +20,17 @@ const SortOptions = {
   TopRated:'Top rated first',
 } as const;
 
-export {Settings, Locations, SortOptions};
+const OfferInsideItems = {
+  WiFi: 'Wi-Fi',
+  WashingMachine: 'Washing machine',
+  Towels: 'Towels',
+  Heating: 'Heating',
+  CoffeeMachine: 'Coffee machine',
+  BabySeat: 'Baby seat',
+  Kitchen: 'Kitchen',
+  Dishwasher: 'Dishwasher',
+  CabelTV: 'Cabel TV',
+  Fridge: 'Fridge',
+};
+
+export {Settings, Locations, SortOptions, OfferInsideItems};

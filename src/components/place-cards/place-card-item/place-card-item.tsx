@@ -1,15 +1,16 @@
-import BookmarkButton from '../bookmark-button/bookmark-button';
-import Mark from '../mark/mark';
-import Rating from '../rating/rating';
+import BookmarkButton from '../../bookmark-button/bookmark-button';
+import Mark from '../../common/mark/mark';
+import Rating from '../../common/rating/rating';
 
 type PlaceCardItemProps = {
   cardClass: string;
+  isPremium?: boolean;
 }
 
-function PlaceCardItem({cardClass}: PlaceCardItemProps): JSX.Element{
+function PlaceCardItem({cardClass, isPremium = true}: PlaceCardItemProps): JSX.Element{
   return (
     <article className={`${cardClass}__card place-card`}>
-      <Mark markClass='place-card'/>
+      {isPremium && <Mark markClass='place-card'/>}
       <div className={`${cardClass}__image-wrapper place-card__image-wrapper`}>
         <a href="#">
           <img className='place-card__image' src="img/apartment-01.jpg" width="260" height="200" alt="Place image"/>

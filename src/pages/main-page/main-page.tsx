@@ -1,8 +1,8 @@
-import Header from '../../components/header/header';
-import LocationsList from '../../components/locations-list/locations-list';
-import Map from '../../components/map/map';
-import PlaceCardsList from '../../components/place-cards-list/place-cards-list';
-import PlacesSortForm from '../../components/places-sort-form/places-sort-form';
+import Header from '../../components/header/header-general/header-general';
+import LocationsList from '../../components/locations/locations-list/locations-list';
+import Map from '../../components/common/map/map';
+import PlaceCardsList from '../../components/place-cards/place-cards-list/place-cards-list';
+import PlacesSortForm from '../../components/place-cards/places-sort-form/places-sort-form';
 
 type MainPageProps = {
   cardsCount: number;

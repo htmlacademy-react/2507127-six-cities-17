@@ -14,6 +14,12 @@ export const RatingSettings: SettingsType = {
     },
     ratingValue: true
   },
+  'reviews': {
+    style: {
+      width: '80%'
+    },
+    ratingValue: false
+  },
   'place-card': {
     style: {
       width: '100%'

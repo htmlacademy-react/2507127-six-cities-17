@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-import { Locations } from '../../const';
+import { Locations } from '../../../const';
 import LocationItem from '../locations-item/locations-item';
 
 function LocationsList(): JSX.Element {
