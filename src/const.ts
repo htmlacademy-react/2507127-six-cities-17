@@ -33,4 +33,12 @@ const OfferInsideItems = {
   Fridge: 'Fridge',
 };
 
-export {Settings, Locations, SortOptions, OfferInsideItems};
+const enum RoutePath {
+  INDEX = '/',
+  LOGIN = '/login',
+  FAVORITES = '/favorites',
+  OFFER = '/offer/:id',
+  NOT_FOUND = '*'
+}
+
+export {Settings, Locations, SortOptions, OfferInsideItems, RoutePath};
