@@ -1,10 +1,11 @@
 import {Route, Routes, BrowserRouter} from 'react-router-dom';
-import { RoutePath, Settings } from '../../const';
+import { AuthorizationStatus, RoutePath, Settings } from '../../const';
 import MainPage from '../../pages/main-page/main-page';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import LoginPage from '../../pages/login-page/login-page';
 import FavoritesPage from '../../pages/favorites-page/favorites-page';
 import OfferPage from '../../pages/offer-page/offer-page';
+import PrivateRoute from '../private-route/private-route';
 
 type AppProps = {
   cardsCount: number;
@@ -27,13 +28,18 @@ function App({cardsCount, offersCount}: AppProps): JSX.Element{
           />
           <Route
             path={RoutePath.FAVORITES}
-            element={<FavoritesPage/>}
+            element={
+              <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+                <FavoritesPage/>
+              </PrivateRoute>
+            }
           />
-          <Route
-            path={RoutePath.NOT_FOUND}
-            element={<NotFoundPage/>}
-          />
+
         </Route>
+        <Route
+          path={RoutePath.NOT_FOUND}
+          element={<NotFoundPage/>}
+        />
       </Routes>
     </BrowserRouter>
   );

@@ -41,4 +41,10 @@ const enum RoutePath {
   NOT_FOUND = '*'
 }
 
-export {Settings, Locations, SortOptions, OfferInsideItems, RoutePath};
+const enum AuthorizationStatus {
+  Auth = 'AUTH',
+  NoAuth = 'NO_AUTH',
+  Unknown = 'UNKNOWN'
+}
+
+export {Settings, Locations, SortOptions, OfferInsideItems, RoutePath, AuthorizationStatus};

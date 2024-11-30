@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import HeaderNav from '../header-nav/header-nav';
+import { RoutePath } from '../../../const';
 
 
 type HeaderGeneralProps = {
@@ -7,7 +9,7 @@ type HeaderGeneralProps = {
 
 function HeaderLogo(): JSX.Element {
   return (
-    <a className="header__logo-link" href="main.html">
+    <Link className="header__logo-link" to={RoutePath.INDEX}>
       <img
         className="header__logo"
         src="img/logo.svg"
@@ -15,7 +17,7 @@ function HeaderLogo(): JSX.Element {
         width={81}
         height={41}
       />
-    </a>
+    </Link>
   );
 }
 
