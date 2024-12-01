@@ -1,15 +1,16 @@
 import { Link } from 'react-router-dom';
 import Header from '../../components/header/header';
 import { RoutePath } from '../../const';
+import styles from './not-found-page.module.css';
 
 function NotFoundPage(): JSX.Element {
   return (
     <>
       <Header/>
-      <div style={{marginTop: '25%', textAlign: 'center'}}>
-        <h1 style={{fontSize: '3rem'}}>404: Not Found</h1>
+      <div className={styles.wrapper}>
+        <h1 className={styles.title}>404: Not Found</h1>
         <Link
-          style={{fontSize: '2rem', textDecoration: 'underline'}}
+          className={styles.link}
           to={RoutePath.INDEX}
         >
           Go to Home page
