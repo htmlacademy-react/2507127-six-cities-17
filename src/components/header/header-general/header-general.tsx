@@ -1,4 +1,5 @@
 import Logo from '../../logo/logo';
+import { Link } from 'react-router-dom';
 import HeaderNav from '../header-nav/header-nav';
 
 type HeaderGeneralProps = {
