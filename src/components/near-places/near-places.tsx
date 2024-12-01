@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-import PlaceCardItem from '../place-cards/place-card-item/place-card-item';
+import PlaceCardItem from '../place-card-item/place-card-item';
 
 type NearPlacesProps = {
   cardsCount: number;

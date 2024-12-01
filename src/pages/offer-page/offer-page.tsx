@@ -1,8 +1,8 @@
-import Header from '../../components/header/header-general/header-general';
-import Map from '../../components/common/map/map';
+import Header from '../../components/header/header';
+import Map from '../../components/map/map';
 import NearPlaces from '../../components/near-places/near-places';
-import OfferGallery from '../../components/offer/offer-gallery/offer-gallery';
-import OfferInfo from '../../components/offer/offer-info/offer-info';
+import OfferGallery from '../../components/offer-gallery/offer-gallery';
+import OfferInfo from '../../components/offer-info/offer-info';
 
 type OfferPageProps = {
   galleryImagesCount: number;

@@ -1,11 +1,11 @@
-import FavoritesList from '../../components/favorites/favorites-list/favorites-list';
+import FavoritesList from '../../components/favorites-list/favorites-list';
 import Footer from '../../components/footer/footer';
-import HeaderGeneral from '../../components/header/header-general/header-general';
+import Header from '../../components/header/header';
 
 function FavoritesPage(): JSX.Element{
   return (
     <div className="page">
-      <HeaderGeneral/>
+      <Header/>
       <main className="page__main page__main--favorites">
         <div className="page__favorites-container container">
           <section className="favorites">

@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import HeaderGeneral from '../../components/header/header-general/header-general';
+import Header from '../../components/header/header';
 import { RoutePath } from '../../const';
 
 function NotFoundPage(): JSX.Element {
   return (
     <>
-      <HeaderGeneral/>
+      <Header/>
       <div style={{marginTop: '25%', textAlign: 'center'}}>
         <h1 style={{fontSize: '3rem'}}>404: Not Found</h1>
         <Link
