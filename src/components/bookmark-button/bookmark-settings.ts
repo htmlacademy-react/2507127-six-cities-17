@@ -1,9 +1,6 @@
+import { ProportionsType } from '../../types/types';
 
-type SettingsType = {
-  [key: string]: {width: number; height: number};
-}
-
-export const BookmarkSettings: SettingsType = {
+export const BookmarkSettings: ProportionsType = {
   'place-card': {
     width: 18,
     height: 19,

@@ -1,5 +1,3 @@
-
-
 function InfoFeatures(): JSX.Element{
   return (
     <ul className="offer__features">

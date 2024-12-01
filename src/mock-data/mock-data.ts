@@ -1,4 +1,4 @@
-const MockData = [
+const mockData = [
   {
     'id': '764fe695-f984-422e-add8-e369f88ac21a',
     'title': 'Amazing and Extremely Central Flat',
@@ -300,4 +300,4 @@ const MockData = [
   },
 ];
 
-export default MockData;
+export default mockData;

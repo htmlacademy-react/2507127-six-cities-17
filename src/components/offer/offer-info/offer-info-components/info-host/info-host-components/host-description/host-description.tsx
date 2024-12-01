@@ -1,4 +1,3 @@
-
 function HostDescription():JSX.Element{
   return (
     <div className="offer__description">

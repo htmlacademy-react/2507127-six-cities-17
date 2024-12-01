@@ -1,4 +1,3 @@
-
 type LocationsItemProps = {
   locationName: string;
   isActive?: boolean;

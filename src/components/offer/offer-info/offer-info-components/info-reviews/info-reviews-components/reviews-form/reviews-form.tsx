@@ -1,4 +1,3 @@
-
 function ReviewsForm():JSX.Element {
   return (
     <form className="reviews__form form" action="#" method="post">

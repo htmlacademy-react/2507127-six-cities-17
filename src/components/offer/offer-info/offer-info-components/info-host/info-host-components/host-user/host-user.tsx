@@ -1,4 +1,3 @@
-
 function HostUser():JSX.Element{
   return (
     <div className="offer__host-user user">

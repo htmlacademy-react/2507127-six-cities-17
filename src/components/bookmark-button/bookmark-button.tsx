@@ -1,6 +1,5 @@
 import { BookmarkSettings } from './bookmark-settings';
 
-
 type BookmarkButtonProps = {
   bookmarkClass: string;
 }

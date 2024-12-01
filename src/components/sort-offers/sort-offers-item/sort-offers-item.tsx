@@ -1,4 +1,3 @@
-
 type SortOffersItemProps = {
   sortOption: string;
   isActive?: boolean;

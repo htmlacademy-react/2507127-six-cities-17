@@ -1,4 +1,3 @@
-
 const Settings = {
   CardsCount: 5,
   GalleryImagesCount: 6

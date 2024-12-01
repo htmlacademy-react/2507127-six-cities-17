@@ -1,4 +1,3 @@
-
 type MarkProps ={
   markClass: string;
 }

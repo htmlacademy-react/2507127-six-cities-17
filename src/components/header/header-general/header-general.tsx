@@ -1,22 +1,8 @@
+import Logo from '../../logo/logo';
 import HeaderNav from '../header-nav/header-nav';
-
 
 type HeaderGeneralProps = {
   isLoginPage?: boolean;
-}
-
-function HeaderLogo(): JSX.Element {
-  return (
-    <a className="header__logo-link" href="main.html">
-      <img
-        className="header__logo"
-        src="img/logo.svg"
-        alt="6 cities logo"
-        width={81}
-        height={41}
-      />
-    </a>
-  );
 }
 
 function HeaderGeneral({isLoginPage = false}: HeaderGeneralProps): JSX.Element {
@@ -25,7 +11,7 @@ function HeaderGeneral({isLoginPage = false}: HeaderGeneralProps): JSX.Element {
       <div className="container">
         <div className="header__wrapper">
           <div className="header__left">
-            <HeaderLogo/>
+            <Logo logoClass='header'/>
           </div>
           {!isLoginPage && <HeaderNav/>}
         </div>

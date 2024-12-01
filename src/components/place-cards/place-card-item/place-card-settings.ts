@@ -1,9 +1,6 @@
+import { ProportionsType } from '../../../types/types';
 
-type SettingsType = {
-  [key: string]: {width: number; height: number};
-}
-
-export const PlaceCardSettings: SettingsType = {
+export const PlaceCardSettings: ProportionsType = {
   'cities': {
     width: 260,
     height: 200,

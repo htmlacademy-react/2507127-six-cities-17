@@ -7,7 +7,6 @@ import OfferInfoName from './offer-info-components/info-name/info-name';
 import OfferInfoPrice from './offer-info-components/info-price/info-price';
 import InfoReviews from './offer-info-components/info-reviews/info-reviews';
 
-
 function OfferInfo():JSX.Element{
   return (
     <div className="offer__container container">

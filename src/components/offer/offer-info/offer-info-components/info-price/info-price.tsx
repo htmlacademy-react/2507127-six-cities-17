@@ -1,4 +1,3 @@
-
 function InfoPrice():JSX.Element{
   return (
     <div className="offer__price">

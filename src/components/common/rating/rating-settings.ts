@@ -1,4 +1,3 @@
-
 type StyleType ={
   width: string;
 }
