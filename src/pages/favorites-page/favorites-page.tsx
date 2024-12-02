@@ -1,10 +1,13 @@
 import FavoritesList from '../../components/favorites-list/favorites-list';
 import Footer from '../../components/footer/footer';
 import Header from '../../components/header/header';
+import Title from '../../components/title/title';
+import { PagesList } from '../../const';
 
 function FavoritesPage(): JSX.Element{
   return (
     <div className="page">
+      <Title pageName={PagesList.Favorite}/>
       <Header/>
       <main className="page__main page__main--favorites">
         <div className="page__favorites-container container">

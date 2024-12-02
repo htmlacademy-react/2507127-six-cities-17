@@ -3,6 +3,8 @@ import Map from '../../components/map/map';
 import PlaceCardsList from '../../components/place-cards-list/place-cards-list';
 import PlacesSortForm from '../../components/places-sort-form/places-sort-form';
 import Header from '../../components/header/header';
+import { PagesList } from '../../const';
+import Title from '../../components/title/title';
 
 type MainPageProps = {
   cardsCount: number;
@@ -22,6 +24,7 @@ function FoundPlacesNumber({offersCount}: FoundPlacesNumber):JSX.Element{
 function MainPage({cardsCount, offersCount}: MainPageProps): JSX.Element{
   return (
     <div className="page page--gray page--main">
+      <Title pageName={PagesList.Main}/>
       <Header/>
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
