@@ -1,8 +1,10 @@
-import LocationsList from '../../components/locations/locations-list/locations-list';
-import Map from '../../components/common/map/map';
-import PlaceCardsList from '../../components/place-cards/place-cards-list/place-cards-list';
-import PlacesSortForm from '../../components/place-cards/places-sort-form/places-sort-form';
-import HeaderGeneral from '../../components/header/header-general/header-general';
+import LocationsList from '../../components/locations-list/locations-list';
+import Map from '../../components/map/map';
+import PlaceCardsList from '../../components/place-cards-list/place-cards-list';
+import PlacesSortForm from '../../components/places-sort-form/places-sort-form';
+import Header from '../../components/header/header';
+import { PagesList } from '../../const';
+import Title from '../../components/title/title';
 
 type MainPageProps = {
   cardsCount: number;
@@ -22,7 +24,8 @@ function FoundPlacesNumber({offersCount}: FoundPlacesNumber):JSX.Element{
 function MainPage({cardsCount, offersCount}: MainPageProps): JSX.Element{
   return (
     <div className="page page--gray page--main">
-      <HeaderGeneral/>
+      <Title pageName={PagesList.Main}/>
+      <Header/>
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <LocationsList/>
