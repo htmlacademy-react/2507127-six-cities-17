@@ -1,12 +1,12 @@
-import { nanoid } from 'nanoid';
 import PlaceCardItem from '../place-card-item/place-card-item';
+import { OffersData } from '../../types/types';
 
 type PlaceCardsListProps = {
-  cardsCount: number;
+  offers: OffersData[];
 }
 
-function PlaceCardsList({cardsCount}: PlaceCardsListProps): JSX.Element{
-  const cardsList = Array.from({length: cardsCount}).map(() => <PlaceCardItem cardClass='cities' key={nanoid()}/>);
+function PlaceCardsList({offers}: PlaceCardsListProps): JSX.Element{
+  const cardsList = offers.map((offer) => <PlaceCardItem offer={offer} cardClass='cities' key={offer.id}/>);
 
   return (
     <div className="cities__places-list places__list tabs__content">

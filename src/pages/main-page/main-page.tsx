@@ -5,10 +5,10 @@ import PlacesSortForm from '../../components/places-sort-form/places-sort-form';
 import Header from '../../components/header/header';
 import { PagesList } from '../../const';
 import Title from '../../components/title/title';
+import { OffersData } from '../../types/types';
 
 type MainPageProps = {
-  cardsCount: number;
-  offersCount: number;
+  offers: OffersData[];
 }
 
 type FoundPlacesNumber = {
@@ -21,7 +21,7 @@ function FoundPlacesNumber({offersCount}: FoundPlacesNumber):JSX.Element{
   );
 }
 
-function MainPage({cardsCount, offersCount}: MainPageProps): JSX.Element{
+function MainPage({offers}: MainPageProps): JSX.Element{
   return (
     <div className="page page--gray page--main">
       <Title pageName={PagesList.Main}/>
@@ -33,9 +33,9 @@ function MainPage({cardsCount, offersCount}: MainPageProps): JSX.Element{
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <FoundPlacesNumber offersCount={offersCount}/>
+              <FoundPlacesNumber offersCount={offers.length}/>
               {<PlacesSortForm/>}
-              {<PlaceCardsList cardsCount={cardsCount}/>}
+              {<PlaceCardsList offers={offers}/>}
             </section>
             <div className="cities__right-section">
               <Map mapClass='cities'/>
