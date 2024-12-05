@@ -1,12 +1,13 @@
 import PlaceCardItem from '../place-card-item/place-card-item';
-import { OffersData } from '../../types/types';
+import { ActiveOfferChange, OffersData } from '../../types/offers';
 
 type PlaceCardsListProps = {
   offers: OffersData[];
+  onHandleActiveOfferChange: ActiveOfferChange;
 }
 
-function PlaceCardsList({offers}: PlaceCardsListProps): JSX.Element{
-  const cardsList = offers.map((offer) => <PlaceCardItem offer={offer} cardClass='cities' key={offer.id}/>);
+function PlaceCardsList({offers, onHandleActiveOfferChange}: PlaceCardsListProps): JSX.Element{
+  const cardsList = offers.map((offer) => <PlaceCardItem onHandleActiveOfferChange={onHandleActiveOfferChange} offer={offer} cardClass='cities' key={offer.id}/>);
 
   return (
     <div className="cities__places-list places__list tabs__content">

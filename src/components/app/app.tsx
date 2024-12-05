@@ -7,7 +7,7 @@ import FavoritesPage from '../../pages/favorites-page/favorites-page';
 import OfferPage from '../../pages/offer-page/offer-page';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
-import { OffersData } from '../../types/types';
+import { OffersData } from '../../types/offers';
 
 type AppProps = {
   offers: OffersData[];
@@ -26,7 +26,7 @@ function App({offers}: AppProps): JSX.Element{
             />
             <Route
               path={RoutePath.OFFER}
-              element={<OfferPage galleryImagesCount={Settings.GalleryImagesCount}/>}
+              element={<OfferPage offers={offers} galleryImagesCount={Settings.GalleryImagesCount}/>}
             />
             <Route
               path={RoutePath.FAVORITES}

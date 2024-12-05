@@ -1,17 +1,20 @@
-import { Link } from 'react-router-dom';
+import { generatePath, Link } from 'react-router-dom';
 import BookmarkButton from '../common/bookmark-button/bookmark-button';
 import Mark from '../common/mark/mark';
 import Rating from '../common/rating/rating';
 import { PlaceCardSettings } from './place-card-settings';
-import { OffersData } from '../../types/types';
+import { RoutePath } from '../../const';
+import { ActiveOfferChange, OffersData } from '../../types/offers';
 
 type PlaceCardItemProps = {
   offer: OffersData;
   cardClass: string;
+  onHandleActiveOfferChange?: ActiveOfferChange;
 }
 
-function PlaceCardItem({offer, cardClass}: PlaceCardItemProps): JSX.Element{
+function PlaceCardItem({offer, cardClass, onHandleActiveOfferChange}: PlaceCardItemProps): JSX.Element{
   const {
+    id,
     title,
     type,
     price,
@@ -22,10 +25,14 @@ function PlaceCardItem({offer, cardClass}: PlaceCardItemProps): JSX.Element{
   } = offer;
 
   return (
-    <article className={`${cardClass}__card place-card`}>
+    <article
+      className={`${cardClass}__card place-card`}
+      onMouseEnter={() => onHandleActiveOfferChange && onHandleActiveOfferChange(id)}
+      onMouseLeave={() => onHandleActiveOfferChange && onHandleActiveOfferChange(null)}
+    >
       {isPremium && <Mark markClass='place-card'/>}
       <div className={`${cardClass}__image-wrapper place-card__image-wrapper`}>
-        <Link to="#">
+        <Link to={generatePath(RoutePath.OFFER, {id})}>
           <img className='place-card__image' src={previewImage} width={PlaceCardSettings[cardClass].width} height={PlaceCardSettings[cardClass].height} alt="Place image"/>
         </Link>
       </div>
