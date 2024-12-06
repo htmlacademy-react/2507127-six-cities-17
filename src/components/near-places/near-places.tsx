@@ -1,12 +1,13 @@
 import { nanoid } from 'nanoid';
 import PlaceCardItem from '../place-card-item/place-card-item';
+import { OffersData } from '../../types/offers';
 
 type NearPlacesProps = {
-  cardsCount: number;
+  nearOffers: OffersData[];
 }
 
-function NearPlaces({cardsCount}: NearPlacesProps):JSX.Element{
-  const cardsList = Array.from({length: cardsCount}).map(() => <PlaceCardItem cardClass='near-places' key={nanoid()}/>);
+function NearPlaces({nearOffers}: NearPlacesProps):JSX.Element{
+  const cardsList = nearOffers.map((item) => <PlaceCardItem offer={item} cardClass='near-places' key={nanoid()}/>);
 
   return (
     <section className="near-places places">

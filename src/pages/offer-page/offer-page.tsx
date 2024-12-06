@@ -10,10 +10,11 @@ import { OffersData } from '../../types/offers';
 
 type OfferPageProps = {
   offers: OffersData[];
+  nearOffers: OffersData[];
   galleryImagesCount: number;
 }
 
-function OfferPage({galleryImagesCount, offers}: OfferPageProps): JSX.Element{
+function OfferPage({galleryImagesCount, offers, nearOffers}: OfferPageProps): JSX.Element{
   const {id} = useParams();
   const currentOffer = offers.find((item) => item.id === id);
 
@@ -28,7 +29,7 @@ function OfferPage({galleryImagesCount, offers}: OfferPageProps): JSX.Element{
           <Map mapClass='offer'/>
         </section>
         <div className="container">
-          {/* <NearPlaces cardsCount={3}/> */}
+          <NearPlaces nearOffers={nearOffers}/>
         </div>
       </main>
     </div>

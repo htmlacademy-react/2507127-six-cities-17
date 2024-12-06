@@ -11,9 +11,10 @@ import { OffersData } from '../../types/offers';
 
 type AppProps = {
   offers: OffersData[];
+  nearOffers: OffersData[];
 }
 
-function App({offers}: AppProps): JSX.Element{
+function App({offers, nearOffers}: AppProps): JSX.Element{
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -26,13 +27,13 @@ function App({offers}: AppProps): JSX.Element{
             />
             <Route
               path={RoutePath.OFFER}
-              element={<OfferPage offers={offers} galleryImagesCount={Settings.GalleryImagesCount}/>}
+              element={<OfferPage offers={offers} nearOffers={nearOffers} galleryImagesCount={Settings.GalleryImagesCount}/>}
             />
             <Route
               path={RoutePath.FAVORITES}
               element={
-                <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-                  <FavoritesPage/>
+                <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+                  <FavoritesPage offers={offers}/>
                 </PrivateRoute>
               }
             />
