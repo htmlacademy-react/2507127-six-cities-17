@@ -1,6 +1,8 @@
-import HeaderGeneral from '../../components/header/header-general/header-general';
-import LocationsItem from '../../components/locations/locations-item/locations-item';
+import Header from '../../components/header/header';
+import LocationsItem from '../../components/locations-item/locations-item';
 import LoginForm from '../../components/login-form/login-form';
+import Title from '../../components/title/title';
+import { PagesList } from '../../const';
 
 function CurrentLocation():JSX.Element {
   return (
@@ -13,7 +15,8 @@ function CurrentLocation():JSX.Element {
 function LoginPage(): JSX.Element {
   return (
     <div className="page page--gray page--login">
-      <HeaderGeneral/>
+      <Title pageName={PagesList.Login}/>
+      <Header isLoginPage/>
       <main className="page__main page__main--login">
         <div className="page__login-container container">
           <LoginForm/>

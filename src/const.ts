@@ -1,3 +1,5 @@
+const SITE_NAME = '6 cities';
+
 const Settings = {
   CardsCount: 5,
   GalleryImagesCount: 6
@@ -32,4 +34,27 @@ const OfferInsideItems = {
   Fridge: 'Fridge',
 };
 
-export {Settings, Locations, SortOptions, OfferInsideItems};
+const PagesList = {
+  Main: 'Main',
+  Login: 'Login',
+  Favorite: 'Favorite',
+  Offer: 'Offer',
+  NotFound: 'Not found'
+} as const;
+
+const enum AppRoute {
+  Index = '/',
+  Login = '/login',
+  Favorites = '/favorites',
+  Offer = '/offer/:id',
+  NotFound = '*'
+}
+
+const enum AuthorizationStatus {
+  Auth = 'AUTH',
+  NoAuth = 'NO_AUTH',
+  Unknown = 'UNKNOWN'
+}
+
+
+export {SITE_NAME, Settings, Locations, SortOptions, OfferInsideItems, PagesList, AppRoute, AuthorizationStatus};

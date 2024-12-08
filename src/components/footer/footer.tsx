@@ -1,4 +1,4 @@
-import Logo from '../logo/logo';
+import Logo from '../common/logo/logo';
 
 function Footer():JSX.Element {
   return (

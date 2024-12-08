@@ -1,8 +1,10 @@
-import Header from '../../components/header/header-general/header-general';
-import Map from '../../components/common/map/map';
+import Header from '../../components/header/header';
+import Map from '../../components/map/map';
 import NearPlaces from '../../components/near-places/near-places';
-import OfferGallery from '../../components/offer/offer-gallery/offer-gallery';
-import OfferInfo from '../../components/offer/offer-info/offer-info';
+import OfferGallery from '../../components/offer-gallery/offer-gallery';
+import OfferInfo from '../../components/offer-info/offer-info';
+import Title from '../../components/title/title';
+import { PagesList } from '../../const';
 
 type OfferPageProps = {
   galleryImagesCount: number;
@@ -11,6 +13,7 @@ type OfferPageProps = {
 function OfferPage({galleryImagesCount}: OfferPageProps): JSX.Element{
   return (
     <div className="page">
+      <Title pageName={PagesList.Offer}/>
       <Header/>
       <main className="page__main page__main--offer">
         <section className="offer">
