@@ -1,4 +1,5 @@
 import { OffersData } from '../../types/offers';
+import { getGroupedOffers } from '../../utils/offers';
 import FavoritesItems from '../favorites-items/favorites-items';
 
 type FavoritesListProps = {
@@ -6,13 +7,7 @@ type FavoritesListProps = {
 }
 
 function FavoritesList({offers}: FavoritesListProps):JSX.Element {
-  const groupedOffersByCity: Record<string, OffersData[]> = offers.reduce((groups, item) => {
-    const { city } = item;
-    groups[city.name] = groups[city.name] ?? [];
-    groups[city.name].push(item);
-    return groups;
-  }, {} as Record<string, OffersData[]>);
-  const groupedOffers = Object.values(groupedOffersByCity);
+  const groupedOffers = getGroupedOffers(offers);
 
   const favoriteItems = groupedOffers.map((items) => <FavoritesItems key={items[0].id} groupedOffers={items}/>);
 
