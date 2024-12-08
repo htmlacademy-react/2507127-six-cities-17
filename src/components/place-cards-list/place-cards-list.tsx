@@ -3,7 +3,7 @@ import { ActiveOfferChange, OffersData } from '../../types/offers';
 
 type PlaceCardsListProps = {
   offers: OffersData[];
-  onHandleActiveOfferChange: ActiveOfferChange;
+  onHandleActiveOfferChange?: ActiveOfferChange;
 }
 
 function PlaceCardsList({offers, onHandleActiveOfferChange}: PlaceCardsListProps): JSX.Element{
