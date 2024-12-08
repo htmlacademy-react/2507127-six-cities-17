@@ -3,8 +3,13 @@ import Footer from '../../components/footer/footer';
 import Header from '../../components/header/header';
 import Title from '../../components/title/title';
 import { PagesList } from '../../const';
+import { OffersData } from '../../types/offers';
 
-function FavoritesPage(): JSX.Element{
+type FavoritesPageProps = {
+  offers: OffersData[];
+}
+
+function FavoritesPage({offers}: FavoritesPageProps): JSX.Element{
   return (
     <div className="page">
       <Title pageName={PagesList.Favorite}/>
@@ -13,7 +18,7 @@ function FavoritesPage(): JSX.Element{
         <div className="page__favorites-container container">
           <section className="favorites">
             <h1 className="favorites__title">Saved listing</h1>
-            <FavoritesList/>
+            <FavoritesList offers={offers}/>
           </section>
         </div>
       </main>

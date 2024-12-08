@@ -2,9 +2,10 @@ import { RatingSettings } from './rating-settings';
 
 type RatingProps = {
   ratingClass: string;
+  rating: number;
 }
 
-function Rating({ratingClass}: RatingProps):JSX.Element{
+function Rating({ratingClass, rating}: RatingProps):JSX.Element{
   return (
     <div className={`${ratingClass}__rating rating`}>
       <div className={`${ratingClass}__stars rating__stars`}>
@@ -12,7 +13,7 @@ function Rating({ratingClass}: RatingProps):JSX.Element{
         <span className="visually-hidden">Rating</span>
       </div>
       {RatingSettings[ratingClass].ratingValue &&
-      <span className="offer__rating-value rating__value">4.8</span>}
+      <span className="offer__rating-value rating__value">{rating}</span>}
     </div>
   );
 }

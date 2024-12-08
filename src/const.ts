@@ -56,5 +56,6 @@ const enum AuthorizationStatus {
   Unknown = 'UNKNOWN'
 }
 
+const ratingGradation = ['terribly', 'badly', 'not bad', 'good', 'perfect'];
 
-export {SITE_NAME, Settings, Locations, SortOptions, OfferInsideItems, PagesList, AppRoute, AuthorizationStatus};
+export {SITE_NAME, Settings, Locations, SortOptions, OfferInsideItems, PagesList, AppRoute, AuthorizationStatus, ratingGradation};
