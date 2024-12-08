@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { LogoSettings } from './logo-settings';
-import { RoutePath } from '../../../const';
+import { AppRoute } from '../../../const';
 
 type LogoProps = {
   logoClass?: string;
@@ -8,7 +8,7 @@ type LogoProps = {
 
 function Logo({logoClass = 'header'}: LogoProps):JSX.Element {
   return (
-    <Link className={`${logoClass}__logo-link`} to={RoutePath.INDEX}>
+    <Link className={`${logoClass}__logo-link`} to={AppRoute.Index}>
       <img
         className={`${logoClass}__logo`}
         src="img/logo.svg"

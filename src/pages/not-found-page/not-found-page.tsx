@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Header from '../../components/header/header';
-import { PagesList, RoutePath } from '../../const';
+import { PagesList, AppRoute } from '../../const';
 import styles from './not-found-page.module.css';
 import Title from '../../components/title/title';
 
@@ -13,7 +13,7 @@ function NotFoundPage(): JSX.Element {
         <h1 className={styles.title}>404: Not Found</h1>
         <Link
           className={styles.link}
-          to={RoutePath.INDEX}
+          to={AppRoute.Index}
         >
           Go to Home page
         </Link>

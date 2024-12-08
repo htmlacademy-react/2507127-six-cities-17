@@ -42,12 +42,12 @@ const PagesList = {
   NotFound: 'Not found'
 } as const;
 
-const enum RoutePath {
-  INDEX = '/',
-  LOGIN = '/login',
-  FAVORITES = '/favorites',
-  OFFER = '/offer/:id',
-  NOT_FOUND = '*'
+const enum AppRoute {
+  Index = '/',
+  Login = '/login',
+  Favorites = '/favorites',
+  Offer = '/offer/:id',
+  NotFound = '*'
 }
 
 const enum AuthorizationStatus {
@@ -57,4 +57,4 @@ const enum AuthorizationStatus {
 }
 
 
-export {SITE_NAME, Settings, Locations, SortOptions, OfferInsideItems, PagesList, RoutePath, AuthorizationStatus};
+export {SITE_NAME, Settings, Locations, SortOptions, OfferInsideItems, PagesList, AppRoute, AuthorizationStatus};

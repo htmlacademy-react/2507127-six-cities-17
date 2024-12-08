@@ -1,6 +1,6 @@
 import {Route, Routes, BrowserRouter} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
-import { AuthorizationStatus, RoutePath, Settings } from '../../const';
+import { AuthorizationStatus, AppRoute, Settings } from '../../const';
 import MainPage from '../../pages/main-page/main-page';
 import LoginPage from '../../pages/login-page/login-page';
 import FavoritesPage from '../../pages/favorites-page/favorites-page';
@@ -18,18 +18,18 @@ function App({cardsCount, offersCount}: AppProps): JSX.Element{
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
-          <Route path={RoutePath.INDEX}>
+          <Route path={AppRoute.Index}>
             <Route index element={<MainPage cardsCount={cardsCount} offersCount={offersCount}/>}/>
             <Route
-              path={RoutePath.LOGIN}
+              path={AppRoute.Login}
               element={<LoginPage/>}
             />
             <Route
-              path={RoutePath.OFFER}
+              path={AppRoute.Offer}
               element={<OfferPage galleryImagesCount={Settings.GalleryImagesCount}/>}
             />
             <Route
-              path={RoutePath.FAVORITES}
+              path={AppRoute.Favorites}
               element={
                 <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
                   <FavoritesPage/>
@@ -38,7 +38,7 @@ function App({cardsCount, offersCount}: AppProps): JSX.Element{
             />
           </Route>
           <Route
-            path={RoutePath.NOT_FOUND}
+            path={AppRoute.NotFound}
             element={<NotFoundPage/>}
           />
         </Routes>
