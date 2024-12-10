@@ -22,5 +22,3 @@ export type OffersData = {
   isPremium: boolean;
   rating: number;
 }
-
-export type ActiveOfferChange = (id: string | null) => void;

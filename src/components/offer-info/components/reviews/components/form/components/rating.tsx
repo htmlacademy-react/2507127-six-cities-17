@@ -1,21 +1,16 @@
-import { nanoid } from 'nanoid';
-import { ratingGradation } from '../../../../../../../const';
-import Star from './star';
+import { onHandleRatingChangeType } from '../../../../../../../types/handlers';
+import { FormReviewType } from '../../../../../../../types/types';
+import StarsList from './stars-list';
 
-function Rating():JSX.Element {
+type RatingProps = {
+  onHandleRatingChange: onHandleRatingChangeType;
+  formData: FormReviewType;
+}
 
-  //Использовал вместо map, так как нужны индексы в обратном порядке
-  function createStarsList(): JSX.Element[]{
-    const stars = [];
-    for(let i = ratingGradation.length; i >= 1; i--) {
-      stars.push(<Star num={i} gradation={ratingGradation[i]} key={nanoid()}/>);
-    }
-    return stars;
-  }
-
+function Rating({onHandleRatingChange, formData}: RatingProps):JSX.Element {
   return (
     <div className="reviews__rating-form form__rating">
-      {createStarsList()}
+      <StarsList formData={formData} onHandleRatingChange={onHandleRatingChange}/>
     </div>
   );
 }

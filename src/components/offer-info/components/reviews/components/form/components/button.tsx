@@ -1,9 +1,13 @@
-function Button():JSX.Element {
+type ButtonType = {
+  isDisabled: boolean;
+}
+
+function Button({isDisabled}: ButtonType):JSX.Element {
   return(
     <button
       className="reviews__submit form__submit button"
       type="submit"
-      disabled
+      disabled={!isDisabled}
     >
                   Submit
     </button>

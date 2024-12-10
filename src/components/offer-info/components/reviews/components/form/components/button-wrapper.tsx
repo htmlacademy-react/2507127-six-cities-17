@@ -1,6 +1,10 @@
 import Button from './button';
 
-function ButtonWrapper():JSX.Element {
+type ButtonWrapperType = {
+  isDisabled: boolean;
+}
+
+function ButtonWrapper({isDisabled}: ButtonWrapperType):JSX.Element {
   return(
     <div className="reviews__button-wrapper">
       <p className="reviews__help">
@@ -9,7 +13,7 @@ function ButtonWrapper():JSX.Element {
                   your stay with at least{' '}
         <b className="reviews__text-amount">50 characters</b>.
       </p>
-      <Button/>
+      <Button isDisabled={isDisabled}/>
     </div>
   );
 }

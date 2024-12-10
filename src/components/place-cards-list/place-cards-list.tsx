@@ -1,5 +1,6 @@
 import PlaceCardItem from '../place-card-item/place-card-item';
-import { ActiveOfferChange, OffersData } from '../../types/offers';
+import { OffersData } from '../../types/offers';
+import { ActiveOfferChange } from '../../types/handlers';
 
 type PlaceCardsListProps = {
   offers: OffersData[];

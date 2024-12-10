@@ -1,9 +1,17 @@
+import { onHandleRatingChangeType } from '../../../../../../../types/handlers';
+import { FormReviewType } from '../../../../../../../types/types';
+
 type InputProps = {
   num: number;
   gradation: string;
+  onHandleRatingChange: onHandleRatingChangeType;
+  formData: FormReviewType;
 }
 
-function Star({num, gradation}: InputProps):JSX.Element {
+function Star({num, gradation, onHandleRatingChange, formData}: InputProps):JSX.Element {
+  const isChecked = !!(formData.rating && num <= formData.rating);
+  const starColor = isChecked ? '#ff9000' : '#c7c7c7';
+
   return (
     <>
       <input
@@ -12,6 +20,7 @@ function Star({num, gradation}: InputProps):JSX.Element {
         defaultValue={num}
         id={`${num}-stars`}
         type="radio"
+        onChange={onHandleRatingChange}
       />
       <label
         htmlFor={`${num}-stars`}
@@ -19,7 +28,7 @@ function Star({num, gradation}: InputProps):JSX.Element {
         title={gradation}
       >
         <svg className="form__star-image" width={37} height={33}>
-          <use xlinkHref="#icon-star" />
+          <use xlinkHref="#icon-star" fill={starColor}/>
         </svg>
       </label>
     </>

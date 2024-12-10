@@ -24,6 +24,8 @@ function FoundPlacesNumber({offersCount}: FoundPlacesNumber):JSX.Element{
 
 function MainPage({offers}: MainPageProps): JSX.Element{
   const [activeOffer, setActiveOffer] = useState<string | null>(null);
+  //Временно
+  console.log(activeOffer);
 
   const handleActiveOfferChange = (id: string | null) =>{
     setActiveOffer(id);

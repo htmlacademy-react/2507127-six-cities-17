@@ -56,6 +56,11 @@ const enum AuthorizationStatus {
   Unknown = 'UNKNOWN'
 }
 
+const FormReviewValue = {
+  Min: 50,
+  Max: 300
+} as const;
+
 const ratingGradation = ['terribly', 'badly', 'not bad', 'good', 'perfect'];
 
-export {SITE_NAME, Settings, Locations, SortOptions, OfferInsideItems, PagesList, AppRoute, AuthorizationStatus, ratingGradation};
+export {SITE_NAME, Settings, Locations, SortOptions, OfferInsideItems, PagesList, AppRoute, AuthorizationStatus, ratingGradation, FormReviewValue};
