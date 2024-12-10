@@ -1,24 +1,36 @@
 import Mark from '../common/mark/mark';
-import OfferInfoHost from './components/host/host';
+import Host from './components/host/host';
 import Rating from '../common/rating/rating';
-import OfferInfoInside from './components/inside/inside';
-import OfferInfoFeatures from './components/features/features';
-import OfferInfoName from './components/name/name';
-import OfferInfoPrice from './components/price/price';
-import InfoReviews from './components/reviews/reviews';
+import Inside from './components/inside/inside';
+import Features from './components/features/features';
+import Name from './components/name/name';
+import Price from './components/price/price';
+import Reviews from './components/reviews/reviews';
+import { OffersData } from '../../types/offers';
 
-function OfferInfo():JSX.Element{
+type OfferInfoProps = {
+  offer: OffersData;
+}
+
+function OfferInfo({offer}: OfferInfoProps):JSX.Element{
+  const {
+    title,
+    price,
+    rating,
+    isPremium,
+    isFavorite,
+  } = offer;
   return (
     <div className="offer__container container">
       <div className="offer__wrapper">
-        <Mark markClass='offer'/>
-        <OfferInfoName/>
-        <Rating ratingClass='offer'/>
-        <OfferInfoFeatures/>
-        <OfferInfoPrice/>
-        <OfferInfoInside/>
-        <OfferInfoHost/>
-        <InfoReviews/>
+        {isPremium && <Mark markClass='offer'/>}
+        <Name title={title} isFavorite={isFavorite}/>
+        <Rating rating={rating} ratingClass='offer'/>
+        <Features/>
+        <Price price={price}/>
+        <Inside/>
+        <Host/>
+        <Reviews/>
       </div>
     </div>
   );
