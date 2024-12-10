@@ -2,7 +2,7 @@ import { RatingSettings } from './rating-settings';
 
 type RatingProps = {
   ratingClass: string;
-  rating: number;
+  rating?: number;
 }
 
 function Rating({ratingClass, rating}: RatingProps):JSX.Element{

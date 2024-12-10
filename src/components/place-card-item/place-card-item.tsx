@@ -4,7 +4,8 @@ import Mark from '../common/mark/mark';
 import Rating from '../common/rating/rating';
 import { PlaceCardSettings } from './place-card-settings';
 import { AppRoute } from '../../const';
-import { ActiveOfferChange, OffersData } from '../../types/offers';
+import { ActiveOfferChange } from '../../types/handlers';
+import { OffersData } from '../../types/offers';
 
 type PlaceCardItemProps = {
   offer: OffersData;
