@@ -1,12 +1,17 @@
 import BookmarkButton from '../../../common/bookmark-button/bookmark-button';
 
-function Name():JSX.Element{
+type NameProps = {
+  title: string;
+  isFavorite: boolean;
+}
+
+function Name({title, isFavorite}:NameProps):JSX.Element{
   return (
     <div className="offer__name-wrapper">
       <h1 className="offer__name">
-              Beautiful &amp; luxurious studio at great location
+        {title}
       </h1>
-      <BookmarkButton bookmarkClass='offer'/>
+      <BookmarkButton isFavorite={isFavorite} bookmarkClass='offer'/>
     </div>
   );
 }

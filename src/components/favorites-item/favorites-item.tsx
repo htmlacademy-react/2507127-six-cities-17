@@ -1,16 +1,14 @@
-import LocationsItem from '../locations-item/locations-item';
+import { CardClass } from '../../const';
+import { OffersData } from '../../types/offers';
 import PlaceCardItem from '../place-card-item/place-card-item';
 
-function FavoritesItem():JSX.Element {
+type FavoritesItemProps = {
+  offer: OffersData;
+}
+
+function FavoritesItem({offer}: FavoritesItemProps):JSX.Element {
   return (
-    <li className="favorites__locations-items">
-      <div className="favorites__locations locations locations--current">
-        <LocationsItem locationName={'Amsterdam'} isSingle/>
-      </div>
-      <div className="favorites__places">
-        <PlaceCardItem cardClass={'favorites'} isFavorites/>
-      </div>
-    </li>
+    <PlaceCardItem cardClass={CardClass.Favorites} offer={offer}/>
   );
 }
 
