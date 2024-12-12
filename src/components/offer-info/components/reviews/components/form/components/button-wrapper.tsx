@@ -1,3 +1,4 @@
+import { FormReviewValue } from '../../../../../../../const';
 import Button from './button';
 
 type ButtonWrapperType = {
@@ -11,7 +12,7 @@ function ButtonWrapper({isDisabled}: ButtonWrapperType):JSX.Element {
                   To submit review please make sure to set{' '}
         <span className="reviews__star">rating</span> and describe
                   your stay with at least{' '}
-        <b className="reviews__text-amount">50 characters</b>.
+        <b className="reviews__text-amount">${FormReviewValue.Min} characters</b>.
       </p>
       <Button isDisabled={isDisabled}/>
     </div>

@@ -13,7 +13,7 @@ function StarsList({onHandleRatingChange, formData}: StarsListProps): JSX.Elemen
   const stars = [];
   //Использовал вместо map, так как нужны индексы в обратном порядке
   for(let i = ratingGradation.length; i >= 1; i--) {
-    stars.push(<Star formData={formData} onHandleRatingChange={onHandleRatingChange} num={i} gradation={ratingGradation[i]} key={nanoid()}/>);
+    stars.push(<Star formData={formData} onHandleRatingChange={onHandleRatingChange} starNumber={i} gradation={ratingGradation[i]} key={nanoid()}/>);
   }
   return stars;
 }

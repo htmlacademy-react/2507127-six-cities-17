@@ -2,14 +2,14 @@ import { onHandleRatingChangeType } from '../../../../../../../types/handlers';
 import { FormReviewType } from '../../../../../../../types/types';
 
 type InputProps = {
-  num: number;
+  starNumber: number;
   gradation: string;
   onHandleRatingChange: onHandleRatingChangeType;
   formData: FormReviewType;
 }
 
-function Star({num, gradation, onHandleRatingChange, formData}: InputProps):JSX.Element {
-  const isChecked = !!(formData.rating && num <= formData.rating);
+function Star({starNumber, gradation, onHandleRatingChange, formData}: InputProps):JSX.Element {
+  const isChecked = !!(formData.rating && starNumber <= formData.rating);
   const starColor = isChecked ? '#ff9000' : '#c7c7c7';
 
   return (
@@ -17,13 +17,13 @@ function Star({num, gradation, onHandleRatingChange, formData}: InputProps):JSX.
       <input
         className="form__rating-input visually-hidden"
         name="rating"
-        defaultValue={num}
-        id={`${num}-stars`}
+        defaultValue={starNumber}
+        id={`${starNumber}-stars`}
         type="radio"
         onChange={onHandleRatingChange}
       />
       <label
-        htmlFor={`${num}-stars`}
+        htmlFor={`${starNumber}-stars`}
         className="reviews__rating-label form__rating-label"
         title={gradation}
       >

@@ -61,6 +61,11 @@ const FormReviewValue = {
   Max: 300
 } as const;
 
+const enum CardClass {
+  Cities = 'cities',
+  Favorites = 'favorites'
+}
+
 const ratingGradation = ['terribly', 'badly', 'not bad', 'good', 'perfect'];
 
-export {SITE_NAME, Settings, Locations, SortOptions, OfferInsideItems, PagesList, AppRoute, AuthorizationStatus, ratingGradation, FormReviewValue};
+export {SITE_NAME, Settings, Locations, SortOptions, OfferInsideItems, PagesList, AppRoute, AuthorizationStatus, ratingGradation, FormReviewValue, CardClass};

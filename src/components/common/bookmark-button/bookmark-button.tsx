@@ -1,4 +1,5 @@
 import { BookmarkSettings } from './bookmark-settings';
+import cn from 'classnames';
 
 type BookmarkButtonProps = {
   bookmarkClass: string;
@@ -6,11 +7,15 @@ type BookmarkButtonProps = {
 }
 
 function BookmarkButton({bookmarkClass, isFavorite}: BookmarkButtonProps): JSX.Element{
-  const isActive = isFavorite
-    ? `${bookmarkClass}__bookmark-button--active`
-    : null;
   return (
-    <button className={`${bookmarkClass}__bookmark-button ${isActive} button`} type="button">
+    <button className={
+      cn(
+        `${bookmarkClass}__bookmark-button`,
+        'button',
+        {[`${bookmarkClass}__bookmark-button--active`]: isFavorite}
+      )
+    } type="button"
+    >
       <svg className={`${bookmarkClass}__bookmark-icon`} width={BookmarkSettings[bookmarkClass].width} height={BookmarkSettings[bookmarkClass].height}>
         <use xlinkHref="#icon-bookmark"></use>
       </svg>

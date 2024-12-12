@@ -3,13 +3,13 @@ import BookmarkButton from '../common/bookmark-button/bookmark-button';
 import Mark from '../common/mark/mark';
 import Rating from '../common/rating/rating';
 import { PlaceCardSettings } from './place-card-settings';
-import { AppRoute } from '../../const';
+import { AppRoute, CardClass } from '../../const';
 import { ActiveOfferChange } from '../../types/handlers';
 import { OffersData } from '../../types/offers';
 
 type PlaceCardItemProps = {
   offer: OffersData;
-  cardClass: string;
+  cardClass: CardClass;
   onHandleActiveOfferChange?: ActiveOfferChange;
 }
 
