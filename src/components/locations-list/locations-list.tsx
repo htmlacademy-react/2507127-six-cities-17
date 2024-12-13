@@ -1,10 +1,17 @@
 import { nanoid } from 'nanoid';
-import { Locations } from '../../const';
 import LocationItem from '../locations-item/locations-item';
+import { CurrentLocationChange } from '../../types/handlers';
 
-function LocationsList(): JSX.Element {
-  const locationsList = Object.values(Locations).map((name) =>
-    <LocationItem locationName={name} isActive={name === 'Amsterdam'} key={nanoid()}/>
+type LocationsListProps = {
+  cities: string[];
+  currentLocation: string;
+  onHandleCurrentLocationChange: CurrentLocationChange;
+}
+
+function LocationsList({cities, currentLocation, onHandleCurrentLocationChange}: LocationsListProps): JSX.Element {
+
+  const locationsList = Object.values(cities).map((name) =>
+    <LocationItem locationName={name} isActive={name === currentLocation} onHandleCurrentLocationChange={onHandleCurrentLocationChange} key={nanoid()}/>
   );
 
   return (
