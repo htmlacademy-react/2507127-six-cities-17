@@ -1,5 +1,7 @@
+import { GeneralCategories } from '../../const';
+
 type MapProps = {
-  mapClass: string;
+  mapClass: GeneralCategories;
 }
 
 function Map({mapClass}: MapProps):JSX.Element {

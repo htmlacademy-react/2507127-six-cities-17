@@ -4,7 +4,7 @@ import Map from '../../components/map/map';
 import PlaceCardsList from '../../components/place-cards-list/place-cards-list';
 import PlacesSortForm from '../../components/places-sort-form/places-sort-form';
 import Header from '../../components/header/header';
-import { PagesList } from '../../const';
+import { GeneralCategories, PagesList } from '../../const';
 import Title from '../../components/title/title';
 import { OffersData } from '../../types/offers';
 
@@ -51,7 +51,7 @@ function MainPage({offers}: MainPageProps): JSX.Element{
               {<PlaceCardsList onHandleActiveOfferChange={handleActiveOfferChange} offers={offers}/>}
             </section>
             <div className="cities__right-section">
-              <Map mapClass='cities'/>
+              <Map mapClass={GeneralCategories.Cities}/>
             </div>
           </div>
         </div>

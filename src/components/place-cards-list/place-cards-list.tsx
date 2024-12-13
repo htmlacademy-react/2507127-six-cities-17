@@ -1,7 +1,7 @@
 import PlaceCardItem from '../place-card-item/place-card-item';
 import { OffersData } from '../../types/offers';
 import { ActiveOfferChange } from '../../types/handlers';
-import { CardClass } from '../../const';
+import { GeneralCategories } from '../../const';
 
 type PlaceCardsListProps = {
   offers: OffersData[];
@@ -9,7 +9,7 @@ type PlaceCardsListProps = {
 }
 
 function PlaceCardsList({offers, onHandleActiveOfferChange}: PlaceCardsListProps): JSX.Element{
-  const cardsList = offers.map((offer) => <PlaceCardItem onHandleActiveOfferChange={onHandleActiveOfferChange} offer={offer} cardClass={CardClass.Cities} key={offer.id}/>);
+  const cardsList = offers.map((offer) => <PlaceCardItem onHandleActiveOfferChange={onHandleActiveOfferChange} offer={offer} cardClass={GeneralCategories.Cities} key={offer.id}/>);
 
   return (
     <div className="cities__places-list places__list tabs__content">

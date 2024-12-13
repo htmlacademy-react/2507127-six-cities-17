@@ -5,7 +5,7 @@ import NearPlaces from '../../components/near-places/near-places';
 import OfferGallery from '../../components/offer-gallery/offer-gallery';
 import OfferInfo from '../../components/offer-info/offer-info';
 import Title from '../../components/title/title';
-import { PagesList } from '../../const';
+import { GeneralCategories, PagesList } from '../../const';
 import { OffersData } from '../../types/offers';
 
 type OfferPageProps = {
@@ -26,7 +26,7 @@ function OfferPage({galleryImagesCount, offers, nearOffers}: OfferPageProps): JS
         <section className="offer">
           <OfferGallery GalleryImagesCount={galleryImagesCount}/>
           <OfferInfo offer={currentOffer as OffersData}/>
-          <Map mapClass='offer'/>
+          <Map mapClass={GeneralCategories.Offer}/>
         </section>
         <div className="container">
           <NearPlaces nearOffers={nearOffers}/>

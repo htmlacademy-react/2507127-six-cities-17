@@ -1,11 +1,12 @@
+import { GeneralCategories } from '../../../const';
 import { ProportionsType } from '../../../types/types';
 
 export const BookmarkSettings: ProportionsType = {
-  'place-card': {
+  [GeneralCategories.PlaceCard]: {
     width: 18,
     height: 19,
   },
-  'offer': {
+  [GeneralCategories.Offer]: {
     width: 31,
     height: 33,
   },

@@ -1,9 +1,10 @@
+import { GeneralCategories } from '../../../../../../../../const';
 import Rating from '../../../../../../../common/rating/rating';
 
 function Info():JSX.Element {
   return (
     <div className="reviews__info">
-      <Rating ratingClass={'reviews'}/>
+      <Rating ratingClass={GeneralCategories.Reviews}/>
       <p className="reviews__text">
                 A quiet cozy and picturesque that hides behind a a river by
                 the unique lightness of Amsterdam. The building is green and
