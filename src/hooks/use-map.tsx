@@ -8,8 +8,18 @@ function useMap(
 ): Map | null{
   const [map, setMap] = useState<Map | null>(null);
   const isRenderedRef = useRef<boolean>(false);
+  const currentCityRef = useRef<CityCoordinates>(city);
 
   useEffect(() => {
+    if (currentCityRef.current.title !== city.title){
+      map?.setView({
+        lat: city.lat,
+        lng: city.lng
+      });
+
+      currentCityRef.current = city;
+    }
+
     if (mapRef.current !== null && !isRenderedRef.current) {
       const instance = new Map(mapRef.current, {
         center: {
@@ -32,7 +42,7 @@ function useMap(
       setMap(instance);
       isRenderedRef.current = true;
     }
-  }, [mapRef, city]);
+  }, [mapRef, city, map]);
 
   return map;
 }
