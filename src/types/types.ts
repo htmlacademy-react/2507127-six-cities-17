@@ -6,4 +6,3 @@ export type FormReviewType = {
   rating: null | number;
   review: string;
 }
-

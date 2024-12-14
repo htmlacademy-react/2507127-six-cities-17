@@ -7,7 +7,7 @@ import Header from '../../components/header/header';
 import { GeneralCategories, PagesList } from '../../const';
 import Title from '../../components/title/title';
 import { OffersData } from '../../types/offers';
-import { getAllCities, getFilteredOffers } from '../../utils/offers';
+import { getAllCities, getCurrentCityData, getSelectedPonit, getFilteredOffers, getPointsData } from '../../utils/offers';
 
 type MainPageProps = {
   offers: OffersData[];
@@ -26,9 +26,14 @@ function FoundPlacesNumber({offersCount, currentLocation}: FoundPlacesNumber):JS
 
 function MainPage({offers}: MainPageProps): JSX.Element{
   const allCities = getAllCities(offers);
-  const [activeOffer, setActiveOffer] = useState<string | null>(null);
+
+  const [activeOfferId, setActiveOfferId] = useState<string | null>(null);
   const [currentLocation, setCurrentLocation] = useState(allCities[0]);
+
   const filteredOFfers = getFilteredOffers(offers, currentLocation);
+  const currentCityData = getCurrentCityData(filteredOFfers);
+  const pointsData = getPointsData(filteredOFfers);
+  const selectedPoint = activeOfferId !== null ? getSelectedPonit(filteredOFfers, activeOfferId) : null;
 
   //временная функция
   function returnActiveOffer(offer: string | null): string | null{
@@ -36,14 +41,13 @@ function MainPage({offers}: MainPageProps): JSX.Element{
   }
 
   const handleActiveOfferChange = (id: string | null) =>{
-    returnActiveOffer(activeOffer);
-    setActiveOffer(id);
+    returnActiveOffer(activeOfferId);
+    setActiveOfferId(id);
   };
 
   const handleCurrentLocationChange = (name: string) =>{
     setCurrentLocation(name);
   };
-
 
   return (
     <div className="page page--gray page--main">
@@ -61,7 +65,7 @@ function MainPage({offers}: MainPageProps): JSX.Element{
               {<PlaceCardsList onHandleActiveOfferChange={handleActiveOfferChange} offers={filteredOFfers}/>}
             </section>
             <div className="cities__right-section">
-              <Map mapClass={GeneralCategories.Cities}/>
+              <Map city={currentCityData} points={pointsData} selectedPoint={selectedPoint} mapClass={GeneralCategories.Cities}/>
             </div>
           </div>
         </div>

@@ -22,3 +22,15 @@ export type OffersData = {
   isPremium: boolean;
   rating: number;
 }
+
+export type PointCoordinates = {
+  id: string;
+  title: string;
+  lat: number;
+  lng: number;
+  zoom: number;
+}
+
+export type CityCoordinates = Omit<PointCoordinates, 'id'>
+
+
