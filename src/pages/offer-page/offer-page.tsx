@@ -17,7 +17,8 @@ type OfferPageProps = {
 
 function OfferPage({galleryImagesCount, offers, nearOffers, comments}: OfferPageProps): JSX.Element{
   const {id} = useParams();
-  const currentOffer = offers.find((item) => item.id === id);
+  //Пришлось добавить условие, так как приложение ломалось при нажатии на предложение неподалеку
+  const currentOffer = offers.find((item) => item.id === id) || nearOffers.find((item) => item.id === id);
 
   return (
     <div className="page">
