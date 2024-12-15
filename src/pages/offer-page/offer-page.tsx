@@ -4,18 +4,22 @@ import NearPlaces from '../../components/near-places/near-places';
 import OfferGallery from '../../components/offer-gallery/offer-gallery';
 import OfferInfo from '../../components/offer-info/offer-info';
 import Title from '../../components/title/title';
-import { PagesList } from '../../const';
+import { GeneralCategories, PagesList } from '../../const';
 import { OffersData } from '../../types/offers';
 import { ReviewComment } from '../../types/comments';
+import { ActiveOfferChange } from '../../types/handlers';
+import Map from '../../components/map/map';
 
 type OfferPageProps = {
   offers: OffersData[];
   nearOffers: OffersData[];
   comments: ReviewComment[];
+  activeOfferId: string | null;
+  onHandleActiveOfferChange: ActiveOfferChange;
   galleryImagesCount: number;
 }
 
-function OfferPage({galleryImagesCount, offers, nearOffers, comments}: OfferPageProps): JSX.Element{
+function OfferPage({ offers, nearOffers, comments, activeOfferId, onHandleActiveOfferChange, galleryImagesCount, }: OfferPageProps): JSX.Element{
   const {id} = useParams();
   //Пришлось добавить условие, так как приложение ломалось при нажатии на предложение неподалеку
   const currentOffer = offers.find((item) => item.id === id) || nearOffers.find((item) => item.id === id);
@@ -28,11 +32,10 @@ function OfferPage({galleryImagesCount, offers, nearOffers, comments}: OfferPage
         <section className="offer">
           <OfferGallery GalleryImagesCount={galleryImagesCount}/>
           <OfferInfo comments={comments} offer={currentOffer as OffersData}/>
-          {/* {Временно отключена карта} */}
-          {/* <Map mapClass={GeneralCategories.Offer}/> */}
+          <Map mapClass={GeneralCategories.Offer} activeOfferId={activeOfferId} offers={nearOffers}/>
         </section>
         <div className="container">
-          <NearPlaces nearOffers={nearOffers}/>
+          <NearPlaces onHandleActiveOfferChange={onHandleActiveOfferChange} nearOffers={nearOffers}/>
         </div>
       </main>
     </div>

@@ -10,6 +10,7 @@ import PrivateRoute from '../private-route/private-route';
 import { OffersData } from '../../types/offers';
 import ScrollToTopWrapper from '../scroll-to-top-wrapper/scroll-to-top-wrapper';
 import { ReviewComment } from '../../types/comments';
+import { useState } from 'react';
 
 type AppProps = {
   offers: OffersData[];
@@ -18,20 +19,26 @@ type AppProps = {
 }
 
 function App({offers, nearOffers, comments}: AppProps): JSX.Element{
+  const [activeOfferId, setActiveOfferId] = useState<string | null>(null);
+
+  const handleActiveOfferChange = (id: string | null) =>{
+    setActiveOfferId(id);
+  };
+
   return (
     <HelmetProvider>
       <BrowserRouter>
         <ScrollToTopWrapper>
           <Routes>
             <Route path={AppRoute.Index}>
-              <Route index element={<MainPage offers={offers} />}/>
+              <Route index element={<MainPage offers={offers} activeOfferId={activeOfferId} onHandleActiveOfferChange={handleActiveOfferChange}/>}/>
               <Route
                 path={AppRoute.Login}
                 element={<LoginPage/>}
               />
               <Route
                 path={AppRoute.Offer}
-                element={<OfferPage offers={offers} nearOffers={nearOffers} comments={comments} galleryImagesCount={Settings.GalleryImagesCount}/>}
+                element={<OfferPage offers={offers} nearOffers={nearOffers} comments={comments} activeOfferId={activeOfferId} onHandleActiveOfferChange={handleActiveOfferChange} galleryImagesCount={Settings.GalleryImagesCount}/>}
               />
               <Route
                 path={AppRoute.Favorites}

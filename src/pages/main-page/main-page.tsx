@@ -7,10 +7,13 @@ import Header from '../../components/header/header';
 import { GeneralCategories, PagesList } from '../../const';
 import Title from '../../components/title/title';
 import { OffersData } from '../../types/offers';
-import { getAllCities, getCurrentCityData, getSelectedPonit, getFilteredOffers, getPointsData } from '../../utils/offers';
+import { getAllCities, getFilteredOffers} from '../../utils/offers';
+import { ActiveOfferChange } from '../../types/handlers';
 
 type MainPageProps = {
   offers: OffersData[];
+  activeOfferId: string | null;
+  onHandleActiveOfferChange: ActiveOfferChange;
 }
 
 type FoundPlacesNumber = {
@@ -24,26 +27,12 @@ function FoundPlacesNumber({offersCount, currentLocation}: FoundPlacesNumber):JS
   );
 }
 
-function MainPage({offers}: MainPageProps): JSX.Element{
+function MainPage({offers, activeOfferId, onHandleActiveOfferChange}: MainPageProps): JSX.Element{
   const allCities = getAllCities(offers);
 
-  const [activeOfferId, setActiveOfferId] = useState<string | null>(null);
   const [currentLocation, setCurrentLocation] = useState(allCities[0]);
 
   const filteredOFfers = getFilteredOffers(offers, currentLocation);
-  const currentCityData = getCurrentCityData(filteredOFfers);
-  const pointsData = getPointsData(filteredOFfers);
-  const selectedPoint = activeOfferId !== null ? getSelectedPonit(filteredOFfers, activeOfferId) : null;
-
-  //временная функция
-  function returnActiveOffer(offer: string | null): string | null{
-    return offer;
-  }
-
-  const handleActiveOfferChange = (id: string | null) =>{
-    returnActiveOffer(activeOfferId);
-    setActiveOfferId(id);
-  };
 
   const handleCurrentLocationChange = (name: string) =>{
     setCurrentLocation(name);
@@ -62,10 +51,10 @@ function MainPage({offers}: MainPageProps): JSX.Element{
               <h2 className="visually-hidden">Places</h2>
               <FoundPlacesNumber currentLocation={currentLocation} offersCount={filteredOFfers.length}/>
               {<PlacesSortForm/>}
-              {<PlaceCardsList onHandleActiveOfferChange={handleActiveOfferChange} offers={filteredOFfers}/>}
+              {<PlaceCardsList onHandleActiveOfferChange={onHandleActiveOfferChange} offers={filteredOFfers}/>}
             </section>
             <div className="cities__right-section">
-              <Map city={currentCityData} points={pointsData} selectedPoint={selectedPoint} mapClass={GeneralCategories.Cities}/>
+              <Map mapClass={GeneralCategories.Cities} offers={filteredOFfers} activeOfferId={activeOfferId} />
             </div>
           </div>
         </div>
