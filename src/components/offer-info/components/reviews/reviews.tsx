@@ -1,13 +1,18 @@
+import { ReviewComment } from '../../../../types/comments';
 import ReviewsForm from './components/form/form';
 import ReviewsList from './components/list/list';
 
-function Reviews():JSX.Element {
+type ReviewsProps = {
+  comments: ReviewComment[];
+}
+
+function Reviews({comments}: ReviewsProps):JSX.Element {
   return (
     <section className="offer__reviews reviews">
       <h2 className="reviews__title">
-              Reviews · <span className="reviews__amount">1</span>
+              Reviews · <span className="reviews__amount">{comments.length}</span>
       </h2>
-      <ReviewsList/>
+      <ReviewsList comments={comments}/>
       <ReviewsForm/>
     </section>
   );

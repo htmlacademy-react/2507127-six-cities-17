@@ -9,13 +9,15 @@ import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
 import { OffersData } from '../../types/offers';
 import ScrollToTopWrapper from '../scroll-to-top-wrapper/scroll-to-top-wrapper';
+import { ReviewComment } from '../../types/comments';
 
 type AppProps = {
   offers: OffersData[];
   nearOffers: OffersData[];
+  comments: ReviewComment[];
 }
 
-function App({offers, nearOffers}: AppProps): JSX.Element{
+function App({offers, nearOffers, comments}: AppProps): JSX.Element{
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -29,7 +31,7 @@ function App({offers, nearOffers}: AppProps): JSX.Element{
               />
               <Route
                 path={AppRoute.Offer}
-                element={<OfferPage offers={offers} nearOffers={nearOffers} galleryImagesCount={Settings.GalleryImagesCount}/>}
+                element={<OfferPage offers={offers} nearOffers={nearOffers} comments={comments} galleryImagesCount={Settings.GalleryImagesCount}/>}
               />
               <Route
                 path={AppRoute.Favorites}

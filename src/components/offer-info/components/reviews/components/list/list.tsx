@@ -1,9 +1,15 @@
+import { ReviewComment } from '../../../../../../types/comments';
 import ReviewsItem from '../item/item';
 
-function List():JSX.Element{
+type ListProps = {
+  comments: ReviewComment[];
+}
+
+function List({comments}: ListProps):JSX.Element{
+  const commentsList = comments.map((comment)=> <ReviewsItem comment={comment} key={comment.user.name}/>);
   return (
     <ul className="reviews__list">
-      <ReviewsItem/>
+      {commentsList}
     </ul>
   );
 }

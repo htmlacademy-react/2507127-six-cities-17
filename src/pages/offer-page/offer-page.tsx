@@ -6,14 +6,16 @@ import OfferInfo from '../../components/offer-info/offer-info';
 import Title from '../../components/title/title';
 import { PagesList } from '../../const';
 import { OffersData } from '../../types/offers';
+import { ReviewComment } from '../../types/comments';
 
 type OfferPageProps = {
   offers: OffersData[];
   nearOffers: OffersData[];
+  comments: ReviewComment[];
   galleryImagesCount: number;
 }
 
-function OfferPage({galleryImagesCount, offers, nearOffers}: OfferPageProps): JSX.Element{
+function OfferPage({galleryImagesCount, offers, nearOffers, comments}: OfferPageProps): JSX.Element{
   const {id} = useParams();
   const currentOffer = offers.find((item) => item.id === id);
 
@@ -24,7 +26,7 @@ function OfferPage({galleryImagesCount, offers, nearOffers}: OfferPageProps): JS
       <main className="page__main page__main--offer">
         <section className="offer">
           <OfferGallery GalleryImagesCount={galleryImagesCount}/>
-          <OfferInfo offer={currentOffer as OffersData}/>
+          <OfferInfo comments={comments} offer={currentOffer as OffersData}/>
           {/* {Временно отключена карта} */}
           {/* <Map mapClass={GeneralCategories.Offer}/> */}
         </section>
