@@ -1,5 +1,7 @@
+import { GeneralCategories } from '../../../const';
+
 type MarkProps ={
-  markClass: string;
+  markClass: GeneralCategories;
 }
 
 function Mark({markClass}: MarkProps):JSX.Element{

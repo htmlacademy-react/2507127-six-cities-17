@@ -5,15 +5,6 @@ const Settings = {
   GalleryImagesCount: 6
 } as const;
 
-const Locations = {
-  Paris: 'Paris',
-  Cologne: 'Cologne',
-  Brussels: 'Brussels',
-  Amsterdam: 'Amsterdam',
-  Hamburg: 'Hamburg',
-  Dusseldorf: 'Dusseldorf'
-} as const;
-
 const SortOptions = {
   Popular: 'Popular',
   LowToHigh:'Price: low to high',
@@ -61,11 +52,15 @@ const FormReviewValue = {
   Max: 300
 } as const;
 
-const enum CardClass {
+const enum GeneralCategories {
   Cities = 'cities',
-  Favorites = 'favorites'
+  Favorites = 'favorites',
+  Offer = 'offer',
+  PlaceCard = 'place-card',
+  NearPlaces = 'near-places',
+  Reviews = 'reviews',
 }
 
 const ratingGradation = ['terribly', 'badly', 'not bad', 'good', 'perfect'];
 
-export {SITE_NAME, Settings, Locations, SortOptions, OfferInsideItems, PagesList, AppRoute, AuthorizationStatus, ratingGradation, FormReviewValue, CardClass};
+export {SITE_NAME, Settings, SortOptions, OfferInsideItems, PagesList, AppRoute, AuthorizationStatus, ratingGradation, FormReviewValue, GeneralCategories};

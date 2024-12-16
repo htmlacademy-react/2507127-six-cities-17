@@ -1,15 +1,16 @@
+import { GeneralCategories } from '../../const';
 import { ProportionsType } from '../../types/types';
 
 export const PlaceCardSettings: ProportionsType = {
-  'cities': {
+  [GeneralCategories.Cities]: {
     width: 260,
     height: 200,
   },
-  'near-places': {
+  [GeneralCategories.NearPlaces]: {
     width: 260,
     height: 200,
   },
-  'favorites': {
+  [GeneralCategories.Favorites]: {
     width: 150,
     height: 110,
   },

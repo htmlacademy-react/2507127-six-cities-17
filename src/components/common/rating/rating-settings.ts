@@ -1,3 +1,5 @@
+import { GeneralCategories } from '../../../const';
+
 type StyleType ={
   width: string;
 }
@@ -7,19 +9,19 @@ type SettingsType = {
 }
 
 export const RatingSettings: SettingsType = {
-  'offer': {
+  [GeneralCategories.Offer]: {
     style: {
       width: '80%'
     },
     ratingValue: true
   },
-  'reviews': {
+  [GeneralCategories.Reviews]: {
     style: {
       width: '80%'
     },
     ratingValue: false
   },
-  'place-card': {
+  [GeneralCategories.PlaceCard]: {
     style: {
       width: '100%'
     },

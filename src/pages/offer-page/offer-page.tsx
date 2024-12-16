@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom';
 import Header from '../../components/header/header';
-import Map from '../../components/map/map';
 import NearPlaces from '../../components/near-places/near-places';
 import OfferGallery from '../../components/offer-gallery/offer-gallery';
 import OfferInfo from '../../components/offer-info/offer-info';
@@ -26,7 +25,8 @@ function OfferPage({galleryImagesCount, offers, nearOffers}: OfferPageProps): JS
         <section className="offer">
           <OfferGallery GalleryImagesCount={galleryImagesCount}/>
           <OfferInfo offer={currentOffer as OffersData}/>
-          <Map mapClass='offer'/>
+          {/* {Временно отключена карта} */}
+          {/* <Map mapClass={GeneralCategories.Offer}/> */}
         </section>
         <div className="container">
           <NearPlaces nearOffers={nearOffers}/>
