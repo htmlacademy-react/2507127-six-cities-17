@@ -1,15 +1,15 @@
 import {Icon, Marker, layerGroup} from 'leaflet';
 import { GeneralCategories } from '../../const';
-import { CityCoordinates, PointCoordinates } from '../../types/offers';
+import { OffersData } from '../../types/offers';
 import { useEffect, useRef } from 'react';
 import useMap from '../../hooks/use-map';
 import 'leaflet/dist/leaflet.css';
+import { getCurrentCityData, getPointsData, getSelectedPonit } from '../../utils/offers';
 
 type MapProps = {
   mapClass: GeneralCategories;
-  city: CityCoordinates;
-  points: PointCoordinates[];
-  selectedPoint: PointCoordinates | null;
+  activeOfferId: string | null;
+  offers: OffersData[];
 }
 
 const defaultCustomIcon = new Icon({
@@ -23,7 +23,11 @@ const currentCustomIcon = new Icon({
   iconAnchor: [20, 40]
 });
 
-function Map({mapClass, city, points, selectedPoint}: MapProps):JSX.Element {
+function Map({mapClass, activeOfferId, offers}: MapProps):JSX.Element {
+  const city = getCurrentCityData(offers);
+  const points = getPointsData(offers);
+  const selectedPoint = activeOfferId !== null ? getSelectedPonit(offers, activeOfferId) : null;
+
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 

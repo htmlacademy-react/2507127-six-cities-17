@@ -1,11 +1,17 @@
-import ReviewsInfo from './components/info/info';
-import ReviewsUser from './components/user/user';
+import { ReviewComment } from '../../../../../../types/comments';
+import Info from './components/info/info';
+import User from './components/user/user';
 
-function Item():JSX.Element{
+type ItemProps = {
+  comment: ReviewComment;
+}
+
+function Item({comment}: ItemProps):JSX.Element{
+  const {user} = comment;
   return (
     <li className="reviews__item">
-      <ReviewsUser/>
-      <ReviewsInfo/>
+      <User user={user}/>
+      <Info/>
     </li>
   );
 }
