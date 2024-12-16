@@ -14,11 +14,10 @@ import { useState } from 'react';
 
 type AppProps = {
   offers: OffersData[];
-  nearOffers: OffersData[];
   comments: ReviewComment[];
 }
 
-function App({offers, nearOffers, comments}: AppProps): JSX.Element{
+function App({offers, comments}: AppProps): JSX.Element{
   const [activeOfferId, setActiveOfferId] = useState<string | null>(null);
 
   const handleActiveOfferChange = (id: string | null) =>{
@@ -38,7 +37,7 @@ function App({offers, nearOffers, comments}: AppProps): JSX.Element{
               />
               <Route
                 path={AppRoute.Offer}
-                element={<OfferPage offers={offers} nearOffers={nearOffers} comments={comments} activeOfferId={activeOfferId} onHandleActiveOfferChange={handleActiveOfferChange} galleryImagesCount={Settings.GalleryImagesCount}/>}
+                element={<OfferPage offers={offers} comments={comments} activeOfferId={activeOfferId} onHandleActiveOfferChange={handleActiveOfferChange} galleryImagesCount={Settings.GalleryImagesCount}/>}
               />
               <Route
                 path={AppRoute.Favorites}

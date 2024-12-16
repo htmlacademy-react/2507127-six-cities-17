@@ -9,20 +9,21 @@ import { OffersData } from '../../types/offers';
 import { ReviewComment } from '../../types/comments';
 import { ActiveOfferChange } from '../../types/handlers';
 import Map from '../../components/map/map';
+import { getNearOffers } from '../../utils/offers';
 
 type OfferPageProps = {
   offers: OffersData[];
-  nearOffers: OffersData[];
   comments: ReviewComment[];
   activeOfferId: string | null;
   onHandleActiveOfferChange: ActiveOfferChange;
   galleryImagesCount: number;
 }
 
-function OfferPage({ offers, nearOffers, comments, activeOfferId, onHandleActiveOfferChange, galleryImagesCount, }: OfferPageProps): JSX.Element{
+function OfferPage({ offers, comments, activeOfferId, onHandleActiveOfferChange, galleryImagesCount, }: OfferPageProps): JSX.Element{
   const {id} = useParams();
-  //Пришлось добавить условие, так как приложение ломалось при нажатии на предложение неподалеку
-  const currentOffer = offers.find((item) => item.id === id) || nearOffers.find((item) => item.id === id);
+
+  const currentOffer = offers.find((item) => item.id === id);
+  const nearOffers = getNearOffers(offers, id);
 
   return (
     <div className="page">
@@ -32,10 +33,10 @@ function OfferPage({ offers, nearOffers, comments, activeOfferId, onHandleActive
         <section className="offer">
           <OfferGallery GalleryImagesCount={galleryImagesCount}/>
           <OfferInfo comments={comments} offer={currentOffer as OffersData}/>
-          <Map mapClass={GeneralCategory.Offer} activeOfferId={activeOfferId} offers={nearOffers}/>
+          <Map mapClass={GeneralCategory.Offer} activeOfferId={activeOfferId} offers={nearOffers as OffersData[]}/>
         </section>
         <div className="container">
-          <NearPlaces onHandleActiveOfferChange={onHandleActiveOfferChange} nearOffers={nearOffers}/>
+          <NearPlaces onHandleActiveOfferChange={onHandleActiveOfferChange} offers={nearOffers as OffersData[]}/>
         </div>
       </main>
     </div>

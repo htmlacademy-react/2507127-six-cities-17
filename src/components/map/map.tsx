@@ -1,10 +1,10 @@
 import {Icon, Marker, layerGroup} from 'leaflet';
-import { GeneralCategory } from '../../const';
-import { CityCoordinates, OffersData } from '../../types/offers';
+import { GeneralCategory, PinIcon } from '../../const';
+import { OffersData } from '../../types/offers';
 import { useEffect, useRef } from 'react';
 import useMap from '../../hooks/use-map';
 import 'leaflet/dist/leaflet.css';
-import { getCurrentCityData, getPointsData, getSelectedPonit } from '../../utils/offers';
+import { getCurrentCityData, getPointsData, getSelectedPoint } from '../../utils/offers';
 
 type MapProps = {
   mapClass: GeneralCategory;
@@ -13,12 +13,12 @@ type MapProps = {
 }
 
 const defaultCustomIcon = new Icon({
-  iconUrl: '/markup/img/pin.svg',
+  iconUrl: PinIcon.Default,
   iconSize: [40, 40],
   iconAnchor: [20, 40]
 });
 const currentCustomIcon = new Icon({
-  iconUrl: '/markup/img/pin-active.svg',
+  iconUrl: PinIcon.Active,
   iconSize: [40, 40],
   iconAnchor: [20, 40]
 });
@@ -26,7 +26,7 @@ const currentCustomIcon = new Icon({
 function Map({mapClass, activeOfferId, offers}: MapProps):JSX.Element {
   const city = getCurrentCityData(offers);
   const points = getPointsData(offers);
-  const selectedPoint = activeOfferId !== null ? getSelectedPonit(offers, activeOfferId) : null;
+  const selectedPoint = activeOfferId !== null ? getSelectedPoint(offers, activeOfferId) : null;
 
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);

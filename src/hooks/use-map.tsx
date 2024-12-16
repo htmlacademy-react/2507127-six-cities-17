@@ -1,6 +1,7 @@
 import { MutableRefObject, useEffect, useRef, useState } from 'react';
 import { CityCoordinates } from '../types/offers';
 import { Map, TileLayer } from 'leaflet';
+import { TileLayerLink } from '../const';
 
 function useMap(
   mapRef: MutableRefObject<HTMLElement | null>,
@@ -15,7 +16,9 @@ function useMap(
       map?.setView({
         lat: city.lat,
         lng: city.lng
-      });
+      },
+      city.zoom
+      );
 
       currentCityRef.current = city;
     }
@@ -30,10 +33,9 @@ function useMap(
       });
 
       const layer = new TileLayer(
-        'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+        TileLayerLink.Main,
         {
-          attribution:
-            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+          attribution: TileLayerLink.Attribution
         }
       );
 

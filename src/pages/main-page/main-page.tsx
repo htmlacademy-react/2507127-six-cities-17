@@ -4,7 +4,7 @@ import Map from '../../components/map/map';
 import PlaceCardsList from '../../components/place-cards-list/place-cards-list';
 import PlacesSortForm from '../../components/places-sort-form/places-sort-form';
 import Header from '../../components/header/header';
-import { GeneralCategory, PagesList } from '../../const';
+import { DEFAULT_CITY, GeneralCategory, PagesList } from '../../const';
 import Title from '../../components/title/title';
 import { OffersData } from '../../types/offers';
 import { getAllCities, getFilteredOffers} from '../../utils/offers';
@@ -29,8 +29,9 @@ function FoundPlacesNumber({offersCount, currentLocation}: FoundPlacesNumber):JS
 
 function MainPage({offers, activeOfferId, onHandleActiveOfferChange}: MainPageProps): JSX.Element{
   const allCities = getAllCities(offers);
+  const defaultCity = allCities.find((city) => city === DEFAULT_CITY) || allCities[0];
 
-  const [currentLocation, setCurrentLocation] = useState(allCities[0]);
+  const [currentLocation, setCurrentLocation] = useState<string>(defaultCity);
 
   const filteredOFfers = getFilteredOffers(offers, currentLocation);
 
