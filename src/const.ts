@@ -52,7 +52,7 @@ const FormReviewValue = {
   Max: 300
 } as const;
 
-const enum GeneralCategories {
+const enum GeneralCategory {
   Cities = 'cities',
   Favorites = 'favorites',
   Offer = 'offer',
@@ -63,4 +63,4 @@ const enum GeneralCategories {
 
 const ratingGradation = ['terribly', 'badly', 'not bad', 'good', 'perfect'];
 
-export {SITE_NAME, Settings, SortOptions, OfferInsideItems, PagesList, AppRoute, AuthorizationStatus, ratingGradation, FormReviewValue, GeneralCategories};
+export {SITE_NAME, Settings, SortOptions, OfferInsideItems, PagesList, AppRoute, AuthorizationStatus, ratingGradation, FormReviewValue, GeneralCategory};

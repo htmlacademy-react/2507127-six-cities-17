@@ -7,7 +7,7 @@ import Name from './components/name/name';
 import Price from './components/price/price';
 import Reviews from './components/reviews/reviews';
 import { OffersData } from '../../types/offers';
-import { GeneralCategories } from '../../const';
+import { GeneralCategory } from '../../const';
 import { ReviewComment } from '../../types/comments';
 
 type OfferInfoProps = {
@@ -26,9 +26,9 @@ function OfferInfo({offer, comments}: OfferInfoProps):JSX.Element{
   return (
     <div className="offer__container container">
       <div className="offer__wrapper">
-        {isPremium && <Mark markClass={GeneralCategories.Offer}/>}
+        {isPremium && <Mark markClass={GeneralCategory.Offer}/>}
         <Name title={title} isFavorite={isFavorite}/>
-        <Rating rating={rating} ratingClass={GeneralCategories.Offer}/>
+        <Rating rating={rating} ratingClass={GeneralCategory.Offer}/>
         <Features/>
         <Price price={price}/>
         <Inside/>

@@ -4,7 +4,7 @@ import NearPlaces from '../../components/near-places/near-places';
 import OfferGallery from '../../components/offer-gallery/offer-gallery';
 import OfferInfo from '../../components/offer-info/offer-info';
 import Title from '../../components/title/title';
-import { GeneralCategories, PagesList } from '../../const';
+import { GeneralCategory, PagesList } from '../../const';
 import { OffersData } from '../../types/offers';
 import { ReviewComment } from '../../types/comments';
 import { ActiveOfferChange } from '../../types/handlers';
@@ -32,7 +32,7 @@ function OfferPage({ offers, nearOffers, comments, activeOfferId, onHandleActive
         <section className="offer">
           <OfferGallery GalleryImagesCount={galleryImagesCount}/>
           <OfferInfo comments={comments} offer={currentOffer as OffersData}/>
-          <Map mapClass={GeneralCategories.Offer} activeOfferId={activeOfferId} offers={nearOffers}/>
+          <Map mapClass={GeneralCategory.Offer} activeOfferId={activeOfferId} offers={nearOffers}/>
         </section>
         <div className="container">
           <NearPlaces onHandleActiveOfferChange={onHandleActiveOfferChange} nearOffers={nearOffers}/>

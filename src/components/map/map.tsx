@@ -1,13 +1,13 @@
 import {Icon, Marker, layerGroup} from 'leaflet';
-import { GeneralCategories } from '../../const';
-import { OffersData } from '../../types/offers';
+import { GeneralCategory } from '../../const';
+import { CityCoordinates, OffersData } from '../../types/offers';
 import { useEffect, useRef } from 'react';
 import useMap from '../../hooks/use-map';
 import 'leaflet/dist/leaflet.css';
 import { getCurrentCityData, getPointsData, getSelectedPonit } from '../../utils/offers';
 
 type MapProps = {
-  mapClass: GeneralCategories;
+  mapClass: GeneralCategory;
   activeOfferId: string | null;
   offers: OffersData[];
 }

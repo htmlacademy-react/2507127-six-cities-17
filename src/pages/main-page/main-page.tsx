@@ -4,7 +4,7 @@ import Map from '../../components/map/map';
 import PlaceCardsList from '../../components/place-cards-list/place-cards-list';
 import PlacesSortForm from '../../components/places-sort-form/places-sort-form';
 import Header from '../../components/header/header';
-import { GeneralCategories, PagesList } from '../../const';
+import { GeneralCategory, PagesList } from '../../const';
 import Title from '../../components/title/title';
 import { OffersData } from '../../types/offers';
 import { getAllCities, getFilteredOffers} from '../../utils/offers';
@@ -54,7 +54,7 @@ function MainPage({offers, activeOfferId, onHandleActiveOfferChange}: MainPagePr
               {<PlaceCardsList onHandleActiveOfferChange={onHandleActiveOfferChange} offers={filteredOFfers}/>}
             </section>
             <div className="cities__right-section">
-              <Map mapClass={GeneralCategories.Cities} offers={filteredOFfers} activeOfferId={activeOfferId} />
+              <Map mapClass={GeneralCategory.Cities} offers={filteredOFfers} activeOfferId={activeOfferId} />
             </div>
           </div>
         </div>

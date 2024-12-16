@@ -1,16 +1,16 @@
-import { GeneralCategories } from '../../const';
+import { GeneralCategory } from '../../const';
 import { ProportionsType } from '../../types/types';
 
 export const PlaceCardSettings: ProportionsType = {
-  [GeneralCategories.Cities]: {
+  [GeneralCategory.Cities]: {
     width: 260,
     height: 200,
   },
-  [GeneralCategories.NearPlaces]: {
+  [GeneralCategory.NearPlaces]: {
     width: 260,
     height: 200,
   },
-  [GeneralCategories.Favorites]: {
+  [GeneralCategory.Favorites]: {
     width: 150,
     height: 110,
   },
