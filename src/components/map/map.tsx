@@ -1,10 +1,11 @@
 import {Icon, Marker, layerGroup} from 'leaflet';
 import { GeneralCategory, PinIcon } from '../../const';
-import { OffersData } from '../../types/offers';
+import { OffersData, PointCoordinates } from '../../types/offers';
 import { useEffect, useRef } from 'react';
 import useMap from '../../hooks/use-map';
 import 'leaflet/dist/leaflet.css';
 import { getCurrentCityData, getPointsData, getSelectedPoint } from '../../utils/offers';
+import { useParams } from 'react-router-dom';
 
 type MapProps = {
   mapClass: GeneralCategory;
@@ -24,9 +25,16 @@ const currentCustomIcon = new Icon({
 });
 
 function Map({mapClass, activeOfferId, offers}: MapProps):JSX.Element {
+  const {id} = useParams();
+
   const city = getCurrentCityData(offers);
   const points = getPointsData(offers);
   const selectedPoint = activeOfferId !== null ? getSelectedPoint(offers, activeOfferId) : null;
+
+  if (mapClass === GeneralCategory.Offer && id) {
+    const currentPoint = getSelectedPoint(offers, id);
+    points.push(currentPoint as PointCoordinates);
+  }
 
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
@@ -41,6 +49,14 @@ function Map({mapClass, activeOfferId, offers}: MapProps):JSX.Element {
           lng: point.lng
         });
 
+        if (mapClass === GeneralCategory.Offer && id) {
+          return marker.setIcon(
+            point.id === id
+              ? currentCustomIcon
+              : defaultCustomIcon
+          ).addTo(markerLayer);
+        }
+
         marker.setIcon(
           selectedPoint !== null && point.id === selectedPoint.id
             ? currentCustomIcon
@@ -52,7 +68,7 @@ function Map({mapClass, activeOfferId, offers}: MapProps):JSX.Element {
         map.removeLayer(markerLayer);
       };
     }
-  }, [map, points, selectedPoint]);
+  }, [map, points, selectedPoint, id, mapClass]);
 
   return (
     <section ref={mapRef} className={`${mapClass}__map map`}></section>

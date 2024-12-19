@@ -1,7 +1,8 @@
 import PlaceCardItem from '../place-card-item/place-card-item';
 import { OffersData } from '../../types/offers';
-import { ActiveOfferChange } from '../../types/handlers';
 import { GeneralCategory } from '../../const';
+import { useParams } from 'react-router-dom';
+import { ActiveOfferChange } from '../../types/handlers';
 
 type PlaceCardsListProps = {
   offers: OffersData[];
@@ -9,7 +10,9 @@ type PlaceCardsListProps = {
 }
 
 function PlaceCardsList({offers, onHandleActiveOfferChange}: PlaceCardsListProps): JSX.Element{
-  const cardsList = offers.map((offer) => <PlaceCardItem onHandleActiveOfferChange={onHandleActiveOfferChange} offer={offer} cardClass={GeneralCategory.Cities} key={offer.id}/>);
+  const {id} = useParams();
+  const filteredOffers = offers.filter((offer) => offer.id !== id);
+  const cardsList = filteredOffers.map((offer) => <PlaceCardItem offer={offer} onHandleActiveOfferChange={onHandleActiveOfferChange} cardClass={GeneralCategory.Cities} key={offer.id}/>);
 
   return (
     <div className="cities__places-list places__list tabs__content">

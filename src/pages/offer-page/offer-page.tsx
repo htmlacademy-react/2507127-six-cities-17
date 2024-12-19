@@ -7,7 +7,6 @@ import Title from '../../components/title/title';
 import { AuthorizationStatus, GeneralCategory, PagesList } from '../../const';
 import { OffersData } from '../../types/offers';
 import { ReviewComment } from '../../types/comments';
-import { ActiveOfferChange } from '../../types/handlers';
 import Map from '../../components/map/map';
 import { getNearOffers } from '../../utils/offers';
 
@@ -16,11 +15,10 @@ type OfferPageProps = {
   offers: OffersData[];
   comments: ReviewComment[];
   activeOfferId: string | null;
-  onHandleActiveOfferChange: ActiveOfferChange;
   galleryImagesCount: number;
 }
 
-function OfferPage({authorizationStatus, offers, comments, activeOfferId, onHandleActiveOfferChange, galleryImagesCount, }: OfferPageProps): JSX.Element{
+function OfferPage({authorizationStatus, offers, comments, activeOfferId, galleryImagesCount, }: OfferPageProps): JSX.Element{
   const {id} = useParams();
 
   const currentOffer = offers.find((item) => item.id === id);
@@ -37,7 +35,7 @@ function OfferPage({authorizationStatus, offers, comments, activeOfferId, onHand
           <Map mapClass={GeneralCategory.Offer} activeOfferId={activeOfferId} offers={nearOffers as OffersData[]}/>
         </section>
         <div className="container">
-          <NearPlaces onHandleActiveOfferChange={onHandleActiveOfferChange} offers={nearOffers as OffersData[]}/>
+          <NearPlaces offers={nearOffers as OffersData[]}/>
         </div>
       </main>
     </div>

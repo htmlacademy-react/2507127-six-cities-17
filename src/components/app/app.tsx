@@ -37,7 +37,7 @@ function App({offers, comments}: AppProps): JSX.Element{
               />
               <Route
                 path={AppRoute.Offer}
-                element={<OfferPage authorizationStatus={AuthorizationStatus.NoAuth} offers={offers} comments={comments} activeOfferId={activeOfferId} onHandleActiveOfferChange={handleActiveOfferChange} galleryImagesCount={Settings.GalleryImagesCount}/>}
+                element={<OfferPage authorizationStatus={AuthorizationStatus.NoAuth} offers={offers} comments={comments} activeOfferId={activeOfferId} galleryImagesCount={Settings.GalleryImagesCount}/>}
               />
               <Route
                 path={AppRoute.Favorites}

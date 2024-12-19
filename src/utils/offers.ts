@@ -68,7 +68,12 @@ function getNearOffers(offers: OffersData[], id: string| undefined) {
   }
   const currentCity = offers.find((offer) => offer.id === id)?.city.name;
   const currentCityOffers = offers.filter((offer) => offer.city.name === currentCity && offer.id !== id);
-  return currentCityOffers.slice(0, 3);
+  const currentOffer = offers.find((offer) => offer.id === id);
+  const slicedOffers = currentCityOffers.slice(0, 3);
+  if (currentOffer) {
+    slicedOffers.push(currentOffer);
+  }
+  return slicedOffers;
 }
 
 export {getGroupedOffers, getAllCities, getFilteredOffers, getPointsData, getCurrentCityData, getSelectedPoint, getNearOffers};
