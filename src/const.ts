@@ -1,5 +1,6 @@
 const SITE_NAME = '6 cities';
 const DEFAULT_CITY = 'Paris';
+const MAX_REVIEWS = 10;
 
 const Settings = {
   CardsCount: 5,
@@ -77,6 +78,7 @@ const ratingGradation = ['terribly', 'badly', 'not bad', 'good', 'perfect'];
 export {
   SITE_NAME,
   DEFAULT_CITY,
+  MAX_REVIEWS,
   Settings,
   SortOptions,
   OfferInsideItems,

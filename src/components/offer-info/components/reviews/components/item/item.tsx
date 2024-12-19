@@ -11,7 +11,7 @@ function Item({comment}: ItemProps):JSX.Element{
   return (
     <li className="reviews__item">
       <User user={user}/>
-      <Info/>
+      <Info comment={comment}/>
     </li>
   );
 }
