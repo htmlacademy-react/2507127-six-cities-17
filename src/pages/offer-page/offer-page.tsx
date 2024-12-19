@@ -4,7 +4,7 @@ import NearPlaces from '../../components/near-places/near-places';
 import OfferGallery from '../../components/offer-gallery/offer-gallery';
 import OfferInfo from '../../components/offer-info/offer-info';
 import Title from '../../components/title/title';
-import { GeneralCategory, PagesList } from '../../const';
+import { AuthorizationStatus, GeneralCategory, PagesList } from '../../const';
 import { OffersData } from '../../types/offers';
 import { ReviewComment } from '../../types/comments';
 import { ActiveOfferChange } from '../../types/handlers';
@@ -12,6 +12,7 @@ import Map from '../../components/map/map';
 import { getNearOffers } from '../../utils/offers';
 
 type OfferPageProps = {
+  authorizationStatus: AuthorizationStatus;
   offers: OffersData[];
   comments: ReviewComment[];
   activeOfferId: string | null;
@@ -19,7 +20,7 @@ type OfferPageProps = {
   galleryImagesCount: number;
 }
 
-function OfferPage({ offers, comments, activeOfferId, onHandleActiveOfferChange, galleryImagesCount, }: OfferPageProps): JSX.Element{
+function OfferPage({authorizationStatus, offers, comments, activeOfferId, onHandleActiveOfferChange, galleryImagesCount, }: OfferPageProps): JSX.Element{
   const {id} = useParams();
 
   const currentOffer = offers.find((item) => item.id === id);
@@ -32,7 +33,7 @@ function OfferPage({ offers, comments, activeOfferId, onHandleActiveOfferChange,
       <main className="page__main page__main--offer">
         <section className="offer">
           <OfferGallery GalleryImagesCount={galleryImagesCount}/>
-          <OfferInfo comments={comments} offer={currentOffer as OffersData}/>
+          <OfferInfo authorizationStatus={authorizationStatus} comments={comments} offer={currentOffer as OffersData}/>
           <Map mapClass={GeneralCategory.Offer} activeOfferId={activeOfferId} offers={nearOffers as OffersData[]}/>
         </section>
         <div className="container">
