@@ -40,12 +40,11 @@ const getPointCoordinates = (offer: OffersData) => {
 };
 
 function getPointsData(offers: OffersData[]): PointCoordinates[] {
-  const locations = offers.map((offer) => getPointCoordinates(offer));
-  return locations;
+  return offers.map((offer) => getPointCoordinates(offer));
 }
 
-function getCurrentCityData(offers: OffersData[]): CityCoordinates{
-  const city = offers[0].city;
+function getCurrentCityData(filteredOffers: OffersData[]): CityCoordinates{
+  const city = filteredOffers[0].city;
   const {name, location} = city;
   return {
     title: name,
@@ -55,7 +54,7 @@ function getCurrentCityData(offers: OffersData[]): CityCoordinates{
   };
 }
 
-function getSelectedPonit(offers: OffersData[], id: string): PointCoordinates | null{
+function getSelectedPoint(offers: OffersData[], id: string): PointCoordinates | null{
   const currentPoint = offers.find((offer) => offer.id === id);
   if (currentPoint === undefined) {
     return null;
@@ -63,4 +62,18 @@ function getSelectedPonit(offers: OffersData[], id: string): PointCoordinates | 
   return getPointCoordinates(currentPoint);
 }
 
-export {getGroupedOffers, getAllCities, getFilteredOffers, getPointsData, getCurrentCityData, getSelectedPonit};
+function getNearOffers(offers: OffersData[], id: string| undefined) {
+  if (id === undefined) {
+    return null;
+  }
+  const currentCity = offers.find((offer) => offer.id === id)?.city.name;
+  const currentCityOffers = offers.filter((offer) => offer.city.name === currentCity && offer.id !== id);
+  const currentOffer = offers.find((offer) => offer.id === id);
+  const slicedOffers = currentCityOffers.slice(0, 3);
+  if (currentOffer) {
+    slicedOffers.push(currentOffer);
+  }
+  return slicedOffers;
+}
+
+export {getGroupedOffers, getAllCities, getFilteredOffers, getPointsData, getCurrentCityData, getSelectedPoint, getNearOffers};

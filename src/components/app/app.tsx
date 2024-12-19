@@ -9,27 +9,35 @@ import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
 import { OffersData } from '../../types/offers';
 import ScrollToTopWrapper from '../scroll-to-top-wrapper/scroll-to-top-wrapper';
+import { ReviewComment } from '../../types/comments';
+import { useState } from 'react';
 
 type AppProps = {
   offers: OffersData[];
-  nearOffers: OffersData[];
+  comments: ReviewComment[];
 }
 
-function App({offers, nearOffers}: AppProps): JSX.Element{
+function App({offers, comments}: AppProps): JSX.Element{
+  const [activeOfferId, setActiveOfferId] = useState<string | null>(null);
+
+  const handleActiveOfferChange = (id: string | null) =>{
+    setActiveOfferId(id);
+  };
+
   return (
     <HelmetProvider>
       <BrowserRouter>
         <ScrollToTopWrapper>
           <Routes>
             <Route path={AppRoute.Index}>
-              <Route index element={<MainPage offers={offers} />}/>
+              <Route index element={<MainPage offers={offers} activeOfferId={activeOfferId} onHandleActiveOfferChange={handleActiveOfferChange}/>}/>
               <Route
                 path={AppRoute.Login}
                 element={<LoginPage/>}
               />
               <Route
                 path={AppRoute.Offer}
-                element={<OfferPage offers={offers} nearOffers={nearOffers} galleryImagesCount={Settings.GalleryImagesCount}/>}
+                element={<OfferPage authorizationStatus={AuthorizationStatus.NoAuth} offers={offers} comments={comments} activeOfferId={activeOfferId} galleryImagesCount={Settings.GalleryImagesCount}/>}
               />
               <Route
                 path={AppRoute.Favorites}

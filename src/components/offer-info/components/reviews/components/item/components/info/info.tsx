@@ -1,17 +1,24 @@
-import { GeneralCategories } from '../../../../../../../../const';
+import { GeneralCategory } from '../../../../../../../../const';
+import { ReviewComment } from '../../../../../../../../types/comments';
+import { getFormattedDate } from '../../../../../../../../utils/comments';
 import Rating from '../../../../../../../common/rating/rating';
 
-function Info():JSX.Element {
+type InfoProps = {
+  comment: ReviewComment;
+}
+
+function Info({comment}: InfoProps):JSX.Element {
+  const {comment: text, date} = comment;
+
+  const formattedDate = getFormattedDate(date);
   return (
     <div className="reviews__info">
-      <Rating ratingClass={GeneralCategories.Reviews}/>
+      <Rating ratingClass={GeneralCategory.Reviews}/>
       <p className="reviews__text">
-                A quiet cozy and picturesque that hides behind a a river by
-                the unique lightness of Amsterdam. The building is green and
-                from 18th century.
+        {text}
       </p>
-      <time className="reviews__time" dateTime="2019-04-24">
-                April 2019
+      <time className="reviews__time" dateTime={date}>
+        {formattedDate}
       </time>
     </div>
   );

@@ -1,4 +1,6 @@
 const SITE_NAME = '6 cities';
+const DEFAULT_CITY = 'Paris';
+const MAX_REVIEWS = 10;
 
 const Settings = {
   CardsCount: 5,
@@ -52,7 +54,7 @@ const FormReviewValue = {
   Max: 300
 } as const;
 
-const enum GeneralCategories {
+const enum GeneralCategory {
   Cities = 'cities',
   Favorites = 'favorites',
   Offer = 'offer',
@@ -61,6 +63,30 @@ const enum GeneralCategories {
   Reviews = 'reviews',
 }
 
+const PinIcon = {
+  Default: '/markup/img/pin.svg',
+  Active: '/markup/img/pin-active.svg'
+} as const;
+
+const TileLayerLink = {
+  Main: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+  Attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+} as const;
+
 const ratingGradation = ['terribly', 'badly', 'not bad', 'good', 'perfect'];
 
-export {SITE_NAME, Settings, SortOptions, OfferInsideItems, PagesList, AppRoute, AuthorizationStatus, ratingGradation, FormReviewValue, GeneralCategories};
+export {
+  SITE_NAME,
+  DEFAULT_CITY,
+  MAX_REVIEWS,
+  Settings,
+  SortOptions,
+  OfferInsideItems,
+  PagesList,
+  AppRoute,
+  AuthorizationStatus,
+  GeneralCategory,
+  ratingGradation,
+  FormReviewValue,
+  PinIcon,
+  TileLayerLink};

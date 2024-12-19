@@ -1,8 +1,8 @@
-import { GeneralCategories } from '../../../const';
+import { GeneralCategory } from '../../../const';
 import { RatingSettings } from './rating-settings';
 
 type RatingProps = {
-  ratingClass: GeneralCategories;
+  ratingClass: GeneralCategory;
   rating?: number;
 }
 

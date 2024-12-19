@@ -4,18 +4,25 @@ import NearPlaces from '../../components/near-places/near-places';
 import OfferGallery from '../../components/offer-gallery/offer-gallery';
 import OfferInfo from '../../components/offer-info/offer-info';
 import Title from '../../components/title/title';
-import { PagesList } from '../../const';
+import { AuthorizationStatus, GeneralCategory, PagesList } from '../../const';
 import { OffersData } from '../../types/offers';
+import { ReviewComment } from '../../types/comments';
+import Map from '../../components/map/map';
+import { getNearOffers } from '../../utils/offers';
 
 type OfferPageProps = {
+  authorizationStatus: AuthorizationStatus;
   offers: OffersData[];
-  nearOffers: OffersData[];
+  comments: ReviewComment[];
+  activeOfferId: string | null;
   galleryImagesCount: number;
 }
 
-function OfferPage({galleryImagesCount, offers, nearOffers}: OfferPageProps): JSX.Element{
+function OfferPage({authorizationStatus, offers, comments, activeOfferId, galleryImagesCount, }: OfferPageProps): JSX.Element{
   const {id} = useParams();
+
   const currentOffer = offers.find((item) => item.id === id);
+  const nearOffers = getNearOffers(offers, id);
 
   return (
     <div className="page">
@@ -24,12 +31,11 @@ function OfferPage({galleryImagesCount, offers, nearOffers}: OfferPageProps): JS
       <main className="page__main page__main--offer">
         <section className="offer">
           <OfferGallery GalleryImagesCount={galleryImagesCount}/>
-          <OfferInfo offer={currentOffer as OffersData}/>
-          {/* {Временно отключена карта} */}
-          {/* <Map mapClass={GeneralCategories.Offer}/> */}
+          <OfferInfo authorizationStatus={authorizationStatus} comments={comments} offer={currentOffer as OffersData}/>
+          <Map mapClass={GeneralCategory.Offer} activeOfferId={activeOfferId} offers={nearOffers as OffersData[]}/>
         </section>
         <div className="container">
-          <NearPlaces nearOffers={nearOffers}/>
+          <NearPlaces offers={nearOffers as OffersData[]}/>
         </div>
       </main>
     </div>
