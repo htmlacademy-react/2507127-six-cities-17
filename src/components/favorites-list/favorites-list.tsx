@@ -9,7 +9,7 @@ type FavoritesListProps = {
 function FavoritesList({offers}: FavoritesListProps):JSX.Element {
   const groupedOffers = getGroupedOffers(offers);
 
-  const favoriteItems = groupedOffers.map((items) => <FavoritesItems key={items[0].id} groupedOffers={items}/>);
+  const favoriteItems = groupedOffers.map((group) => <FavoritesItems key={group[0].id} groupedOffers={group}/>);
 
   return (
     <ul className="favorites__list">

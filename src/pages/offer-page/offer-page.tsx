@@ -9,16 +9,17 @@ import { OffersData } from '../../types/offers';
 import { ReviewComment } from '../../types/comments';
 import Map from '../../components/map/map';
 import { getNearOffers } from '../../utils/offers';
+import { useAppSelector } from '../../hooks';
 
 type OfferPageProps = {
   authorizationStatus: AuthorizationStatus;
-  offers: OffersData[];
   comments: ReviewComment[];
   activeOfferId: string | null;
   galleryImagesCount: number;
 }
 
-function OfferPage({authorizationStatus, offers, comments, activeOfferId, galleryImagesCount, }: OfferPageProps): JSX.Element{
+function OfferPage({authorizationStatus, comments, activeOfferId, galleryImagesCount, }: OfferPageProps): JSX.Element{
+  const offers = useAppSelector((state) => state.offers);
   const {id} = useParams();
 
   const currentOffer = offers.find((item) => item.id === id);
