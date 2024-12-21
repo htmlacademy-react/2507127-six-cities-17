@@ -12,10 +12,11 @@ function getGroupedOffers(offers: OffersData[]): OffersData[][]{
 
 
 function getFilteredOffers(offers: OffersData[], currentLocation: string): OffersData[]{
-  return offers.filter((offer) => {
+  const filteredOffers = offers.filter((offer) => {
     const {city} = offer;
     return city.name === currentLocation;
   });
+  return filteredOffers.length > 0 ? filteredOffers : [];
 }
 
 const getPointCoordinates = (offer: OffersData) => {
