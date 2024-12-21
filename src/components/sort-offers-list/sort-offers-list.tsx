@@ -1,23 +1,23 @@
-import { nanoid } from 'nanoid';
 import cn from 'classnames';
 import SortOffersItem from '../sort-offers-item/sort-offers-item';
-import { SortOptions } from '../../const';
+import { SortOption } from '../../const';
 
 type SortOffersListProps = {
-  showOptions: boolean;
+  showSort: boolean;
+  closeSort: () => void;
 }
 
-function SortOffersList({showOptions}: SortOffersListProps):JSX.Element {
-  const sortOptionsList = Object.values(SortOptions).map((option) => <SortOffersItem sortOption={option} isActive={option === 'Popular'} key={nanoid()}/>);
+function SortOffersList({showSort, closeSort}: SortOffersListProps):JSX.Element {
+  const sortOptionList = Object.values(SortOption).map((option) => <SortOffersItem sortOption={option} closeSort={closeSort} key={option}/>);
 
   return (
     <ul className={cn(
       'places__options',
       'places__options--custom',
-      {'places__options--opened': showOptions}
+      {'places__options--opened': showSort}
     )}
     >
-      {sortOptionsList}
+      {sortOptionList}
     </ul>
   );
 }

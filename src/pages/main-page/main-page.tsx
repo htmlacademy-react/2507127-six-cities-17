@@ -7,6 +7,7 @@ import { useAppSelector } from '../../hooks';
 import Cities from '../../components/cities/cities';
 import { getFilteredOffers } from '../../utils/offers';
 import cn from 'classnames';
+import { sortOffers } from '../../utils/sort';
 
 type MainPageProps = {
   activeOfferId: string | null;
@@ -15,9 +16,11 @@ type MainPageProps = {
 
 function MainPage({activeOfferId, onHandleActiveOfferChange}: MainPageProps): JSX.Element{
   const currentCity = useAppSelector((state) => state.currentCity);
+  const currentSort = useAppSelector((state) => state.currentSortOffers);
 
   const offers = useAppSelector((state) => state.offers);
   const filteredOFfers = getFilteredOffers(offers, currentCity);
+  const sortedOffers = sortOffers(filteredOFfers, currentSort);
 
   return (
     <div className="page page--gray page--main">
@@ -26,12 +29,12 @@ function MainPage({activeOfferId, onHandleActiveOfferChange}: MainPageProps): JS
       <main className={cn(
         'page__main',
         'page__main--index',
-        {'page__main--index-empty': !filteredOFfers.length}
+        {'page__main--index-empty': !sortedOffers.length}
       )}
       >
         <h1 className="visually-hidden">Cities</h1>
         <LocationsList currentCity={currentCity} />
-        <Cities filteredOFfers={filteredOFfers} activeOfferId={activeOfferId} currentCity={currentCity} onHandleActiveOfferChange={onHandleActiveOfferChange}/>
+        <Cities filteredOFfers={sortedOffers} activeOfferId={activeOfferId} currentCity={currentCity} onHandleActiveOfferChange={onHandleActiveOfferChange}/>
       </main>
     </div>
   );

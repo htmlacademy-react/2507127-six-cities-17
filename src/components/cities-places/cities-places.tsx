@@ -14,7 +14,7 @@ function CitiesPlaces({ filteredOFfers, onHandleActiveOfferChange}: CitiesPlaces
     <section className="cities__places places">
       <h2 className="visually-hidden">Places</h2>
       <FoundPlacesNumber offersCount={filteredOFfers.length}/>
-      {<PlacesSortForm/>}
+      <PlacesSortForm/>
       {<PlaceCardsList onHandleActiveOfferChange={onHandleActiveOfferChange} offers={filteredOFfers}/>}
     </section>
   );
