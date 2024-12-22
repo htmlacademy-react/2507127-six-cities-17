@@ -6,10 +6,10 @@ import useMap from '../../hooks/use-map';
 import 'leaflet/dist/leaflet.css';
 import { getCurrentCityData, getPointsData, getSelectedPoint } from '../../utils/offers';
 import { useParams } from 'react-router-dom';
+import { useAppSelector } from '../../hooks';
 
 type MapProps = {
   mapClass: GeneralCategory;
-  activeOfferId: string | null;
   offers: OffersData[];
 }
 
@@ -24,8 +24,9 @@ const currentCustomIcon = new Icon({
   iconAnchor: [20, 40]
 });
 
-function Map({mapClass, activeOfferId, offers}: MapProps):JSX.Element {
+function Map({mapClass, offers}: MapProps):JSX.Element {
   const {id} = useParams();
+  const activeOfferId = useAppSelector((state) => state.activeOfferId);
 
   const city = getCurrentCityData(offers);
   const points = getPointsData(offers);

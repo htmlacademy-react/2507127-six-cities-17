@@ -5,15 +5,15 @@ import { SortOption } from '../../const';
 
 type SortOffersItemProps = {
   sortOption: string;
-  closeSort: () => void;
+  handlerCloseSort: () => void;
 }
 
-function SortOffersItem({sortOption, closeSort}: SortOffersItemProps):JSX.Element {
+function SortOffersItem({sortOption, handlerCloseSort}: SortOffersItemProps):JSX.Element {
   const dispatch = useAppDispatch();
   const currentSort = useAppSelector((state) => state.currentSortOffers);
   const onSortChange = () => {
     dispatch(changeSortOffers(sortOption as SortOption));
-    closeSort();
+    handlerCloseSort();
   };
 
   return (

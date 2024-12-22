@@ -2,17 +2,17 @@ import PlaceCardItem from '../place-card-item/place-card-item';
 import { OffersData } from '../../types/offers';
 import { GeneralCategory } from '../../const';
 import { useParams } from 'react-router-dom';
-import { ActiveOfferChange } from '../../types/handlers';
 
 type PlaceCardsListProps = {
   offers: OffersData[];
-  onHandleActiveOfferChange?: ActiveOfferChange;
 }
 
-function PlaceCardsList({offers, onHandleActiveOfferChange}: PlaceCardsListProps): JSX.Element{
+function PlaceCardsList({offers}: PlaceCardsListProps): JSX.Element{
   const {id} = useParams();
   const filteredOffers = offers.filter((offer) => offer.id !== id);
-  const cardsList = filteredOffers.map((offer) => <PlaceCardItem offer={offer} onHandleActiveOfferChange={onHandleActiveOfferChange} cardClass={GeneralCategory.Cities} key={offer.id}/>);
+
+
+  const cardsList = filteredOffers.map((offer) => <PlaceCardItem offer={offer} isInteractiveMap cardClass={GeneralCategory.Cities} key={offer.id}/>);
 
   return (
     <div className="cities__places-list places__list tabs__content">

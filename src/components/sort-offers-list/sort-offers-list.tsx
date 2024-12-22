@@ -4,11 +4,11 @@ import { SortOption } from '../../const';
 
 type SortOffersListProps = {
   showSort: boolean;
-  closeSort: () => void;
+  handlerCloseSort: () => void;
 }
 
-function SortOffersList({showSort, closeSort}: SortOffersListProps):JSX.Element {
-  const sortOptionList = Object.values(SortOption).map((option) => <SortOffersItem sortOption={option} closeSort={closeSort} key={option}/>);
+function SortOffersList({showSort, handlerCloseSort}: SortOffersListProps):JSX.Element {
+  const sortOptionList = Object.values(SortOption).map((option) => <SortOffersItem sortOption={option} handlerCloseSort={handlerCloseSort} key={option}/>);
 
   return (
     <ul className={cn(

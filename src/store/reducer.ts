@@ -1,12 +1,13 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { CITIES, SortOption } from '../const';
 import { OffersData } from '../types/offers';
-import { changeCity, changeSortOffers, loadOffers } from './action';
+import { changeActiveOfferId, changeCity, changeSortOffers, loadOffers } from './action';
 
 const initialState = {
   currentCity: CITIES[0],
   offers: [] as OffersData[],
-  currentSortOffers: SortOption.Popular
+  currentSortOffers: SortOption.Popular,
+  activeOfferId: null as null | string
 };
 
 const reducer = createReducer(initialState, (builder)=> {
@@ -19,6 +20,9 @@ const reducer = createReducer(initialState, (builder)=> {
     })
     .addCase(changeSortOffers, (state, action) => {
       state.currentSortOffers = action.payload;
+    })
+    .addCase(changeActiveOfferId, (state, action) => {
+      state.activeOfferId = action.payload;
     });
 });
 

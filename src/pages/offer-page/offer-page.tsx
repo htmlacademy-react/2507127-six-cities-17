@@ -14,11 +14,10 @@ import { useAppSelector } from '../../hooks';
 type OfferPageProps = {
   authorizationStatus: AuthorizationStatus;
   comments: ReviewComment[];
-  activeOfferId: string | null;
   galleryImagesCount: number;
 }
 
-function OfferPage({authorizationStatus, comments, activeOfferId, galleryImagesCount, }: OfferPageProps): JSX.Element{
+function OfferPage({authorizationStatus, comments, galleryImagesCount, }: OfferPageProps): JSX.Element{
   const offers = useAppSelector((state) => state.offers);
   const {id} = useParams();
 
@@ -33,7 +32,7 @@ function OfferPage({authorizationStatus, comments, activeOfferId, galleryImagesC
         <section className="offer">
           <OfferGallery GalleryImagesCount={galleryImagesCount}/>
           <OfferInfo authorizationStatus={authorizationStatus} comments={comments} offer={currentOffer as OffersData}/>
-          <Map mapClass={GeneralCategory.Offer} activeOfferId={activeOfferId} offers={nearOffers as OffersData[]}/>
+          <Map mapClass={GeneralCategory.Offer} offers={nearOffers as OffersData[]}/>
         </section>
         <div className="container">
           <NearPlaces offers={nearOffers as OffersData[]}/>

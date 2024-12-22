@@ -5,7 +5,7 @@ import { useAppSelector } from '../../hooks';
 function PlacesSortForm(): JSX.Element{
   const currentSort = useAppSelector((state) => state.currentSortOffers);
   const [showSort, setShowSort] = useState(false);
-  const closeSort = () => setShowSort(false);
+  const handleCloseSort = () => setShowSort(false);
 
   return (
     <form className="places__sorting" action="#" method="get">
@@ -16,7 +16,7 @@ function PlacesSortForm(): JSX.Element{
           <use xlinkHref="#icon-arrow-select" />
         </svg>
       </span>
-      <SortOffersList closeSort={closeSort} showSort={showSort}/>
+      <SortOffersList handlerCloseSort={handleCloseSort} showSort={showSort}/>
     </form>
 
   );
