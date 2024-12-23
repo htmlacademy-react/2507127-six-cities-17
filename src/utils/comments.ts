@@ -6,7 +6,7 @@ function getSortedComments(comments: ReviewComment[], maxLength: number): Review
     const commentBDate = new Date(commentB.date).getTime();
     return commentBDate - commentADate;
   });
-  return sortedComments.length >= 10
+  return sortedComments.length >= maxLength
     ? sortedComments.slice(0, maxLength)
     : sortedComments;
 }
