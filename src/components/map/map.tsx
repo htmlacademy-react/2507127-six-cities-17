@@ -27,6 +27,7 @@ const currentCustomIcon = new Icon({
 function Map({mapClass, offers}: MapProps):JSX.Element {
   const {id} = useParams();
   const activeOfferId = useAppSelector((state) => state.activeOfferId);
+  const shouldScrollWheelZoom = mapClass !== GeneralCategory.Offer;
 
   const city = getCurrentCityData(offers);
   const points = getPointsData(offers);
@@ -38,7 +39,7 @@ function Map({mapClass, offers}: MapProps):JSX.Element {
   }
 
   const mapRef = useRef(null);
-  const map = useMap(mapRef, city);
+  const map = useMap(mapRef, city, shouldScrollWheelZoom);
 
   useEffect(() => {
     if (map) {

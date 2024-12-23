@@ -5,7 +5,8 @@ import { TileLayerLink } from '../const';
 
 function useMap(
   mapRef: MutableRefObject<HTMLElement | null>,
-  city: CityCoordinates
+  city: CityCoordinates,
+  shouldScrollWheelZoom: boolean
 ): Map | null{
   const [map, setMap] = useState<Map | null>(null);
   const isRenderedRef = useRef<boolean>(false);
@@ -14,7 +15,7 @@ function useMap(
     if (map) {
       map.panTo({
         lat: city.lat,
-        lng: city.lng
+        lng: city.lng,
       });
     }
   }, [city, map]);
@@ -24,15 +25,16 @@ function useMap(
       const instance = new Map(mapRef.current, {
         center: {
           lat: city.lat,
-          lng: city.lng
+          lng: city.lng,
         },
-        zoom: city.zoom
+        zoom: city.zoom,
+        scrollWheelZoom: shouldScrollWheelZoom,
       });
 
       const layer = new TileLayer(
         TileLayerLink.Main,
         {
-          attribution: TileLayerLink.Attribution
+          attribution: TileLayerLink.Attribution,
         }
       );
 
@@ -41,7 +43,7 @@ function useMap(
       setMap(instance);
       isRenderedRef.current = true;
     }
-  }, [mapRef, city]);
+  }, [mapRef, city, shouldScrollWheelZoom]);
 
   return map;
 }
