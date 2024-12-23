@@ -2,14 +2,22 @@ import LocationsList from '../../components/locations-list/locations-list';
 import Header from '../../components/header/header';
 import { PagesList } from '../../const';
 import Title from '../../components/title/title';
-import { useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import Cities from '../../components/cities/cities';
 import { getFilteredOffers } from '../../utils/offers';
 import cn from 'classnames';
 import { sortOffers } from '../../utils/sort';
+import { useEffect } from 'react';
+import { changeActiveOfferId } from '../../store/action';
 
 
 function MainPage(): JSX.Element{
+  const dispatch = useAppDispatch();
+  //Сброс выбранного id. Ранее, при возврате со страницы offer, выбранный id отсавался в глобальном состоянии
+  useEffect(() =>{
+    dispatch(changeActiveOfferId(null));
+  });
+
   const currentCity = useAppSelector((state) => state.currentCity);
   const currentSort = useAppSelector((state) => state.currentSortOffers);
 
