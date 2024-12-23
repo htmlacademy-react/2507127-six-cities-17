@@ -1,9 +1,9 @@
-import { GeneralCategories } from '../../../const';
+import { GeneralCategory } from '../../../const';
 import { BookmarkSettings } from './bookmark-settings';
 import cn from 'classnames';
 
 type BookmarkButtonProps = {
-  bookmarkClass: GeneralCategories;
+  bookmarkClass: GeneralCategory;
   isFavorite: boolean;
 }
 

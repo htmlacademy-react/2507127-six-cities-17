@@ -1,0 +1,9 @@
+.loginWrapper {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.loginLink {
+  text-transform: uppercase;
+  text-decoration: underline;
+}
