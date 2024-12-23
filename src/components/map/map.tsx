@@ -1,5 +1,5 @@
-import {Icon, Marker, layerGroup} from 'leaflet';
-import { GeneralCategory, PinIcon } from '../../const';
+import {layerGroup} from 'leaflet';
+import { GeneralCategory } from '../../const';
 import { OffersData, PointCoordinates } from '../../types/offers';
 import { useEffect, useRef } from 'react';
 import useMap from '../../hooks/use-map';
@@ -7,22 +7,12 @@ import 'leaflet/dist/leaflet.css';
 import { getCurrentCityData, getPointsData, getSelectedPoint } from '../../utils/offers';
 import { useParams } from 'react-router-dom';
 import { useAppSelector } from '../../hooks';
+import { createMarker } from './marker';
 
 type MapProps = {
   mapClass: GeneralCategory;
   offers: OffersData[];
 }
-
-const defaultCustomIcon = new Icon({
-  iconUrl: PinIcon.Default,
-  iconSize: [40, 40],
-  iconAnchor: [20, 40]
-});
-const currentCustomIcon = new Icon({
-  iconUrl: PinIcon.Active,
-  iconSize: [40, 40],
-  iconAnchor: [20, 40]
-});
 
 function Map({mapClass, offers}: MapProps):JSX.Element {
   const {id} = useParams();
@@ -46,24 +36,7 @@ function Map({mapClass, offers}: MapProps):JSX.Element {
       const markerLayer = layerGroup().addTo(map);
 
       points.forEach((point) => {
-        const marker = new Marker({
-          lat: point.lat,
-          lng: point.lng
-        });
-
-        if (mapClass === GeneralCategory.Offer && id) {
-          return marker.setIcon(
-            point.id === id
-              ? currentCustomIcon
-              : defaultCustomIcon
-          ).addTo(markerLayer);
-        }
-
-        marker.setIcon(
-          selectedPoint !== null && point.id === selectedPoint.id
-            ? currentCustomIcon
-            : defaultCustomIcon
-        ).addTo(markerLayer);
+        createMarker(mapClass, point, selectedPoint, id).addTo(markerLayer);
       });
 
       return () => {

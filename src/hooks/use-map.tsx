@@ -17,6 +17,7 @@ function useMap(
         lat: city.lat,
         lng: city.lng,
       });
+      map.setZoom(city.zoom);
     }
   }, [city, map]);
 
