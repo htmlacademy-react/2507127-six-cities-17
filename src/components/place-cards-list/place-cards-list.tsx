@@ -11,6 +11,7 @@ type PlaceCardsListProps = {
 
 function PlaceCardsList({offers, onHandleActiveOfferChange}: PlaceCardsListProps): JSX.Element{
   const {id} = useParams();
+  //На странице offer карточка с текущим id не будет отрисована. На странице main содержимое id всегда будет undefined
   const filteredOffers = offers.filter((offer) => offer.id !== id);
   const cardsList = filteredOffers.map((offer) => <PlaceCardItem offer={offer} onHandleActiveOfferChange={onHandleActiveOfferChange} cardClass={GeneralCategory.Cities} key={offer.id}/>);
 
