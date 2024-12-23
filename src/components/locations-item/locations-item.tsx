@@ -1,32 +1,35 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
-import { CurrentLocationChange } from '../../types/handlers';
+import { useAppDispatch } from '../../hooks';
+import { changeCity } from '../../store/action';
 
 type LocationsItemProps = {
-  locationName: string;
+  city: string;
   isActive?: boolean;
   isSingle?: boolean;
-  onHandleCurrentLocationChange?: CurrentLocationChange;
 }
 
 type LocationItemLinkProps = Omit<LocationsItemProps, 'isSingle'>
 
-function LocationItemLink({locationName, isActive, onHandleCurrentLocationChange}: LocationItemLinkProps): JSX.Element{
+function LocationItemLink({city, isActive}: LocationItemLinkProps): JSX.Element{
+  const dispatch = useAppDispatch();
+  const onCityChange = () => dispatch(changeCity(city));
+
   return (
-    <Link onClick={onHandleCurrentLocationChange && (() => onHandleCurrentLocationChange(locationName))} className={`locations__item-link tabs__item ${isActive ? 'tabs__item--active' : ''}`} to={AppRoute.Index}>
-      <span>{locationName}</span>
+    <Link onClick={onCityChange} className={`locations__item-link tabs__item ${isActive ? 'tabs__item--active' : ''}`} to={AppRoute.Index}>
+      <span>{city}</span>
     </Link>
   );
 }
 
-function LocationsItem({locationName, isActive = true, isSingle = false, onHandleCurrentLocationChange}: LocationsItemProps): JSX.Element{
+function LocationsItem({city, isActive = true, isSingle = false}: LocationsItemProps): JSX.Element{
   return (
     isSingle ? (
       <div className="locations__item">
-        <LocationItemLink locationName={locationName} isActive={isActive}/>
+        <LocationItemLink city={city} isActive={isActive}/>
       </div>) : (
       <li className="locations__item">
-        <LocationItemLink onHandleCurrentLocationChange={onHandleCurrentLocationChange} locationName={locationName} isActive={isActive}/>
+        <LocationItemLink city={city} isActive={isActive}/>
       </li>)
   );
 }

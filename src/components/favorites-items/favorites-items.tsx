@@ -13,7 +13,7 @@ function FavoritesItems({groupedOffers}: FavoritesItemsProps):JSX.Element {
   return (
     <li className="favorites__locations-items">
       <div className="favorites__locations locations locations--current">
-        <LocationsItem locationName={cityName} isSingle/>
+        <LocationsItem city={cityName} isSingle/>
       </div>
       <div className="favorites__places">
         {favoritesItems}
