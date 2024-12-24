@@ -5,37 +5,37 @@ import { TileLayerLink } from '../const';
 
 function useMap(
   mapRef: MutableRefObject<HTMLElement | null>,
-  city: CityCoordinates
+  city: CityCoordinates,
+  shouldScrollWheelZoom: boolean
 ): Map | null{
   const [map, setMap] = useState<Map | null>(null);
   const isRenderedRef = useRef<boolean>(false);
-  const currentCityRef = useRef<CityCoordinates>(city);
 
   useEffect(() => {
-    if (currentCityRef.current.title !== city.title){
-      map?.setView({
+    if (map) {
+      map.panTo({
         lat: city.lat,
-        lng: city.lng
-      },
-      city.zoom
-      );
-
-      currentCityRef.current = city;
+        lng: city.lng,
+      });
+      map.setZoom(city.zoom);
     }
+  }, [city, map]);
 
+  useEffect(() => {
     if (mapRef.current !== null && !isRenderedRef.current) {
       const instance = new Map(mapRef.current, {
         center: {
           lat: city.lat,
-          lng: city.lng
+          lng: city.lng,
         },
-        zoom: city.zoom
+        zoom: city.zoom,
+        scrollWheelZoom: shouldScrollWheelZoom,
       });
 
       const layer = new TileLayer(
         TileLayerLink.Main,
         {
-          attribution: TileLayerLink.Attribution
+          attribution: TileLayerLink.Attribution,
         }
       );
 
@@ -44,7 +44,7 @@ function useMap(
       setMap(instance);
       isRenderedRef.current = true;
     }
-  }, [mapRef, city, map]);
+  }, [mapRef, city, shouldScrollWheelZoom]);
 
   return map;
 }

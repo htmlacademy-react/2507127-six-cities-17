@@ -8,12 +8,12 @@ const Settings = {
   GalleryImagesCount: 6
 } as const;
 
-const SortOptions = {
-  Popular: 'Popular',
-  LowToHigh:'Price: low to high',
-  HighToLow:'Price: high to low',
-  TopRated:'Top rated first',
-} as const;
+enum SortOption {
+  Popular = 'Popular',
+  LowToHigh ='Price: low to high',
+  HighToLow = 'Price: high to low',
+  TopRated = 'Top rated first',
+}
 
 const OfferInsideItems = {
   WiFi: 'Wi-Fi',
@@ -36,7 +36,7 @@ const PagesList = {
   NotFound: 'Not found'
 } as const;
 
-const enum AppRoute {
+enum AppRoute {
   Index = '/',
   Login = '/login',
   Favorites = '/favorites',
@@ -44,7 +44,7 @@ const enum AppRoute {
   NotFound = '*'
 }
 
-const enum AuthorizationStatus {
+enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN'
@@ -55,7 +55,7 @@ const FormReviewValue = {
   Max: 300
 } as const;
 
-const enum GeneralCategory {
+enum GeneralCategory {
   Cities = 'cities',
   Favorites = 'favorites',
   Offer = 'offer',
@@ -81,7 +81,7 @@ export {
   MAX_REVIEWS,
   CITIES,
   Settings,
-  SortOptions,
+  SortOption,
   OfferInsideItems,
   PagesList,
   AppRoute,
