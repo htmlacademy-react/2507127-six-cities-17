@@ -10,6 +10,7 @@ import { ReviewComment } from '../../types/comments';
 import Map from '../../components/map/map';
 import { getNearOffers } from '../../utils/offers';
 import { useAppSelector } from '../../hooks';
+import { selectOffers } from '../../store/selectors';
 
 type OfferPageProps = {
   authorizationStatus: AuthorizationStatus;
@@ -18,7 +19,7 @@ type OfferPageProps = {
 }
 
 function OfferPage({authorizationStatus, comments, galleryImagesCount, }: OfferPageProps): JSX.Element{
-  const offers = useAppSelector((state) => state.offers);
+  const offers = useAppSelector(selectOffers);
   const {id} = useParams();
 
   const currentOffer = offers.find((item) => item.id === id);

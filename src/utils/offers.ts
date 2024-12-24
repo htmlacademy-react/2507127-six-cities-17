@@ -16,7 +16,7 @@ function getFilteredOffers(offers: OffersData[], currentLocation: string): Offer
     const {city} = offer;
     return city.name === currentLocation;
   });
-  return filteredOffers.length > 0 ? filteredOffers : [];
+  return filteredOffers.length ? filteredOffers : [];
 }
 
 const getPointCoordinates = (offer: OffersData) => {

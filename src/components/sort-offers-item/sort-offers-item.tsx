@@ -2,6 +2,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import cn from 'classnames';
 import { changeSortOffers } from '../../store/action';
 import { SortOption } from '../../const';
+import { selectCurrentSortOffers } from '../../store/selectors';
 
 type SortOffersItemProps = {
   sortOption: string;
@@ -9,7 +10,7 @@ type SortOffersItemProps = {
 
 function SortOffersItem({sortOption}: SortOffersItemProps):JSX.Element {
   const dispatch = useAppDispatch();
-  const currentSort = useAppSelector((state) => state.currentSortOffers);
+  const currentSort = useAppSelector(selectCurrentSortOffers);
   const onSortChange = () => {
     dispatch(changeSortOffers(sortOption as SortOption));
   };

@@ -9,6 +9,7 @@ import cn from 'classnames';
 import { sortOffers } from '../../utils/sort';
 import { useEffect } from 'react';
 import { changeActiveOfferId } from '../../store/action';
+import { selectCity, selectCurrentSortOffers, selectOffers } from '../../store/selectors';
 
 
 function MainPage(): JSX.Element{
@@ -18,10 +19,10 @@ function MainPage(): JSX.Element{
     dispatch(changeActiveOfferId(null));
   });
 
-  const currentCity = useAppSelector((state) => state.currentCity);
-  const currentSort = useAppSelector((state) => state.currentSortOffers);
+  const currentCity = useAppSelector(selectCity);
+  const currentSort = useAppSelector(selectCurrentSortOffers);
 
-  const offers = useAppSelector((state) => state.offers);
+  const offers = useAppSelector(selectOffers);
   const filteredOFfers = getFilteredOffers(offers, currentCity);
   const sortedOffers = sortOffers(filteredOFfers, currentSort);
 

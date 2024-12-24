@@ -8,6 +8,7 @@ import { getCurrentCityData, getPointsData, getSelectedPoint } from '../../utils
 import { useParams } from 'react-router-dom';
 import { useAppSelector } from '../../hooks';
 import { createMarker } from './marker';
+import { selectActiveOfferId } from '../../store/selectors';
 
 type MapProps = {
   mapClass: GeneralCategory;
@@ -16,7 +17,7 @@ type MapProps = {
 
 function Map({mapClass, offers}: MapProps):JSX.Element {
   const {id} = useParams();
-  const activeOfferId = useAppSelector((state) => state.activeOfferId);
+  const activeOfferId = useAppSelector(selectActiveOfferId);
   const shouldScrollWheelZoom = mapClass !== GeneralCategory.Offer;
 
   const city = getCurrentCityData(offers);

@@ -4,6 +4,7 @@ import { OffersData } from '../types/offers';
 import { changeActiveOfferId, changeCity, changeSortOffers, loadOffers } from './action';
 import { getLocalStoredString } from '../utils/common';
 
+//Насколько я понял, взаимодействие с localStorage должно происходить через redux-thunk. В дальнейшем переделаю
 const storedCurrentSortOffers = getLocalStoredString('currentSortOffers');
 const storedCurrentCity = getLocalStoredString('currentCity');
 

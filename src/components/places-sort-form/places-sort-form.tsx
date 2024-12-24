@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import SortOffersList from '../sort-offers-list/sort-offers-list';
 import { useAppSelector } from '../../hooks';
+import { selectCurrentSortOffers } from '../../store/selectors';
 
 function PlacesSortForm(): JSX.Element{
   const sortSpanRef = useRef<HTMLElement>(null);
-  const currentSort = useAppSelector((state) => state.currentSortOffers);
+  const currentSort = useAppSelector(selectCurrentSortOffers);
   const [showSort, setShowSort] = useState(false);
 
   useEffect(() => {
