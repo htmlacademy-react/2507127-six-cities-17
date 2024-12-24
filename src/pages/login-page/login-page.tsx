@@ -3,11 +3,13 @@ import LocationsItem from '../../components/locations-item/locations-item';
 import LoginForm from '../../components/login-form/login-form';
 import Title from '../../components/title/title';
 import { PagesList } from '../../const';
+import { useAppSelector } from '../../hooks';
 
 function CurrentLocation():JSX.Element {
+  const currentCity = useAppSelector((state) => state.currentCity);
   return (
     <section className="locations locations--login locations--current">
-      <LocationsItem locationName='Amsterdam' isSingle/>
+      <LocationsItem city={currentCity} isSingle/>
     </section>
   );
 }

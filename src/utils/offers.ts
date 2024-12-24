@@ -10,22 +10,13 @@ function getGroupedOffers(offers: OffersData[]): OffersData[][]{
   return Object.values(groupedOffersByCity);
 }
 
-function getAllCities(offers: OffersData[]): string[]{
-  const cities: string[] = [];
-  offers.forEach((offer) => {
-    const {city} = offer;
-    if (!cities.includes(city.name)) {
-      cities.push(city.name);
-    }
-  });
-  return cities;
-}
 
 function getFilteredOffers(offers: OffersData[], currentLocation: string): OffersData[]{
-  return offers.filter((offer) => {
+  const filteredOffers = offers.filter((offer) => {
     const {city} = offer;
     return city.name === currentLocation;
   });
+  return filteredOffers.length > 0 ? filteredOffers : [];
 }
 
 const getPointCoordinates = (offer: OffersData) => {
@@ -76,4 +67,4 @@ function getNearOffers(offers: OffersData[], id: string| undefined) {
   return slicedOffers;
 }
 
-export {getGroupedOffers, getAllCities, getFilteredOffers, getPointsData, getCurrentCityData, getSelectedPoint, getNearOffers};
+export {getGroupedOffers, getFilteredOffers, getPointsData, getCurrentCityData, getSelectedPoint, getNearOffers};

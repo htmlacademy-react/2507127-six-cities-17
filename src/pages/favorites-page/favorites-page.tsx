@@ -3,13 +3,12 @@ import Footer from '../../components/footer/footer';
 import Header from '../../components/header/header';
 import Title from '../../components/title/title';
 import { PagesList } from '../../const';
-import { OffersData } from '../../types/offers';
+import { useAppSelector } from '../../hooks';
 
-type FavoritesPageProps = {
-  offers: OffersData[];
-}
 
-function FavoritesPage({offers}: FavoritesPageProps): JSX.Element{
+function FavoritesPage(): JSX.Element{
+  const offers = useAppSelector((state) => state.offers);
+
   return (
     <div className="page">
       <Title pageName={PagesList.Favorite}/>
