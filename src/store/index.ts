@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import {reducer} from './reducer';
-import { createApi } from '../services/api';
+import { createAPI } from '../services/api';
 
-export const api = createApi();
+export const api = createAPI();
 export const store = configureStore({
   reducer,
   middleware: (getDefaultMiddleware) =>
