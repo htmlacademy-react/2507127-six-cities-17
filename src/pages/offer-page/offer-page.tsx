@@ -10,16 +10,16 @@ import { ReviewComment } from '../../types/comments';
 import Map from '../../components/map/map';
 import { getNearOffers } from '../../utils/offers';
 import { useAppSelector } from '../../hooks';
+import { selectOffers } from '../../store/selectors';
 
 type OfferPageProps = {
   authorizationStatus: AuthorizationStatus;
   comments: ReviewComment[];
-  activeOfferId: string | null;
   galleryImagesCount: number;
 }
 
-function OfferPage({authorizationStatus, comments, activeOfferId, galleryImagesCount, }: OfferPageProps): JSX.Element{
-  const offers = useAppSelector((state) => state.offers);
+function OfferPage({authorizationStatus, comments, galleryImagesCount, }: OfferPageProps): JSX.Element{
+  const offers = useAppSelector(selectOffers);
   const {id} = useParams();
 
   const currentOffer = offers.find((item) => item.id === id);
@@ -33,7 +33,7 @@ function OfferPage({authorizationStatus, comments, activeOfferId, galleryImagesC
         <section className="offer">
           <OfferGallery GalleryImagesCount={galleryImagesCount}/>
           <OfferInfo authorizationStatus={authorizationStatus} comments={comments} offer={currentOffer as OffersData}/>
-          <Map mapClass={GeneralCategory.Offer} activeOfferId={activeOfferId} offers={nearOffers as OffersData[]}/>
+          <Map mapClass={GeneralCategory.Offer} offers={nearOffers as OffersData[]}/>
         </section>
         <div className="container">
           <NearPlaces offers={nearOffers as OffersData[]}/>

@@ -4,9 +4,10 @@ import LoginForm from '../../components/login-form/login-form';
 import Title from '../../components/title/title';
 import { PagesList } from '../../const';
 import { useAppSelector } from '../../hooks';
+import { selectCity } from '../../store/selectors';
 
 function CurrentLocation():JSX.Element {
-  const currentCity = useAppSelector((state) => state.currentCity);
+  const currentCity = useAppSelector(selectCity);
   return (
     <section className="locations locations--login locations--current">
       <LocationsItem city={currentCity} isSingle/>

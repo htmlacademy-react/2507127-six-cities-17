@@ -4,16 +4,18 @@ import Mark from '../common/mark/mark';
 import Rating from '../common/rating/rating';
 import { PlaceCardSettings } from './place-card-settings';
 import { AppRoute, GeneralCategory } from '../../const';
-import { ActiveOfferChange } from '../../types/handlers';
 import { OffersData } from '../../types/offers';
+import { useAppDispatch } from '../../hooks';
+import { changeActiveOfferId } from '../../store/action';
 
 type PlaceCardItemProps = {
   offer: OffersData;
   cardClass: GeneralCategory;
-  onHandleActiveOfferChange?: ActiveOfferChange;
+  isInteractiveMap?: boolean;
 }
 
-function PlaceCardItem({offer, cardClass, onHandleActiveOfferChange}: PlaceCardItemProps): JSX.Element{
+function PlaceCardItem({offer, cardClass, isInteractiveMap = false}: PlaceCardItemProps): JSX.Element{
+  const dispatch = useAppDispatch();
   const {
     id,
     title,
@@ -28,8 +30,8 @@ function PlaceCardItem({offer, cardClass, onHandleActiveOfferChange}: PlaceCardI
   return (
     <article
       className={`${cardClass}__card place-card`}
-      onMouseEnter={() => onHandleActiveOfferChange && onHandleActiveOfferChange(id)}
-      onMouseLeave={() => onHandleActiveOfferChange && onHandleActiveOfferChange(null)}
+      onMouseEnter={() => isInteractiveMap && dispatch(changeActiveOfferId(id))}
+      onMouseLeave={() => isInteractiveMap && dispatch(changeActiveOfferId(null))}
     >
       {isPremium && <Mark markClass={GeneralCategory.PlaceCard}/>}
       <div className={`${cardClass}__image-wrapper place-card__image-wrapper`}>
