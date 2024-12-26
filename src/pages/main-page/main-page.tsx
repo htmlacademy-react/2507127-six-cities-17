@@ -11,7 +11,6 @@ import { useEffect } from 'react';
 import { changeActiveOfferId } from '../../store/action';
 import { selectCity, selectCurrentSortOffers, selectOffers } from '../../store/selectors';
 
-
 function MainPage(): JSX.Element{
   const dispatch = useAppDispatch();
   //Сброс выбранного id. Ранее, при возврате со страницы offer, выбранный id отсавался в глобальном состоянии
