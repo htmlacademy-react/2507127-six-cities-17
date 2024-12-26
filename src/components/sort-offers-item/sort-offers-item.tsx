@@ -11,12 +11,12 @@ type SortOffersItemProps = {
 function SortOffersItem({sortOption}: SortOffersItemProps):JSX.Element {
   const dispatch = useAppDispatch();
   const currentSort = useAppSelector(selectCurrentSortOffers);
-  const onSortChange = () => {
+  const handleSortChange = () => {
     dispatch(changeSortOffers(sortOption as SortOption));
   };
 
   return (
-    <li onClick={onSortChange} className={cn(
+    <li onClick={handleSortChange} className={cn(
       'places__option',
       {'places__option--active': String(sortOption) === String(currentSort)}
     )} tabIndex={0}
