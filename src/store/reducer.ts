@@ -1,7 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { AuthorizationStatus, CITIES, SortOption } from '../const';
 import { OffersData } from '../types/offers';
-import { changeActiveOfferId, changeCity, changeSortOffers, loadOffers, requireAuthorization } from './action';
+import { changeActiveOfferId, changeCity, changeSortOffers, loadOffers, requireAuthorization, setOffersDataLoadingStatus } from './action';
 import { getLocalStoredString } from '../utils/common';
 
 //Насколько я понял, взаимодействие с localStorage должно происходить через redux-thunk. В дальнейшем переделаю
@@ -14,6 +14,7 @@ const initialState = {
   currentSortOffers: storedCurrentSortOffers || SortOption.Popular,
   activeOfferId: null as null | string,
   authorizationStatus: AuthorizationStatus.Unknown,
+  isOffersDataLoading: false
 };
 
 const reducer = createReducer(initialState, (builder)=> {
@@ -34,7 +35,11 @@ const reducer = createReducer(initialState, (builder)=> {
     })
     .addCase(requireAuthorization, (state, action) => {
       state.authorizationStatus = action.payload;
+    })
+    .addCase(setOffersDataLoadingStatus, (state, action) => {
+      state.isOffersDataLoading = action.payload;
     });
+
 });
 
 export {reducer};
