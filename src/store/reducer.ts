@@ -1,7 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { AuthorizationStatus, CITIES, SortOption } from '../const';
 import { OffersData } from '../types/offers';
-import { changeActiveOfferId, changeCity, changeSortOffers, loadOffers, requireAuthorization, setOffersDataLoadingStatus } from './action';
+import { changeActiveOfferId, changeCity, changeSortOffers, loadOffers, requireAuthorization, setError, setOffersDataLoadingStatus } from './action';
 
 const initialState = {
   currentCity: CITIES[0],
@@ -9,7 +9,8 @@ const initialState = {
   currentSortOffers: SortOption.Popular,
   activeOfferId: null as null | string,
   authorizationStatus: AuthorizationStatus.Unknown,
-  isOffersDataLoading: false
+  isOffersDataLoading: false,
+  error: null as string | null
 };
 
 const reducer = createReducer(initialState, (builder)=> {
@@ -31,6 +32,9 @@ const reducer = createReducer(initialState, (builder)=> {
     })
     .addCase(setOffersDataLoadingStatus, (state, action) => {
       state.isOffersDataLoading = action.payload;
+    })
+    .addCase(setError, (state, action) => {
+      state.error = action.payload;
     });
 
 });

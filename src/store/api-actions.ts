@@ -1,9 +1,19 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { OffersData } from '../types/offers';
-import { APIRoute, AuthorizationStatus } from '../const';
-import { loadOffers, requireAuthorization, setOffersDataLoadingStatus } from './action';
+import { APIRoute, AuthorizationStatus, TIMEOUT_SHOW_ERROR } from '../const';
+import { loadOffers, requireAuthorization, setError, setOffersDataLoadingStatus } from './action';
 import { dropToken, saveToken } from '../services/token';
 import { AsyncThunkArguments, AuthData, UserData } from '../types/api';
+import { store } from '.';
+
+export const clearErrorAction = createAsyncThunk(
+  'app/clearError',
+  () => {
+    setTimeout(() =>
+      store.dispatch(setError(null))
+    ,TIMEOUT_SHOW_ERROR);
+  }
+);
 
 export const fetchOffersAction = createAsyncThunk<void, undefined, AsyncThunkArguments>(
   'data/fetchOffers',

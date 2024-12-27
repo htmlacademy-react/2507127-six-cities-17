@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { changeActiveOfferId } from '../../store/action';
 import MainContent from '../../components/main-content/main-content';
 import LoadingScreen from '../../components/common/loading-screen/loading-screen';
-import { selectisOffersDataLoading } from '../../store/selectors';
+import { selectIsOffersDataLoading } from '../../store/selectors';
 
 function MainPage(): JSX.Element{
   const dispatch = useAppDispatch();
@@ -15,7 +15,7 @@ function MainPage(): JSX.Element{
     dispatch(changeActiveOfferId(null));
   });
 
-  const isOffersDataLoading = useAppSelector(selectisOffersDataLoading);
+  const isOffersDataLoading = useAppSelector(selectIsOffersDataLoading);
   if (isOffersDataLoading) {
     return <LoadingScreen/>;
   }
