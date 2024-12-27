@@ -3,6 +3,7 @@ import cn from 'classnames';
 import { changeSortOffers } from '../../store/action';
 import { SortOption } from '../../const';
 import { selectCurrentSortOffers } from '../../store/selectors';
+import { useEffect } from 'react';
 
 type SortOffersItemProps = {
   sortOption: string;
@@ -14,6 +15,10 @@ function SortOffersItem({sortOption}: SortOffersItemProps):JSX.Element {
   const handleSortChange = () => {
     dispatch(changeSortOffers(sortOption as SortOption));
   };
+
+  useEffect(() => {
+    localStorage.setItem('currentSortOffers', JSON.stringify(currentSort));
+  }, [currentSort]);
 
   return (
     <li onClick={handleSortChange} className={cn(
