@@ -1,12 +1,10 @@
 import Header from '../../components/header/header';
 import { PagesList } from '../../const';
 import Title from '../../components/title/title';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppDispatch } from '../../hooks';
 import { useEffect } from 'react';
 import { changeActiveOfferId } from '../../store/action';
 import MainContent from '../../components/main-content/main-content';
-import LoadingScreen from '../../components/common/loading-screen/loading-screen';
-import { selectIsOffersDataLoading } from '../../store/selectors';
 
 function MainPage(): JSX.Element{
   const dispatch = useAppDispatch();
@@ -14,11 +12,6 @@ function MainPage(): JSX.Element{
   useEffect(() =>{
     dispatch(changeActiveOfferId(null));
   });
-
-  const isOffersDataLoading = useAppSelector(selectIsOffersDataLoading);
-  if (isOffersDataLoading) {
-    return <LoadingScreen/>;
-  }
 
   return (
     <div className="page page--gray page--main">

@@ -9,12 +9,22 @@ import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
 import ScrollToTopWrapper from '../scroll-to-top-wrapper/scroll-to-top-wrapper';
 import { ReviewComment } from '../../types/comments';
+import { useAppSelector } from '../../hooks';
+import { selectAuthorizationStatus, selectIsOffersDataLoading } from '../../store/selectors';
+import LoadingScreen from '../common/loading-screen/loading-screen';
 
 type AppProps = {
   comments: ReviewComment[];
 }
 
 function App({comments}: AppProps): JSX.Element{
+  const authorizationStatus = useAppSelector(selectAuthorizationStatus);
+  const isOffersDataLoading = useAppSelector(selectIsOffersDataLoading);
+
+  if (authorizationStatus === AuthorizationStatus.Unknown || isOffersDataLoading) {
+    return <LoadingScreen/>;
+  }
+
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -28,12 +38,12 @@ function App({comments}: AppProps): JSX.Element{
               />
               <Route
                 path={AppRoute.Offer}
-                element={<OfferPage authorizationStatus={AuthorizationStatus.Auth} comments={comments} galleryImagesCount={Settings.GalleryImagesCount}/>}
+                element={<OfferPage comments={comments} galleryImagesCount={Settings.GalleryImagesCount}/>}
               />
               <Route
                 path={AppRoute.Favorites}
                 element={
-                  <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+                  <PrivateRoute authorizationStatus={authorizationStatus}>
                     <FavoritesPage />
                   </PrivateRoute>
                 }

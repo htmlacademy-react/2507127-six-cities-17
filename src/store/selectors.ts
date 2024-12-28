@@ -1,3 +1,4 @@
+import { AuthorizationStatus } from '../const';
 import { OffersData } from '../types/offers';
 import { State } from '../types/state';
 
@@ -7,3 +8,4 @@ export const selectActiveOfferId = (state: State): string | null => state.active
 export const selectCurrentSortOffers = (state: State): string => state.currentSortOffers;
 export const selectIsOffersDataLoading = (state: State): boolean => state.isOffersDataLoading;
 export const selectError = (state: State): string | null => state.error;
+export const selectAuthorizationStatus = (state: State): AuthorizationStatus => state.authorizationStatus;
