@@ -8,13 +8,13 @@ import { checkAuthAction, fetchOffersAction } from './store/api-actions';
 import { initLocalStorage } from './services/local-storage';
 import ErrorMessage from './components/error-message/error-message';
 
-store.dispatch(checkAuthAction());
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
 store.dispatch(fetchOffersAction());
+store.dispatch(checkAuthAction());
 //Забираем данные из localStorage и помещаем в хранилище, если они есть
 initLocalStorage();
 

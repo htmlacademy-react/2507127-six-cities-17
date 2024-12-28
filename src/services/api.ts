@@ -45,7 +45,6 @@ export const createAPI = (): AxiosInstance => {
 
         processErrorHandle(detailMessage.message);
       }
-
       throw error;
     }
   );
