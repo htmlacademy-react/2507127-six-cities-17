@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { OffersData } from '../types/offers';
 import { APIRoute, AuthorizationStatus, TIMEOUT_SHOW_ERROR } from '../const';
 import { loadOffers, requireAuthorization, setError, setOffersDataLoadingStatus } from './action';
-import { dropToken, saveToken } from '../services/token';
+import { dropToken, getToken, saveToken } from '../services/token';
 import { AsyncThunkArguments, AuthData, UserData } from '../types/api';
 import { store } from '.';
 
@@ -14,6 +14,7 @@ export const clearErrorAction = createAsyncThunk(
     ,TIMEOUT_SHOW_ERROR);
   }
 );
+
 
 export const fetchOffersAction = createAsyncThunk<void, undefined, AsyncThunkArguments>(
   'data/fetchOffers',
@@ -36,6 +37,16 @@ export const checkAuthAction = createAsyncThunk<void, undefined, AsyncThunkArgum
     }
   }
 );
+
+//Сделал такую проверку, так как иначе, при запросе к /login через requireAuthorization, возвращается ошибка 401
+export const checkAuthStatus = () => {
+  const token = getToken();
+  if (!token) {
+    store.dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
+  } else {
+    store.dispatch(checkAuthAction());
+  }
+};
 
 export const loginAction = createAsyncThunk<void, AuthData, AsyncThunkArguments>(
   'user/login',
