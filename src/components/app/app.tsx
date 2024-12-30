@@ -1,6 +1,6 @@
 import {Route, Routes, BrowserRouter} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
-import { AuthorizationStatus, AppRoute, Settings } from '../../const';
+import { AppRoute, Settings } from '../../const';
 import MainPage from '../../pages/main-page/main-page';
 import LoginPage from '../../pages/login-page/login-page';
 import FavoritesPage from '../../pages/favorites-page/favorites-page';
@@ -10,7 +10,7 @@ import PrivateRoute from '../private-route/private-route';
 import ScrollToTopWrapper from '../scroll-to-top-wrapper/scroll-to-top-wrapper';
 import { ReviewComment } from '../../types/comments';
 import { useAppSelector } from '../../hooks';
-import { selectAuthorizationStatus, selectIsOffersDataLoading } from '../../store/selectors';
+import { selectIsOffersDataLoading } from '../../store/selectors';
 import LoadingScreen from '../common/loading-screen/loading-screen';
 
 type AppProps = {
@@ -18,10 +18,9 @@ type AppProps = {
 }
 
 function App({comments}: AppProps): JSX.Element{
-  const authorizationStatus = useAppSelector(selectAuthorizationStatus);
   const isOffersDataLoading = useAppSelector(selectIsOffersDataLoading);
 
-  if (authorizationStatus === AuthorizationStatus.Unknown || isOffersDataLoading) {
+  if (isOffersDataLoading) {
     return <LoadingScreen/>;
   }
 
@@ -43,7 +42,7 @@ function App({comments}: AppProps): JSX.Element{
               <Route
                 path={AppRoute.Favorites}
                 element={
-                  <PrivateRoute authorizationStatus={authorizationStatus}>
+                  <PrivateRoute>
                     <FavoritesPage />
                   </PrivateRoute>
                 }
