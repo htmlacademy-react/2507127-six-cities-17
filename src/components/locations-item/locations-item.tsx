@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { changeCity } from '../../store/action';
+import { useEffect } from 'react';
+import { selectCity } from '../../store/selectors';
 
 type LocationsItemProps = {
   city: string;
@@ -13,10 +15,16 @@ type LocationItemLinkProps = Omit<LocationsItemProps, 'isSingle'>
 
 function LocationItemLink({city, isActive}: LocationItemLinkProps): JSX.Element{
   const dispatch = useAppDispatch();
-  const onCityChange = () => dispatch(changeCity(city));
+  const currentCity = useAppSelector(selectCity);
+  const handleCityChange = () => dispatch(changeCity(city));
+
+  //Не удалось понять как сохранить данные в localStorage через redux-thunk. Воспользовался useEffect
+  useEffect(() => {
+    localStorage.setItem('currentCity', JSON.stringify(currentCity));
+  },[currentCity]);
 
   return (
-    <Link onClick={onCityChange} className={`locations__item-link tabs__item ${isActive ? 'tabs__item--active' : ''}`} to={AppRoute.Index}>
+    <Link onClick={handleCityChange} className={`locations__item-link tabs__item ${isActive ? 'tabs__item--active' : ''}`} to={AppRoute.Index}>
       <span>{city}</span>
     </Link>
   );

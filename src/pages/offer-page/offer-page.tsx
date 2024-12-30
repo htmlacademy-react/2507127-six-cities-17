@@ -4,7 +4,7 @@ import NearPlaces from '../../components/near-places/near-places';
 import OfferGallery from '../../components/offer-gallery/offer-gallery';
 import OfferInfo from '../../components/offer-info/offer-info';
 import Title from '../../components/title/title';
-import { AuthorizationStatus, GeneralCategory, PagesList } from '../../const';
+import { GeneralCategory, PagesList } from '../../const';
 import { OffersData } from '../../types/offers';
 import { ReviewComment } from '../../types/comments';
 import Map from '../../components/map/map';
@@ -13,12 +13,11 @@ import { useAppSelector } from '../../hooks';
 import { selectOffers } from '../../store/selectors';
 
 type OfferPageProps = {
-  authorizationStatus: AuthorizationStatus;
   comments: ReviewComment[];
   galleryImagesCount: number;
 }
 
-function OfferPage({authorizationStatus, comments, galleryImagesCount, }: OfferPageProps): JSX.Element{
+function OfferPage({comments, galleryImagesCount, }: OfferPageProps): JSX.Element{
   const offers = useAppSelector(selectOffers);
   const {id} = useParams();
 
@@ -32,7 +31,7 @@ function OfferPage({authorizationStatus, comments, galleryImagesCount, }: OfferP
       <main className="page__main page__main--offer">
         <section className="offer">
           <OfferGallery GalleryImagesCount={galleryImagesCount}/>
-          <OfferInfo authorizationStatus={authorizationStatus} comments={comments} offer={currentOffer as OffersData}/>
+          <OfferInfo comments={comments} offer={currentOffer as OffersData}/>
           <Map mapClass={GeneralCategory.Offer} offers={nearOffers as OffersData[]}/>
         </section>
         <div className="container">

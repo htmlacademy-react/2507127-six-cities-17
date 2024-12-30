@@ -4,9 +4,10 @@ import { ReviewComment } from '../../../../types/comments';
 import ReviewsForm from './components/form/form';
 import ReviewsList from './components/list/list';
 import styles from './reviews.module.css';
+import { useAppSelector } from '../../../../hooks';
+import { selectAuthorizationStatus } from '../../../../store/selectors';
 
 type ReviewsProps = {
-  authorizationStatus: AuthorizationStatus;
   comments: ReviewComment[];
 }
 
@@ -20,7 +21,9 @@ function NeedToLogin(): JSX.Element{
   );
 }
 
-function Reviews({authorizationStatus, comments}: ReviewsProps):JSX.Element {
+function Reviews({comments}: ReviewsProps):JSX.Element {
+  const authorizationStatus = useAppSelector(selectAuthorizationStatus);
+
   return (
     <section className="offer__reviews reviews">
       <h2 className="reviews__title">
