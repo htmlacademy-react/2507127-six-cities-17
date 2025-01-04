@@ -7,16 +7,15 @@ import Name from './components/name/name';
 import Price from './components/price/price';
 import Reviews from './components/reviews/reviews';
 import { OffersData } from '../../types/offers';
-import { AuthorizationStatus, GeneralCategory } from '../../const';
+import { GeneralCategory } from '../../const';
 import { ReviewComment } from '../../types/comments';
 
 type OfferInfoProps = {
-  authorizationStatus: AuthorizationStatus;
   offer: OffersData;
   comments: ReviewComment[];
 }
 
-function OfferInfo({authorizationStatus, offer, comments}: OfferInfoProps):JSX.Element{
+function OfferInfo({offer, comments}: OfferInfoProps):JSX.Element{
   const {
     title,
     price,
@@ -34,7 +33,7 @@ function OfferInfo({authorizationStatus, offer, comments}: OfferInfoProps):JSX.E
         <Price price={price}/>
         <Inside/>
         <Host/>
-        <Reviews authorizationStatus={authorizationStatus} comments={comments}/>
+        <Reviews comments={comments}/>
       </div>
     </div>
   );

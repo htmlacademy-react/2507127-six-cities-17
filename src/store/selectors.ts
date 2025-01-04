@@ -1,8 +1,11 @@
+import { AuthorizationStatus } from '../const';
+import { OffersData } from '../types/offers';
 import { State } from '../types/state';
 
-const selectOffers = (state: State) => state.offers;
-const selectCity = (state: State) => state.currentCity;
-const selectActiveOfferId = (state: State) => state.activeOfferId;
-const selectCurrentSortOffers = (state: State) => state.currentSortOffers;
-
-export { selectOffers, selectCity, selectActiveOfferId, selectCurrentSortOffers };
+export const selectOffers = (state: State): OffersData[] => state.offers;
+export const selectCity = (state: State): string => state.currentCity;
+export const selectActiveOfferId = (state: State): string | null => state.activeOfferId;
+export const selectCurrentSortOffers = (state: State): string => state.currentSortOffers;
+export const selectIsOffersDataLoading = (state: State): boolean => state.isOffersDataLoading;
+export const selectError = (state: State): string | null => state.error;
+export const selectAuthorizationStatus = (state: State): AuthorizationStatus => state.authorizationStatus;
