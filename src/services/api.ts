@@ -1,9 +1,9 @@
 import axios, { AxiosError, AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 import { getToken } from './token';
 import { StatusCodes } from 'http-status-codes';
-import { processErrorHandle } from './process-error-handle';
+import { toast } from 'react-toastify';
 
-type DetailMessageType = {
+type ErrorMessageType = {
   type: string;
   message: string;
 }
@@ -24,7 +24,7 @@ export const createAPI = (): AxiosInstance => {
     baseURL: BACKEND_URL,
     timeout: REQUEST_TIMEOUT,
   });
-  //Линтер ругался на AxiosRequestConfig, пришлось использовать InternalAxiosRequestConfig
+
   api.interceptors.request.use(
     (config: InternalAxiosRequestConfig) => {
       const token = getToken();
@@ -39,11 +39,11 @@ export const createAPI = (): AxiosInstance => {
 
   api.interceptors.response.use(
     (response) => response,
-    (error: AxiosError<DetailMessageType>)=>{
+    (error: AxiosError<ErrorMessageType>)=>{
       if (error.response && shouldDisplayError(error.response)){
-        const detailMessage = error.response.data;
+        const errorMessage = error.response.data;
 
-        processErrorHandle(detailMessage.message);
+        toast.error(errorMessage.message);
       }
       throw error;
     }

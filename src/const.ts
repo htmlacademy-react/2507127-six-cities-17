@@ -1,6 +1,6 @@
 export const SITE_NAME = '6 cities';
 export const MAX_REVIEWS = 10;
-export const TIMEOUT_SHOW_ERROR = 2000;
+export const TIMEOUT_SHOW_ERROR = 3000;
 
 export const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
 
