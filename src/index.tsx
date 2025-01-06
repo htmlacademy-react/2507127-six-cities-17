@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
-import comments from './mocks/comments';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import { checkAuthAction, fetchOffersAction } from './store/api-actions';
@@ -23,9 +22,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <ToastContainer autoClose={TIMEOUT_SHOW_ERROR}/>
-      <App
-        comments={comments}
-      />
+      <App/>
     </Provider>
   </React.StrictMode>
 );

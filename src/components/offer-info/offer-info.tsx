@@ -6,12 +6,12 @@ import Features from './components/features/features';
 import Name from './components/name/name';
 import Price from './components/price/price';
 import Reviews from './components/reviews/reviews';
-import { OffersData } from '../../types/offers';
+import { FullOffer } from '../../types/offers';
 import { GeneralCategory } from '../../const';
 import { ReviewComment } from '../../types/comments';
 
 type OfferInfoProps = {
-  offer: OffersData;
+  offer: FullOffer;
   comments: ReviewComment[];
 }
 

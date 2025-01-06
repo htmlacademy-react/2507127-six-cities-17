@@ -53,14 +53,13 @@ function getSelectedPoint(offers: OffersData[], id: string): PointCoordinates | 
   return getPointCoordinates(currentPoint);
 }
 
-function getNearOffers(offers: OffersData[], id: string| undefined) {
+function getNearOffers(offers: OffersData[], allOffers: OffersData[], id: string| undefined) {
   if (id === undefined) {
     return null;
   }
-  const currentCity = offers.find((offer) => offer.id === id)?.city.name;
-  const currentCityOffers = offers.filter((offer) => offer.city.name === currentCity && offer.id !== id);
-  const currentOffer = offers.find((offer) => offer.id === id);
-  const slicedOffers = currentCityOffers.slice(0, 3);
+
+  const currentOffer = allOffers.find((offer) => offer.id === id);
+  const slicedOffers = offers.slice(0, 3);
   if (currentOffer) {
     slicedOffers.push(currentOffer);
   }
