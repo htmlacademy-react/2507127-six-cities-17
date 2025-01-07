@@ -1,6 +1,6 @@
 import {Route, Routes, BrowserRouter} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
-import { AppRoute, Settings } from '../../const';
+import { AppRoute } from '../../const';
 import MainPage from '../../pages/main-page/main-page';
 import LoginPage from '../../pages/login-page/login-page';
 import FavoritesPage from '../../pages/favorites-page/favorites-page';
@@ -33,7 +33,7 @@ function App(): JSX.Element{
               />
               <Route
                 path={AppRoute.Offer}
-                element={<OfferPage galleryImagesCount={Settings.GalleryImagesCount}/>}
+                element={<OfferPage />}
               />
               <Route
                 path={AppRoute.Favorites}

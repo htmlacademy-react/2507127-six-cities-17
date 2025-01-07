@@ -5,30 +5,12 @@ export const PASSWORD_MIN_LENGTH = 2;
 
 export const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
 
-export const Settings = {
-  CardsCount: 5,
-  GalleryImagesCount: 6
-} as const;
-
 export enum SortOption {
   Popular = 'Popular',
   LowToHigh ='Price: low to high',
   HighToLow = 'Price: high to low',
   TopRated = 'Top rated first',
 }
-
-export const OfferInsideItems = {
-  WiFi: 'Wi-Fi',
-  WashingMachine: 'Washing machine',
-  Towels: 'Towels',
-  Heating: 'Heating',
-  CoffeeMachine: 'Coffee machine',
-  BabySeat: 'Baby seat',
-  Kitchen: 'Kitchen',
-  Dishwasher: 'Dishwasher',
-  CabelTV: 'Cabel TV',
-  Fridge: 'Fridge',
-};
 
 export const PagesList = {
   Main: 'Main',

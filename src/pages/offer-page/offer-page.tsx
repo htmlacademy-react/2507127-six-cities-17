@@ -16,11 +16,8 @@ import { fetchNearbyOffersAction, fetchOfferCommentsAction, getOfferByIdAction }
 import LoadingScreen from '../../components/common/loading-screen/loading-screen';
 import NotFoundPage from '../not-found-page/not-found-page';
 
-type OfferPageProps = {
-  galleryImagesCount: number;
-}
 
-function OfferPage({galleryImagesCount}: OfferPageProps): JSX.Element{
+function OfferPage(): JSX.Element{
   const {id} = useParams();
   const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -59,14 +56,16 @@ function OfferPage({galleryImagesCount}: OfferPageProps): JSX.Element{
     return <NotFoundPage/>;
   }
 
+  const {images} = currentOffer;
+
   return (
     <div className="page">
       <Title pageName={PagesList.Offer}/>
       <Header/>
       <main className="page__main page__main--offer">
         <section className="offer">
-          <OfferGallery GalleryImagesCount={galleryImagesCount}/>
-          <OfferInfo comments={offerComments} offer={currentOffer }/>
+          <OfferGallery images={images}/>
+          <OfferInfo comments={offerComments} offer={currentOffer}/>
           <Map mapClass={GeneralCategory.Offer} offers={slicedNearbyOffers}/>
         </section>
         <div className="container">
