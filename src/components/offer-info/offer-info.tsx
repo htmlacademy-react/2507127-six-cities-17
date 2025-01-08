@@ -8,15 +8,14 @@ import Price from './components/price/price';
 import Reviews from './components/reviews/reviews';
 import { FullOffer } from '../../types/offers';
 import { GeneralCategory } from '../../const';
-import { ReviewComment } from '../../types/comments';
+
 import Description from './components/description/description';
 
 type OfferInfoProps = {
   offer: FullOffer;
-  comments: ReviewComment[];
 }
 
-function OfferInfo({offer, comments}: OfferInfoProps):JSX.Element{
+function OfferInfo({offer}: OfferInfoProps):JSX.Element{
   const {
     title,
     price,
@@ -42,7 +41,7 @@ function OfferInfo({offer, comments}: OfferInfoProps):JSX.Element{
         <Inside goods={goods}/>
         <Host host={host}/>
         <Description description={description}/>
-        <Reviews comments={comments}/>
+        <Reviews />
       </div>
     </div>
   );

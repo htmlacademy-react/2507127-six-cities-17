@@ -2,7 +2,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import { AuthorizationStatus, CITIES, SortOption } from '../const';
 import { FullOffer, OffersData } from '../types/offers';
 import { changeActiveOfferId, changeCity, changeSortOffers, requireAuthorization } from './action';
-import { checkAuthAction, fetchNearbyOffersAction, fetchOfferCommentsAction, fetchOffersAction, getOfferByIdAction } from './api-actions';
+import { checkAuthAction, fetchNearbyOffersAction, fetchOfferCommentsAction, fetchOffersAction, getOfferByIdAction} from './api-actions';
 import { ReviewComment } from '../types/comments';
 
 const initialState = {

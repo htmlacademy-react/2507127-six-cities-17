@@ -46,7 +46,6 @@ export const postOfferCommentAction = createAsyncThunk<ReviewComment, PostReview
   }
 );
 
-
 export const checkAuthAction = createAsyncThunk<void, undefined, AsyncThunkArguments>(
   'user/checkAuth',
   async(_arg, {extra: api}) =>{
