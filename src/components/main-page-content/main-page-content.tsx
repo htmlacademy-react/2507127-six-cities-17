@@ -6,7 +6,7 @@ import { selectCity, selectCurrentSortOffers, selectOffers } from '../../store/s
 import { getFilteredOffers } from '../../utils/offers';
 import { sortOffers } from '../../utils/sort';
 
-function MainContent():JSX.Element {
+function MainPageContent():JSX.Element {
   const currentCity = useAppSelector(selectCity);
   const currentSort = useAppSelector(selectCurrentSortOffers);
 
@@ -28,4 +28,4 @@ function MainContent():JSX.Element {
   );
 }
 
-export default MainContent;
+export default MainPageContent;
