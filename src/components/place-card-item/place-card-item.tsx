@@ -6,7 +6,7 @@ import { PlaceCardSettings } from './place-card-settings';
 import { AppRoute, GeneralCategory } from '../../const';
 import { OffersData } from '../../types/offers';
 import { useAppDispatch } from '../../hooks';
-import { changeActiveOfferId } from '../../store/action';
+import { changeActiveOfferId } from '../../store/offers-process/offers-process';
 
 type PlaceCardItemProps = {
   offer: OffersData;

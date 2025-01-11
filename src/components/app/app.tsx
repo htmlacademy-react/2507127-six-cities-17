@@ -9,8 +9,8 @@ import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
 import ScrollToTopWrapper from '../scroll-to-top-wrapper/scroll-to-top-wrapper';
 import { useAppSelector } from '../../hooks';
-import { selectIsOffersDataLoading } from '../../store/selectors';
 import LoadingScreen from '../common/loading-screen/loading-screen';
+import { selectIsOffersDataLoading } from '../../store/app-data/selectors';
 
 
 function App(): JSX.Element{

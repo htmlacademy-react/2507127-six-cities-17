@@ -5,6 +5,12 @@ export const PASSWORD_MIN_LENGTH = 2;
 
 export const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
 
+export enum NameSpace {
+  Data = 'DATA',
+  User = 'USER',
+  Offers = 'OFFERS'
+}
+
 export enum SortOption {
   Popular = 'Popular',
   LowToHigh ='Price: low to high',

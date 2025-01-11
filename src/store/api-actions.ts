@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { FullOffer, OffersData } from '../types/offers';
-import { APIRoute, AuthorizationStatus } from '../const';
-import { requireAuthorization } from './action';
+import { APIRoute,} from '../const';
 import { dropToken, saveToken } from '../services/token';
 import { AsyncThunkArguments, AuthData, UserData } from '../types/api';
 import { PostReviewComment, ReviewComment } from '../types/comments';
@@ -55,18 +54,16 @@ export const checkAuthAction = createAsyncThunk<void, undefined, AsyncThunkArgum
 
 export const loginAction = createAsyncThunk<void, AuthData, AsyncThunkArguments>(
   'user/login',
-  async ({login: email, password}, {dispatch, extra: api}) => {
+  async ({login: email, password}, {extra: api}) => {
     const {data: {token}} = await api.post<UserData>(APIRoute.Login, {email, password});
     saveToken(token);
-    dispatch(requireAuthorization(AuthorizationStatus.Auth));
   }
 );
 
 export const logoutAction = createAsyncThunk<void, undefined, AsyncThunkArguments>(
   'user/logout',
-  async(_arg, {dispatch, extra: api}) => {
+  async(_arg, {extra: api}) => {
     await api.delete(APIRoute.Logout);
     dropToken();
-    dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
   }
 );
