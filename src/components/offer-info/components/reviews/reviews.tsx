@@ -5,8 +5,8 @@ import ReviewsList from './components/list/list';
 import { useAppSelector } from '../../../../hooks';
 import LoadingScreen from '../../../common/loading-screen/loading-screen';
 import NeedToLogin from '../../../need-to-login/need-to-login';
-import { selectAuthorizationStatus } from '../../../../store/user-process/selectors';
-import { selectIsCommentsLoading, selectOfferComments } from '../../../../store/app-data/selectors';
+import { selectAuthorizationStatus } from '../../../../store/user-process/user-process.selectors';
+import { selectIsCommentsLoading, selectOfferComments } from '../../../../store/app-data/app-data.selectors';
 
 function Reviews():JSX.Element {
   const authorizationStatus = useAppSelector(selectAuthorizationStatus);

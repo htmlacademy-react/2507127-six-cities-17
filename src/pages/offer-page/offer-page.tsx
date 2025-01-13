@@ -6,7 +6,7 @@ import { useOfferInfo } from '../../hooks/use-offer-info';
 import NotFoundPage from '../not-found-page/not-found-page';
 import { useAppSelector } from '../../hooks';
 import LoadingScreen from '../../components/common/loading-screen/loading-screen';
-import { selectIsNearbyOffersLoading, selectIsOfferLoading, selectOffer } from '../../store/app-data/selectors';
+import { selectIsNearbyOffersLoading, selectIsOfferLoading, selectOffer } from '../../store/app-data/app-data.selectors';
 
 function OfferPage(): JSX.Element{
   const isOfferLoading = useAppSelector(selectIsOfferLoading);

@@ -1,5 +1,5 @@
 import { useAppSelector } from '../../hooks';
-import { selectCity } from '../../store/offers-process/selectors';
+import { selectCity } from '../../store/offers-process/offers-process.selectors';
 
 type FoundPlacesNumber = {
   offersCount: number;

@@ -4,7 +4,7 @@ import LoginForm from '../../components/login-form/login-form';
 import Title from '../../components/title/title';
 import { PagesList } from '../../const';
 import { useAppSelector } from '../../hooks';
-import { selectCity } from '../../store/offers-process/selectors';
+import { selectCity } from '../../store/offers-process/offers-process.selectors';
 
 function CurrentLocation():JSX.Element {
   const currentCity = useAppSelector(selectCity);

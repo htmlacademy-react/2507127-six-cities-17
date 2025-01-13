@@ -8,7 +8,7 @@ import { getCurrentCityData, getPointsData, getSelectedPoint } from '../../utils
 import { useParams } from 'react-router-dom';
 import { useAppSelector } from '../../hooks';
 import { createMarker } from './marker';
-import { selectActiveOfferId } from '../../store/offers-process/selectors';
+import { selectActiveOfferId } from '../../store/offers-process/offers-process.selectors';
 
 type MapProps = {
   mapClass: GeneralCategory;

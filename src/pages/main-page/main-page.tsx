@@ -4,7 +4,7 @@ import Title from '../../components/title/title';
 import { useAppDispatch } from '../../hooks';
 import { useEffect } from 'react';
 import MainPageContent from '../../components/main-page-content/main-page-content';
-import { changeActiveOfferId } from '../../store/offers-process/offers-process';
+import { changeActiveOfferId } from '../../store/offers-process/offers-process.slice';
 
 function MainPage(): JSX.Element{
   const dispatch = useAppDispatch();

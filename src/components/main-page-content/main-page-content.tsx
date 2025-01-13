@@ -4,8 +4,8 @@ import Cities from '../cities/cities';
 import { useAppSelector } from '../../hooks';
 import { getFilteredOffers } from '../../utils/offers';
 import { sortOffers } from '../../utils/sort';
-import { selectCity, selectCurrentSortOffers } from '../../store/offers-process/selectors';
-import { selectOffers } from '../../store/app-data/selectors';
+import { selectCity, selectCurrentSortOffers } from '../../store/offers-process/offers-process.selectors';
+import { selectOffers } from '../../store/app-data/app-data.selectors';
 
 function MainPageContent():JSX.Element {
   const currentCity = useAppSelector(selectCity);

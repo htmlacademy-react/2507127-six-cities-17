@@ -10,7 +10,7 @@ import PrivateRoute from '../private-route/private-route';
 import ScrollToTopWrapper from '../scroll-to-top-wrapper/scroll-to-top-wrapper';
 import { useAppSelector } from '../../hooks';
 import LoadingScreen from '../common/loading-screen/loading-screen';
-import { selectIsOffersDataLoading } from '../../store/app-data/selectors';
+import { selectIsOffersDataLoading } from '../../store/app-data/app-data.selectors';
 
 
 function App(): JSX.Element{

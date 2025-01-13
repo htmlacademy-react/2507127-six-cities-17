@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '.';
 import { OffersData } from '../types/offers';
 import { getNearOffers } from '../utils/offers';
-import { selectNearbyOffers, selectOffers } from '../store/app-data/selectors';
+import { selectNearbyOffers, selectOffers } from '../store/app-data/app-data.selectors';
 
 type OfferInfoData = [OffersData[]]
 
