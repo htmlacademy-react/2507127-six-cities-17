@@ -1,9 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { FullOffer, OffersData } from '../types/offers';
-import { APIRoute,} from '../const';
+import { APIRoute, AppRoute,} from '../const';
 import { dropToken, saveToken } from '../services/token';
 import { AsyncThunkArguments, AuthData, UserData } from '../types/api';
 import { PostReviewComment, ReviewComment } from '../types/comments';
+import { redirectToRoute } from './action';
 
 export const fetchOffersAction = createAsyncThunk<OffersData[], undefined, AsyncThunkArguments>(
   'data/fetchOffers',
@@ -54,9 +55,10 @@ export const checkAuthAction = createAsyncThunk<void, undefined, AsyncThunkArgum
 
 export const loginAction = createAsyncThunk<void, AuthData, AsyncThunkArguments>(
   'user/login',
-  async ({login: email, password}, {extra: api}) => {
+  async ({login: email, password}, {dispatch, extra: api}) => {
     const {data: {token}} = await api.post<UserData>(APIRoute.Login, {email, password});
     saveToken(token);
+    dispatch(redirectToRoute(AppRoute.Index));
   }
 );
 

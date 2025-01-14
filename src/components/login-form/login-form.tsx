@@ -1,15 +1,13 @@
 import { FormEvent, useRef } from 'react';
 import { loginAction } from '../../store/api-actions';
 import { useAppDispatch } from '../../hooks';
-import { useNavigate } from 'react-router-dom';
-import { AppRoute, PASSWORD_MIN_LENGTH } from '../../const';
+import { PASSWORD_MIN_LENGTH } from '../../const';
 
 function LoginForm():JSX.Element {
   const loginRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
 
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
   const handleFormSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
@@ -18,12 +16,7 @@ function LoginForm():JSX.Element {
       dispatch(loginAction({
         login: loginRef.current.value,
         password: passwordRef.current.value.replaceAll(' ', '')
-      }))
-        .then((response) => {
-          if (response.meta.requestStatus === 'fulfilled') {
-            navigate(AppRoute.Index);
-          }
-        });
+      }));
     }
   };
 
