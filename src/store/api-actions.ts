@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { FullOffer, OffersData } from '../types/offers';
 import { APIRoute, AppRoute,} from '../const';
 import { dropToken, saveToken } from '../services/token';
-import { AsyncThunkArguments, AuthData, UserData } from '../types/api';
+import { AsyncThunkArguments, AuthData, UserInfo } from '../types/api';
 import { PostReviewComment, ReviewComment } from '../types/comments';
 import { redirectToRoute } from './action';
 
@@ -46,19 +46,22 @@ export const postOfferCommentAction = createAsyncThunk<ReviewComment, PostReview
   }
 );
 
-export const checkAuthAction = createAsyncThunk<void, undefined, AsyncThunkArguments>(
+export const checkAuthAction = createAsyncThunk<UserInfo, undefined, AsyncThunkArguments>(
   'user/checkAuth',
   async(_arg, {extra: api}) =>{
-    await api.get(APIRoute.Login);
+    const {data} = await api.get<UserInfo>(APIRoute.Login);
+    return data;
   }
 );
 
-export const loginAction = createAsyncThunk<void, AuthData, AsyncThunkArguments>(
+export const loginAction = createAsyncThunk<UserInfo, AuthData, AsyncThunkArguments>(
   'user/login',
   async ({login: email, password}, {dispatch, extra: api}) => {
-    const {data: {token}} = await api.post<UserData>(APIRoute.Login, {email, password});
-    saveToken(token);
+    const {data} = await api.post<UserInfo>(APIRoute.Login, {email, password});
+    saveToken(data.token);
     dispatch(redirectToRoute(AppRoute.Index));
+
+    return data;
   }
 );
 

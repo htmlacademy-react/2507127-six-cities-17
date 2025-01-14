@@ -1,5 +1,6 @@
 import { AuthorizationStatus, SortOption } from '../const';
 import { store } from '../store';
+import { UserInfo } from './api';
 import { ReviewComment } from './comments';
 import { FullOffer, OffersData } from './offers';
 
@@ -9,6 +10,7 @@ export type AppDispatch = typeof store.dispatch;
 
 export type UserProcess = {
   authorizationStatus: AuthorizationStatus;
+  userInfo: null | UserInfo;
 };
 
 export type AppData = {
