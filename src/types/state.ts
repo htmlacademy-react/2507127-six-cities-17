@@ -15,6 +15,7 @@ export type UserProcess = {
 
 export type AppData = {
   offers: OffersData[];
+  favoriteOffers: OffersData[];
   currentOffer: FullOffer | null;
   nearbyOffers: OffersData[];
   offerComments: ReviewComment[];

@@ -14,6 +14,14 @@ export const fetchOffersAction = createAsyncThunk<OffersData[], undefined, Async
   }
 );
 
+export const fetchFavoriteOffersAction = createAsyncThunk<OffersData[], undefined, AsyncThunkArguments>(
+  'data/fetchFavoriteOffers',
+  async(_arg, {extra: api}) => {
+    const {data} = await api.get<OffersData[]>(APIRoute.Favorite);
+    return data;
+  }
+);
+
 export const getOfferByIdAction = createAsyncThunk<FullOffer, string, AsyncThunkArguments>(
   'data/getOffer',
   async(id, {extra: api}) => {
