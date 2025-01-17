@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { AppData } from '../../types/state';
 import { NameSpace } from '../../const';
-import { fetchFavoriteOffersAction, fetchNearbyOffersAction, fetchOfferCommentsAction, fetchOffersAction, getOfferByIdAction } from '../api-actions';
+import { fetchNearbyOffersAction, fetchOfferCommentsAction, fetchOffersAction, getOfferByIdAction } from '../api-actions';
+import { toast } from 'react-toastify';
 
 const initialState: AppData = {
   offers: [],
-  favoriteOffers: [],
   currentOffer: null,
   nearbyOffers: [],
   offerComments: [],
@@ -31,17 +31,7 @@ export const appData = createSlice({
       })
       .addCase(fetchOffersAction.rejected, (state) => {
         state.isOffersDataLoading = false;
-      })
-
-      .addCase(fetchFavoriteOffersAction.pending, (state) => {
-        state.isOffersDataLoading = true;
-      })
-      .addCase(fetchFavoriteOffersAction.fulfilled, (state, action) => {
-        state.favoriteOffers = action.payload;
-        state.isOffersDataLoading = false;
-      })
-      .addCase(fetchFavoriteOffersAction.rejected, (state) => {
-        state.isOffersDataLoading = false;
+        toast.warn('Error while loading offers');
       })
 
       .addCase(getOfferByIdAction.pending, (state) => {

@@ -4,7 +4,7 @@ import Avatar from '../avatar/avatar';
 import { useAppSelector } from '../../../../hooks';
 import {selectUserInfo } from '../../../../store/user-process/user-process.selectors';
 import { UserInfo } from '../../../../types/api';
-import { selectFavoriteOffers } from '../../../../store/app-data/app-data.selectors';
+import { selectFavoriteOffers } from '../../../../store/favorite-process/favorite-process.selectors';
 
 function User():JSX.Element{
   const favoriteOffers = useAppSelector(selectFavoriteOffers);

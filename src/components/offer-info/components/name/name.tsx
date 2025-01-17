@@ -3,16 +3,16 @@ import BookmarkButton from '../../../common/bookmark-button/bookmark-button';
 
 type NameProps = {
   title: string;
-  isFavorite: boolean;
+  offerId: string;
 }
 
-function Name({title, isFavorite}:NameProps):JSX.Element{
+function Name({title, offerId}:NameProps):JSX.Element{
   return (
     <div className="offer__name-wrapper">
       <h1 className="offer__name">
         {title}
       </h1>
-      <BookmarkButton isFavorite={isFavorite} bookmarkClass={GeneralCategory.Offer}/>
+      <BookmarkButton offerId={offerId} bookmarkClass={GeneralCategory.Offer}/>
     </div>
   );
 }
