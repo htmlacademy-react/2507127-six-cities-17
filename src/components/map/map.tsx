@@ -1,7 +1,7 @@
 import {layerGroup} from 'leaflet';
 import { GeneralCategory } from '../../const';
 import { OffersData, PointCoordinates } from '../../types/offers';
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import useMap from '../../hooks/use-map';
 import 'leaflet/dist/leaflet.css';
 import { getCurrentCityData, getPointsData, getSelectedPoint } from '../../utils/offers';
@@ -18,10 +18,10 @@ type MapProps = {
 function Map({mapClass, offers}: MapProps):JSX.Element {
   const {id} = useParams();
   const activeOfferId = useAppSelector(selectActiveOfferId);
-  const shouldScrollWheelZoom = mapClass !== GeneralCategory.Offer;
+  const shouldScrollWheelZoom = useMemo(() => mapClass !== GeneralCategory.Offer, [mapClass]);
 
-  const city = getCurrentCityData(offers);
-  const points = getPointsData(offers);
+  const city = useMemo(() => getCurrentCityData(offers), [offers]);
+  const points = useMemo(() => getPointsData(offers), [offers]);
   const selectedPoint = activeOfferId !== null ? getSelectedPoint(offers, activeOfferId) : null;
 
   if (mapClass === GeneralCategory.Offer && id) {

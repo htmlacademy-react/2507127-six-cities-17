@@ -7,6 +7,7 @@ import { AppRoute, GeneralCategory } from '../../const';
 import { OffersData } from '../../types/offers';
 import { useAppDispatch } from '../../hooks';
 import { changeActiveOfferId } from '../../store/offers-process/offers-process.slice';
+import { useCallback } from 'react';
 
 type PlaceCardItemProps = {
   offer: OffersData;
@@ -27,11 +28,15 @@ function PlaceCardItem({offer, cardClass, isInteractiveMap = false}: PlaceCardIt
     isFavorite
   } = offer;
 
+  const handleMouseEnter = useCallback(() => isInteractiveMap && dispatch(changeActiveOfferId(id)), [isInteractiveMap, dispatch, id]);
+  const handleMouseLeave = useCallback(() => isInteractiveMap && dispatch(changeActiveOfferId(null)),
+    [isInteractiveMap, dispatch]);
+
   return (
     <article
       className={`${cardClass}__card place-card`}
-      onMouseEnter={() => isInteractiveMap && dispatch(changeActiveOfferId(id))}
-      onMouseLeave={() => isInteractiveMap && dispatch(changeActiveOfferId(null))}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       {isPremium && <Mark markClass={GeneralCategory.PlaceCard}/>}
       <div className={`${cardClass}__image-wrapper place-card__image-wrapper`}>
