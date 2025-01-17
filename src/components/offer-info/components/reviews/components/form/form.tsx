@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useCallback, useState } from 'react';
 import ButtonWrapper from './components/button-wrapper';
 import Label from './components/label';
 import Rating from './components/rating';
@@ -26,12 +26,12 @@ function Form():JSX.Element {
   && formData.review.length > FormReviewValue.Min
   && formData.review.length < FormReviewValue.Max;
 
-  const handleChangeRating = (evt: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeRating = useCallback((evt: ChangeEvent<HTMLInputElement>) => {
     setFormData((prev)=>({
       ...prev,
       rating: Number(evt.target.value)
     }));
-  };
+  }, []);
   const handleChangeReview = (evt: ChangeEvent<HTMLTextAreaElement>) => {
     setFormData((prev)=>({
       ...prev,
