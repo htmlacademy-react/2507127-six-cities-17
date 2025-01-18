@@ -1,4 +1,4 @@
-import { NameSpace } from '../../const';
+import { NameSpace, Status } from '../../const';
 import { OffersData } from '../../types/offers';
 import { State } from '../../types/state';
 
@@ -7,3 +7,5 @@ export const selectIsOfferFavorite = (state: State, offerId: string): boolean =>
 
 
 export const selectIsFavoriteOffersLoading = (state: State): boolean => state[NameSpace.Favorite].isFavoriteOffersLoading;
+export const selectUploadingFavoriteStatus = (state: State): Status => state[NameSpace.Favorite].uploadingFavoriteStatus;
+
