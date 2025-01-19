@@ -67,8 +67,9 @@ export const loginAction = createAsyncThunk<UserInfo, AuthData, AsyncThunkArgume
   async ({login: email, password}, {dispatch, extra: api}) => {
     const {data} = await api.post<UserInfo>(APIRoute.Login, {email, password});
     saveToken(data.token);
+    //Добавил загрузку избранных офферов, так как иначе они не загружались без обновления страницы
+    dispatch(fetchFavoriteOffersAction());
     dispatch(redirectToRoute(AppRoute.Index));
-
     return data;
   }
 );
