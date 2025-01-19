@@ -1,24 +1,15 @@
-import { FormEvent, useEffect, useRef } from 'react';
+import { FormEvent, useRef } from 'react';
 import { loginAction } from '../../store/api-actions';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppDispatch } from '../../hooks';
 import { useNavigate } from 'react-router-dom';
-import { AppRoute, AuthorizationStatus } from '../../const';
-import { selectAuthorizationStatus } from '../../store/selectors';
+import { AppRoute, PASSWORD_MIN_LENGTH } from '../../const';
 
 function LoginForm():JSX.Element {
   const loginRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
-  const authStatus = useAppSelector(selectAuthorizationStatus);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (authStatus === AuthorizationStatus.Auth){
-      navigate(AppRoute.Index);
-    }
-  }, [authStatus, navigate]);
-
 
   const handleFormSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
@@ -26,8 +17,13 @@ function LoginForm():JSX.Element {
     if (loginRef.current !== null && passwordRef.current !== null) {
       dispatch(loginAction({
         login: loginRef.current.value,
-        password: passwordRef.current.value
-      }));
+        password: passwordRef.current.value.replaceAll(' ', '')
+      }))
+        .then((response) => {
+          if (response.meta.requestStatus === 'fulfilled') {
+            navigate(AppRoute.Index);
+          }
+        });
     }
   };
 
@@ -54,6 +50,9 @@ function LoginForm():JSX.Element {
             type="password"
             name="password"
             placeholder="Password"
+            pattern='(?=.*\d)(?=.*[A-Za-z]).+'
+            title='Пароль должен содержать как минимум 1 букву(латиница) и 1 цифру'
+            minLength={PASSWORD_MIN_LENGTH}
             required
           />
         </div>

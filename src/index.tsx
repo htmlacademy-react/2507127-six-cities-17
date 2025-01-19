@@ -6,7 +6,8 @@ import { Provider } from 'react-redux';
 import { store } from './store';
 import { checkAuthAction, fetchOffersAction } from './store/api-actions';
 import { initLocalStorage } from './services/local-storage';
-import ErrorMessage from './components/error-message/error-message';
+import { ToastContainer } from 'react-toastify';
+import { TIMEOUT_SHOW_ERROR } from './const';
 
 
 const root = ReactDOM.createRoot(
@@ -21,7 +22,7 @@ initLocalStorage();
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ErrorMessage/>
+      <ToastContainer autoClose={TIMEOUT_SHOW_ERROR}/>
       <App
         comments={comments}
       />
