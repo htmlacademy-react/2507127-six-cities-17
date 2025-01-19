@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { AppData } from '../../types/state';
 import { NameSpace } from '../../const';
 import { fetchNearbyOffersAction, fetchOfferCommentsAction, fetchOffersAction, getOfferByIdAction } from '../api-actions';
+import { toast } from 'react-toastify';
 
 const initialState: AppData = {
   offers: [],
@@ -30,6 +31,7 @@ export const appData = createSlice({
       })
       .addCase(fetchOffersAction.rejected, (state) => {
         state.isOffersDataLoading = false;
+        toast.warn('Error while loading offers');
       })
 
       .addCase(getOfferByIdAction.pending, (state) => {

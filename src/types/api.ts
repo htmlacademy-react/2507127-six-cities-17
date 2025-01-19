@@ -6,6 +6,11 @@ export type AuthData = {
   password: string;
 }
 
+export type FavoriteData = {
+  offerId: string;
+  isFavorite: boolean;
+}
+
 export type UserInfo = {
   avatarUrl: string;
   email: string;

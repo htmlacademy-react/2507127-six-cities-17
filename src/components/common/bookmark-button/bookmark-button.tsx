@@ -1,26 +1,49 @@
-import { GeneralCategory } from '../../../const';
+import { useNavigate } from 'react-router-dom';
+import { AppRoute, AuthorizationStatus, GeneralCategory } from '../../../const';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { selectIsOfferFavorite } from '../../../store/favorite-process/favorite-process.selectors';
 import { BookmarkSettings } from './bookmark-settings';
 import cn from 'classnames';
+import { selectAuthorizationStatus } from '../../../store/user-process/user-process.selectors';
+import { useMemo } from 'react';
+import { uploadFavoriteStatusAction } from '../../../store/api-actions';
 
 type BookmarkButtonProps = {
   bookmarkClass: GeneralCategory;
-  isFavorite: boolean;
+  offerId: string;
 }
 
-function BookmarkButton({bookmarkClass, isFavorite}: BookmarkButtonProps): JSX.Element{
+function BookmarkButton({bookmarkClass, offerId}: BookmarkButtonProps): JSX.Element{
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const authStatus = useAppSelector(selectAuthorizationStatus);
+
+  const isAuthorized = useMemo(() => authStatus === AuthorizationStatus.Auth, [authStatus]);
+  const isFavorite = useAppSelector((state) => selectIsOfferFavorite(state, offerId));
+
+  const handleButtonClick = () => {
+    if(isAuthorized) {
+      dispatch(uploadFavoriteStatusAction({offerId, isFavorite}));
+    } else {
+      navigate(AppRoute.Login);
+    }
+  };
+
   return (
     <button className={
       cn(
         `${bookmarkClass}__bookmark-button`,
         'button',
-        {[`${bookmarkClass}__bookmark-button--active`]: isFavorite}
+        {[`${bookmarkClass}__bookmark-button--active`]: isFavorite && isAuthorized}
       )
-    } type="button"
+    }
+    onClick={handleButtonClick}
+    type="button"
     >
       <svg className={`${bookmarkClass}__bookmark-icon`} width={BookmarkSettings[bookmarkClass].width} height={BookmarkSettings[bookmarkClass].height}>
         <use xlinkHref="#icon-bookmark"></use>
       </svg>
-      <span className="visually-hidden">To bookmarks</span>
+      <span className="visually-hidden">{isFavorite && isAuthorized ? 'In bookmarks' : 'To bookmarks'}</span>
     </button>
   );
 }

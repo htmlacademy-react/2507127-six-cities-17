@@ -31,7 +31,11 @@ function App(): JSX.Element{
               <Route index element={<MainPage/>}/>
               <Route
                 path={AppRoute.Login}
-                element={<LoginPage/>}
+                element={
+                  <PrivateRoute isLogin>
+                    <LoginPage/>
+                  </PrivateRoute>
+                }
               />
               <Route
                 path={AppRoute.Offer}

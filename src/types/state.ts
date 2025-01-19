@@ -1,4 +1,4 @@
-import { AuthorizationStatus, SortOption } from '../const';
+import { AuthorizationStatus, SortOption, Status } from '../const';
 import { store } from '../store';
 import { UserInfo } from './api';
 import { ReviewComment } from './comments';
@@ -23,6 +23,13 @@ export type AppData = {
   isOfferLoading: boolean;
   isCommentsLoading: boolean;
   isNearbyOffersLoading: boolean;
+}
+
+export type FavoriteProcess = {
+  favoriteOffers: OffersData[];
+
+  isFavoriteOffersLoading: boolean;
+  uploadingFavoriteStatus: Status;
 }
 
 export type OffersProcess = {
