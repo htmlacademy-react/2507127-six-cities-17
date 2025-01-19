@@ -1,4 +1,4 @@
-import { GeneralCategory } from '../../../const';
+import { GeneralCategory, STAR_RATING_MULTIPLIER } from '../../../const';
 import { RatingSettings } from './rating-settings';
 
 type RatingProps = {
@@ -7,7 +7,7 @@ type RatingProps = {
 }
 
 function Rating({ratingClass, rating}: RatingProps):JSX.Element{
-  const starsStyle = rating && {width: `${20 * rating}%`};
+  const starsStyle = rating && {width: `${STAR_RATING_MULTIPLIER * Math.round(rating)}%`};
 
   return (
     <div className={`${ratingClass}__rating rating`}>

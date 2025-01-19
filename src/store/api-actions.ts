@@ -1,10 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { FullOffer, OffersData } from '../types/offers';
-import { APIRoute, AuthorizationStatus } from '../const';
-import { requireAuthorization } from './action';
+import { APIRoute, AppRoute,} from '../const';
 import { dropToken, saveToken } from '../services/token';
-import { AsyncThunkArguments, AuthData, UserData } from '../types/api';
+import { AsyncThunkArguments, AuthData, UserInfo } from '../types/api';
 import { PostReviewComment, ReviewComment } from '../types/comments';
+import { redirectToRoute } from './action';
 
 export const fetchOffersAction = createAsyncThunk<OffersData[], undefined, AsyncThunkArguments>(
   'data/fetchOffers',
@@ -46,27 +46,29 @@ export const postOfferCommentAction = createAsyncThunk<ReviewComment, PostReview
   }
 );
 
-export const checkAuthAction = createAsyncThunk<void, undefined, AsyncThunkArguments>(
+export const checkAuthAction = createAsyncThunk<UserInfo, undefined, AsyncThunkArguments>(
   'user/checkAuth',
   async(_arg, {extra: api}) =>{
-    await api.get(APIRoute.Login);
+    const {data} = await api.get<UserInfo>(APIRoute.Login);
+    return data;
   }
 );
 
-export const loginAction = createAsyncThunk<void, AuthData, AsyncThunkArguments>(
+export const loginAction = createAsyncThunk<UserInfo, AuthData, AsyncThunkArguments>(
   'user/login',
   async ({login: email, password}, {dispatch, extra: api}) => {
-    const {data: {token}} = await api.post<UserData>(APIRoute.Login, {email, password});
-    saveToken(token);
-    dispatch(requireAuthorization(AuthorizationStatus.Auth));
+    const {data} = await api.post<UserInfo>(APIRoute.Login, {email, password});
+    saveToken(data.token);
+    dispatch(redirectToRoute(AppRoute.Index));
+
+    return data;
   }
 );
 
 export const logoutAction = createAsyncThunk<void, undefined, AsyncThunkArguments>(
   'user/logout',
-  async(_arg, {dispatch, extra: api}) => {
+  async(_arg, {extra: api}) => {
     await api.delete(APIRoute.Logout);
     dropToken();
-    dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
   }
 );

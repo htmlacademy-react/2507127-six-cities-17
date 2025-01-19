@@ -10,7 +10,6 @@ type CitiesProps = {
 }
 
 function Cities({filteredOFfers, currentCity}: CitiesProps):JSX.Element {
-
   return (
     <div className="cities">
       <div className="cities__places-container container">

@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import SortOffersList from '../sort-offers-list/sort-offers-list';
 import { useAppSelector } from '../../hooks';
-import { selectCurrentSortOffers } from '../../store/selectors';
+import { selectCurrentSortOffers } from '../../store/offers-process/offers-process.selectors';
 
-function PlacesSortForm(): JSX.Element{
+const PlacesSortForm = memo((): JSX.Element => {
   const sortSpanRef = useRef<HTMLElement>(null);
   const currentSort = useAppSelector(selectCurrentSortOffers);
   const [showSort, setShowSort] = useState(false);
@@ -37,8 +37,9 @@ function PlacesSortForm(): JSX.Element{
       </span>
       <SortOffersList showSort={showSort}/>
     </form>
-
   );
-}
+});
+
+PlacesSortForm.displayName = 'PlacesSortForm';
 
 export default PlacesSortForm;

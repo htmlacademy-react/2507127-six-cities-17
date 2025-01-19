@@ -2,8 +2,15 @@ export const SITE_NAME = '6 cities';
 export const MAX_REVIEWS = 10;
 export const TIMEOUT_SHOW_ERROR = 3000;
 export const PASSWORD_MIN_LENGTH = 2;
+export const STAR_RATING_MULTIPLIER = 20;
 
 export const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
+
+export enum NameSpace {
+  Data = 'DATA',
+  User = 'USER',
+  Offers = 'OFFERS'
+}
 
 export enum SortOption {
   Popular = 'Popular',
