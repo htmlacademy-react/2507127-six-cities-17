@@ -1,8 +1,8 @@
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import cn from 'classnames';
-import { changeSortOffers } from '../../store/action';
 import { SortOption } from '../../const';
-import { selectCurrentSortOffers } from '../../store/selectors';
+import { selectCurrentSortOffers } from '../../store/offers-process/offers-process.selectors';
+import { changeSortOffers } from '../../store/offers-process/offers-process.slice';
 
 type SortOffersItemProps = {
   sortOption: string;

@@ -2,9 +2,10 @@ import cn from 'classnames';
 import LocationsList from '../locations-list/locations-list';
 import Cities from '../cities/cities';
 import { useAppSelector } from '../../hooks';
-import { selectCity, selectCurrentSortOffers, selectOffers } from '../../store/selectors';
 import { getFilteredOffers } from '../../utils/offers';
 import { sortOffers } from '../../utils/sort';
+import { selectCity, selectCurrentSortOffers } from '../../store/offers-process/offers-process.selectors';
+import { selectOffers } from '../../store/app-data/app-data.selectors';
 
 function MainPageContent():JSX.Element {
   const currentCity = useAppSelector(selectCity);
@@ -22,7 +23,7 @@ function MainPageContent():JSX.Element {
     )}
     >
       <h1 className="visually-hidden">Cities</h1>
-      <LocationsList currentCity={currentCity} />
+      <LocationsList currentCity={currentCity}/>
       <Cities filteredOFfers={sortedOffers} currentCity={currentCity}/>
     </main>
   );

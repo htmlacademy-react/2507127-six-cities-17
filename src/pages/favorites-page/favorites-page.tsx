@@ -4,7 +4,7 @@ import Header from '../../components/header/header';
 import Title from '../../components/title/title';
 import { PagesList } from '../../const';
 import { useAppSelector } from '../../hooks';
-import { selectOffers } from '../../store/selectors';
+import { selectOffers } from '../../store/app-data/app-data.selectors';
 
 
 function FavoritesPage(): JSX.Element{

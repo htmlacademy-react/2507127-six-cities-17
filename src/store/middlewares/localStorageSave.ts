@@ -1,17 +1,18 @@
 import { Middleware, PayloadAction } from '@reduxjs/toolkit';
-import { reducer } from '../reducer';
+import { rootReducer } from '../root-reducer';
+import { changeCity, changeSortOffers } from '../offers-process/offers-process.slice';
 
-type Reducer = ReturnType<typeof reducer>;
+type Reducer = ReturnType<typeof rootReducer>;
 
 export const localStorageSave: Middleware<unknown, Reducer> =
   () =>
     (next) =>
       (action: PayloadAction<string>) => {
         switch(action.type){
-          case 'city/changeCurrentCity':
+          case `${changeCity.type}`:
             localStorage.setItem('currentCity', JSON.stringify(action.payload));
             break;
-          case 'offers/changeSortOffers':
+          case `${changeSortOffers.type}`:
             localStorage.setItem('currentSortOffers', JSON.stringify(action.payload));
             break;
         }

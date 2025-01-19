@@ -1,4 +1,4 @@
-import {Route, Routes, BrowserRouter} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
 import { AppRoute } from '../../const';
 import MainPage from '../../pages/main-page/main-page';
@@ -9,8 +9,10 @@ import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
 import ScrollToTopWrapper from '../scroll-to-top-wrapper/scroll-to-top-wrapper';
 import { useAppSelector } from '../../hooks';
-import { selectIsOffersDataLoading } from '../../store/selectors';
 import LoadingScreen from '../common/loading-screen/loading-screen';
+import { selectIsOffersDataLoading } from '../../store/app-data/app-data.selectors';
+import HistoryRouter from '../history-route/history-router';
+import browserHistory from '../../browser-history';
 
 
 function App(): JSX.Element{
@@ -22,7 +24,7 @@ function App(): JSX.Element{
 
   return (
     <HelmetProvider>
-      <BrowserRouter>
+      <HistoryRouter history={browserHistory}>
         <ScrollToTopWrapper>
           <Routes>
             <Route path={AppRoute.Index}>
@@ -50,7 +52,7 @@ function App(): JSX.Element{
             />
           </Routes>
         </ScrollToTopWrapper>
-      </BrowserRouter>
+      </HistoryRouter>
     </HelmetProvider>
   );
 }

@@ -6,6 +6,14 @@ export type AuthData = {
   password: string;
 }
 
+export type UserInfo = {
+  avatarUrl: string;
+  email: string;
+  isPro: boolean;
+  falsename: string;
+  token: string;
+}
+
 export type UserData = {
   id: number;
   email: string;

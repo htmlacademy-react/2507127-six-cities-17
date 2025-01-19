@@ -1,8 +1,8 @@
 import { useAppSelector } from '../../hooks';
-import { selectAuthorizationStatus } from '../../store/selectors';
 import User from './components/user/user';
 import Login from './components/login/login';
 import { AuthorizationStatus } from '../../const';
+import { selectAuthorizationStatus } from '../../store/user-process/user-process.selectors';
 
 function HeaderNav(): JSX.Element{
   const authorizationStatus = useAppSelector(selectAuthorizationStatus);
