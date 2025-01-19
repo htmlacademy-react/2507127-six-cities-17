@@ -10,6 +10,12 @@ export type LocationType = {
   zoom: number;
 };
 
+export type HostType = {
+  name: string;
+  avatarUrl: string;
+  isPro: boolean;
+};
+
 export type OffersData = {
   id: string;
   title: string;
@@ -22,6 +28,17 @@ export type OffersData = {
   isPremium: boolean;
   rating: number;
 }
+
+export type descriptionOfferData = {
+  description: string;
+  bedrooms: number;
+  goods: [string];
+  host: HostType;
+  images: [string];
+  maxAdults: number;
+}
+
+export type FullOffer = Omit<OffersData, 'previewImage'> & descriptionOfferData
 
 export type PointCoordinates = {
   id: string;

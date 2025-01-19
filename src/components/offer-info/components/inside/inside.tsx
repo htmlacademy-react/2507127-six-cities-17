@@ -1,5 +1,8 @@
 import { nanoid } from 'nanoid';
-import { OfferInsideItems } from '../../../../const';
+
+type InsideProps = {
+  goods: string[];
+}
 
 type InsideItemProps = {
   itemName: string;
@@ -9,8 +12,8 @@ function InsideItem({itemName}: InsideItemProps):JSX.Element{
   return (<li className="offer__inside-item">{itemName}</li>);
 }
 
-function Inside():JSX.Element{
-  const insideItems = Object.values(OfferInsideItems).map((name)=> <InsideItem key={nanoid()} itemName={name}/>);
+function Inside({goods}: InsideProps):JSX.Element{
+  const insideItems = goods.map((name)=> <InsideItem key={nanoid()} itemName={name}/>);
 
   return (
     <div className="offer__inside">

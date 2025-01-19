@@ -1,23 +1,27 @@
 import { nanoid } from 'nanoid';
 
 type OfferGalleryProps = {
-  GalleryImagesCount: number;
+  images: string[];
 }
 
-function OfferGalleryItem():JSX.Element{
+type OfferGalleryItemProps = {
+  url: string;
+}
+
+function OfferGalleryItem({url}: OfferGalleryItemProps):JSX.Element{
   return (
     <div className="offer__image-wrapper">
       <img
         className="offer__image"
-        src="img/room.jpg"
-        alt="Photo studio"
+        src={url}
+        // alt="Photo studio"
       />
     </div>
   );
 }
 
-function OfferGallery({GalleryImagesCount}: OfferGalleryProps):JSX.Element{
-  const galleryList = Array.from({length:GalleryImagesCount}).map(() => <OfferGalleryItem key={nanoid()}/>);
+function OfferGallery({images}: OfferGalleryProps):JSX.Element{
+  const galleryList = images.map((url) => <OfferGalleryItem url={url} key={nanoid()}/>);
 
   return (
     <div className="offer__gallery-container container">
