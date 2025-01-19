@@ -4,7 +4,7 @@ import Title from '../../components/title/title';
 import { useAppDispatch } from '../../hooks';
 import { useEffect } from 'react';
 import { changeActiveOfferId } from '../../store/action';
-import MainContent from '../../components/main-content/main-content';
+import MainPageContent from '../../components/main-page-content/main-page-content';
 
 function MainPage(): JSX.Element{
   const dispatch = useAppDispatch();
@@ -17,7 +17,7 @@ function MainPage(): JSX.Element{
     <div className="page page--gray page--main">
       <Title pageName={PagesList.Main}/>
       <Header/>
-      <MainContent/>
+      <MainPageContent/>
     </div>
   );
 }

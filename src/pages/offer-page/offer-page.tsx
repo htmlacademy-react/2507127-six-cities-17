@@ -1,43 +1,33 @@
-import { useParams } from 'react-router-dom';
 import Header from '../../components/header/header';
-import NearPlaces from '../../components/near-places/near-places';
-import OfferGallery from '../../components/offer-gallery/offer-gallery';
-import OfferInfo from '../../components/offer-info/offer-info';
 import Title from '../../components/title/title';
-import { GeneralCategory, PagesList } from '../../const';
-import { OffersData } from '../../types/offers';
-import { ReviewComment } from '../../types/comments';
-import Map from '../../components/map/map';
-import { getNearOffers } from '../../utils/offers';
+import { PagesList } from '../../const';
+import OfferPageContent from '../../components/offer-page-content/offer-page-content';
+import { useOfferInfo } from '../../hooks/use-offer-info';
+import NotFoundPage from '../not-found-page/not-found-page';
 import { useAppSelector } from '../../hooks';
-import { selectOffers } from '../../store/selectors';
+import { selectIsNearbyOffersLoading, selectIsOfferLoading, selectOffer } from '../../store/selectors';
+import LoadingScreen from '../../components/common/loading-screen/loading-screen';
 
-type OfferPageProps = {
-  comments: ReviewComment[];
-  galleryImagesCount: number;
-}
+function OfferPage(): JSX.Element{
+  const isOfferLoading = useAppSelector(selectIsOfferLoading);
+  const isNearbyOffersLoading = useAppSelector(selectIsNearbyOffersLoading);
+  const currentOffer = useAppSelector(selectOffer);
 
-function OfferPage({comments, galleryImagesCount, }: OfferPageProps): JSX.Element{
-  const offers = useAppSelector(selectOffers);
-  const {id} = useParams();
+  const [slicedNearbyOffers] = useOfferInfo();
 
-  const currentOffer = offers.find((item) => item.id === id);
-  const nearOffers = getNearOffers(offers, id);
+  if (isOfferLoading || isNearbyOffersLoading) {
+    return <LoadingScreen />;
+  }
+
+  if (!currentOffer) {
+    return <NotFoundPage/>;
+  }
 
   return (
     <div className="page">
       <Title pageName={PagesList.Offer}/>
       <Header/>
-      <main className="page__main page__main--offer">
-        <section className="offer">
-          <OfferGallery GalleryImagesCount={galleryImagesCount}/>
-          <OfferInfo comments={comments} offer={currentOffer as OffersData}/>
-          <Map mapClass={GeneralCategory.Offer} offers={nearOffers as OffersData[]}/>
-        </section>
-        <div className="container">
-          <NearPlaces offers={nearOffers as OffersData[]}/>
-        </div>
-      </main>
+      <OfferPageContent currentOffer={currentOffer} nearbyOffers={slicedNearbyOffers}/>
     </div>
   );
 }

@@ -7,10 +7,12 @@ type RatingProps = {
 }
 
 function Rating({ratingClass, rating}: RatingProps):JSX.Element{
+  const starsStyle = rating && {width: `${20 * rating}%`};
+
   return (
     <div className={`${ratingClass}__rating rating`}>
       <div className={`${ratingClass}__stars rating__stars`}>
-        <span style={RatingSettings[ratingClass].style} />
+        <span style={starsStyle || RatingSettings[ratingClass].style}/>
         <span className="visually-hidden">Rating</span>
       </div>
       {RatingSettings[ratingClass].ratingValue &&

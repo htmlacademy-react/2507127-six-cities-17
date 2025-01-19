@@ -8,12 +8,12 @@ type InfoProps = {
 }
 
 function Info({comment}: InfoProps):JSX.Element {
-  const {comment: text, date} = comment;
+  const {comment: text, date, rating} = comment;
 
   const formattedDate = getFormattedDate(date);
   return (
     <div className="reviews__info">
-      <Rating ratingClass={GeneralCategory.Reviews}/>
+      <Rating rating={rating} ratingClass={GeneralCategory.Reviews}/>
       <p className="reviews__text">
         {text}
       </p>

@@ -11,3 +11,5 @@ export type ReviewComment = {
   comment: string;
   rating: number;
 }
+
+export type PostReviewComment = Pick<ReviewComment, 'id' | 'comment' | 'rating'>

@@ -1,7 +1,7 @@
 import { ReviewComment } from '../types/comments';
 
 function getSortedComments(comments: ReviewComment[], maxLength: number): ReviewComment[]{
-  const sortedComments = comments.sort((commentA, commentB) => {
+  const sortedComments = [...comments].sort((commentA, commentB) => {
     const commentADate = new Date(commentA.date).getTime();
     const commentBDate = new Date(commentB.date).getTime();
     return commentBDate - commentADate;
