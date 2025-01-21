@@ -1,8 +1,10 @@
+import { memo } from 'react';
+
 type ButtonType = {
   isDisabled: boolean;
 }
 
-function Button({isDisabled}: ButtonType):JSX.Element {
+function ButtonTemplate({isDisabled}: ButtonType):JSX.Element {
   return(
     <button
       className="reviews__submit form__submit button"
@@ -13,5 +15,7 @@ function Button({isDisabled}: ButtonType):JSX.Element {
     </button>
   );
 }
+
+const Button = memo(ButtonTemplate);
 
 export default Button;

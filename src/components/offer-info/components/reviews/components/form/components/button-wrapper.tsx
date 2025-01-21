@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { FormReviewValue } from '../../../../../../../const';
 import Button from './button';
 
@@ -5,7 +6,7 @@ type ButtonWrapperType = {
   isDisabled: boolean;
 }
 
-function ButtonWrapper({isDisabled}: ButtonWrapperType):JSX.Element {
+function ButtonWrapperTemplate({isDisabled}: ButtonWrapperType):JSX.Element {
   return(
     <div className="reviews__button-wrapper">
       <p className="reviews__help">
@@ -18,5 +19,7 @@ function ButtonWrapper({isDisabled}: ButtonWrapperType):JSX.Element {
     </div>
   );
 }
+
+const ButtonWrapper = memo(ButtonWrapperTemplate);
 
 export default ButtonWrapper;

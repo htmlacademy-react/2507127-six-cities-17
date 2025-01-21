@@ -60,8 +60,8 @@ function Form():JSX.Element {
     <form onSubmit={handleSubmitForm} action="#" method="post">
       <fieldset className="reviews__form form" disabled={disableForm} style={{border:'none'}}>
         <Label/>
-        <Rating formData={formData} onHandleRatingChange={handleChangeRating}/>
-        <Text formData={formData} onHandleChangeReview={handleChangeReview}/>
+        <Rating rating={formData.rating} onHandleRatingChange={handleChangeRating}/>
+        <Text reviewText={formData.review} onHandleChangeReview={handleChangeReview}/>
         <ButtonWrapper isDisabled={isDisabled}/>
       </fieldset>
     </form>

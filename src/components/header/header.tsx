@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import Logo from '../common/logo/logo';
 import HeaderNav from '../header-nav/header-nav';
 
@@ -5,7 +6,7 @@ type HeaderProps = {
   isLoginPage?: boolean;
 }
 
-function Header({isLoginPage = false}: HeaderProps): JSX.Element {
+function HeaderTemplate({isLoginPage = false}: HeaderProps): JSX.Element {
   return (
     <header className="header">
       <div className="container">
@@ -19,5 +20,7 @@ function Header({isLoginPage = false}: HeaderProps): JSX.Element {
     </header>
   );
 }
+
+const Header = memo(HeaderTemplate);
 
 export default Header;
