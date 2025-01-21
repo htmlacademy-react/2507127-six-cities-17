@@ -14,10 +14,10 @@ export enum Status {
 }
 
 export enum NameSpace {
-  Data = 'DATA',
-  Favorite = 'FAVORTITE',
-  User = 'USER',
-  Offers = 'OFFERS'
+  Data = 'data',
+  Favorite = 'favorite',
+  User = 'user',
+  Offers = 'offers'
 }
 
 export enum SortOption {
