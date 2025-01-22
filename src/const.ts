@@ -17,7 +17,8 @@ export enum NameSpace {
   Data = 'data',
   Favorite = 'favorite',
   User = 'user',
-  Offers = 'offers'
+  Offers = 'offers',
+  Comment = 'comment',
 }
 
 export enum SortOption {

@@ -17,11 +17,9 @@ export type AppData = {
   offers: OffersData[];
   currentOffer: FullOffer | null;
   nearbyOffers: OffersData[];
-  offerComments: ReviewComment[];
 
   isOffersDataLoading: boolean;
   isOfferLoading: boolean;
-  isCommentsLoading: boolean;
   isNearbyOffersLoading: boolean;
 }
 
@@ -36,4 +34,13 @@ export type OffersProcess = {
   currentCity: string;
   activeOfferId: null | string;
   currentSortOffers: SortOption;
+
+  isCommentLoading: boolean;
+}
+
+export type CommentProcess = {
+  offerComments: ReviewComment[];
+
+  isCommentsLoading: boolean;
+  isCommentAdding: boolean;
 }

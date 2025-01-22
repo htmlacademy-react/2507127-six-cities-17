@@ -9,7 +9,7 @@ function ButtonTemplate({isDisabled}: ButtonType):JSX.Element {
     <button
       className="reviews__submit form__submit button"
       type="submit"
-      disabled={!isDisabled}
+      disabled={isDisabled}
     >
                   Submit
     </button>

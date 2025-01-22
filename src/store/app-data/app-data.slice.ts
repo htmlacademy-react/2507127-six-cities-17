@@ -1,18 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { AppData } from '../../types/state';
 import { NameSpace } from '../../const';
-import { fetchNearbyOffersAction, fetchOfferCommentsAction, fetchOffersAction, getOfferByIdAction } from '../api-actions';
+import { fetchNearbyOffersAction, fetchOffersAction, getOfferByIdAction } from '../api-actions';
 import { toast } from 'react-toastify';
 
 const initialState: AppData = {
   offers: [],
   currentOffer: null,
   nearbyOffers: [],
-  offerComments: [],
 
   isOffersDataLoading: false,
   isOfferLoading: false,
-  isCommentsLoading: false,
   isNearbyOffersLoading: false,
 };
 
@@ -54,17 +52,6 @@ export const appData = createSlice({
       })
       .addCase(fetchNearbyOffersAction.rejected, (state) => {
         state.isNearbyOffersLoading = false;
-      })
-
-      .addCase(fetchOfferCommentsAction.pending, (state) => {
-        state.isCommentsLoading = true;
-      })
-      .addCase(fetchOfferCommentsAction.fulfilled, (state, action) => {
-        state.offerComments = action.payload;
-        state.isCommentsLoading = false;
-      })
-      .addCase(fetchOfferCommentsAction.rejected, (state) => {
-        state.isCommentsLoading = false;
       });
   },
 });

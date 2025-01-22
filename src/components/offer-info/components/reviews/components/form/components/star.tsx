@@ -1,5 +1,7 @@
 import { memo, useMemo } from 'react';
 import { onHandleRatingChangeType } from '../../../../../../../types/handlers';
+import { useAppSelector } from '../../../../../../../hooks';
+import { selectIsCommentAdding } from '../../../../../../../store/comment-process/comment-process.selectors';
 
 type InputProps = {
   starNumber: number;
@@ -10,6 +12,7 @@ type InputProps = {
 
 function StarTemplate({starNumber, gradation, onHandleRatingChange, rating}: InputProps):JSX.Element {
   const isChecked = useMemo(() => !!(rating && starNumber === rating), [rating, starNumber]);
+  const isCommentLoading = useAppSelector(selectIsCommentAdding);
 
   return (
     <>
@@ -20,6 +23,7 @@ function StarTemplate({starNumber, gradation, onHandleRatingChange, rating}: Inp
         type="radio"
         onChange={onHandleRatingChange}
         checked={isChecked}
+        disabled={isCommentLoading}
       />
       <label
         htmlFor={`${starNumber}-stars`}
