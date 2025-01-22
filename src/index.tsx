@@ -14,10 +14,9 @@ const root = ReactDOM.createRoot(
 );
 
 store.dispatch(checkAuthAction())
-  .then((response) => {
-    if (response.meta.requestStatus === 'fulfilled') {
-      store.dispatch(fetchFavoriteOffersAction());
-    }
+  .unwrap()
+  .then(() => {
+    store.dispatch(fetchFavoriteOffersAction());
   });
 
 store.dispatch(fetchOffersAction());

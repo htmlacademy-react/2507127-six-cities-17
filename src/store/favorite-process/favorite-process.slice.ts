@@ -42,6 +42,7 @@ export const favoriteProcess = createSlice({
       })
       .addCase(uploadFavoriteStatusAction.rejected, (state) => {
         state.uploadingFavoriteStatus = Status.Error;
+        state.uploadingFavoriteStatus = Status.Idle;
       });
   },
 });

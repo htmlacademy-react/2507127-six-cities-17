@@ -5,7 +5,7 @@ import { selectIsOfferFavorite } from '../../../store/favorite-process/favorite-
 import { BookmarkSettings } from './bookmark-settings';
 import cn from 'classnames';
 import { selectAuthorizationStatus } from '../../../store/user-process/user-process.selectors';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { uploadFavoriteStatusAction } from '../../../store/api-actions';
 
 type BookmarkButtonProps = {
@@ -17,20 +17,25 @@ function BookmarkButton({bookmarkClass, offerId}: BookmarkButtonProps): JSX.Elem
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const authStatus = useAppSelector(selectAuthorizationStatus);
+  const [disableButton, setDisableButton] = useState<boolean>(false);
 
   const isAuthorized = useMemo(() => authStatus === AuthorizationStatus.Auth, [authStatus]);
   const isFavorite = useAppSelector((state) => selectIsOfferFavorite(state, offerId));
 
   const handleButtonClick = () => {
     if(isAuthorized) {
-      dispatch(uploadFavoriteStatusAction({offerId, isFavorite}));
+      setDisableButton(true);
+      dispatch(uploadFavoriteStatusAction({offerId, isFavorite}))
+        .finally(() => {
+          setDisableButton(false);
+        });
     } else {
       navigate(AppRoute.Login);
     }
   };
 
   return (
-    <button className={
+    <button disabled={disableButton} className={
       cn(
         `${bookmarkClass}__bookmark-button`,
         'button',
