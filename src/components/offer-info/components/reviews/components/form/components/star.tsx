@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 import { onHandleRatingChangeType } from '../../../../../../../types/handlers';
 
 type InputProps = {
@@ -9,18 +9,17 @@ type InputProps = {
 }
 
 function StarTemplate({starNumber, gradation, onHandleRatingChange, rating}: InputProps):JSX.Element {
-  const isChecked = !!(rating && starNumber <= rating);
-  const starColor = isChecked ? '#ff9000' : '#c7c7c7';
+  const isChecked = useMemo(() => !!(rating && starNumber === rating), [rating, starNumber]);
 
   return (
     <>
       <input
         className="form__rating-input visually-hidden"
-        name="rating"
-        defaultValue={starNumber}
+        value={starNumber}
         id={`${starNumber}-stars`}
         type="radio"
         onChange={onHandleRatingChange}
+        checked={isChecked}
       />
       <label
         htmlFor={`${starNumber}-stars`}
@@ -28,7 +27,7 @@ function StarTemplate({starNumber, gradation, onHandleRatingChange, rating}: Inp
         title={gradation}
       >
         <svg className="form__star-image" width={37} height={33}>
-          <use xlinkHref="#icon-star" fill={starColor}/>
+          <use xlinkHref="#icon-star" />
         </svg>
       </label>
     </>

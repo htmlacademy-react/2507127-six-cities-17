@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import { GeneralCategory } from '../../const';
 import { OffersData } from '../../types/offers';
 import CitiesEmptyPlaces from '../cities-empty-places/cities-empty-places';
@@ -12,8 +13,13 @@ type CitiesProps = {
 function Cities({filteredOFfers, currentCity}: CitiesProps):JSX.Element {
   return (
     <div className="cities">
-      <div className="cities__places-container container">
-        {filteredOFfers.length > 0
+      <div className={cn(
+        'cities__places-container',
+        {'cities__places-container--empty': !filteredOFfers.length},
+        'container',
+      )}
+      >
+        {filteredOFfers.length
           ? <CitiesPlaces filteredOFfers={filteredOFfers} />
           : <CitiesEmptyPlaces currentCity={currentCity}/>}
 
