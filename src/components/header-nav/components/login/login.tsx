@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../../../const';
 import Avatar from '../avatar/avatar';
 import { useAppDispatch } from '../../../../hooks';
@@ -10,9 +10,12 @@ type LoginProps = {
 
 function Login({authorizationStatus}: LoginProps):JSX.Element{
   const dispatch = useAppDispatch();
+  const {pathname} = useLocation();
 
   const authorized = authorizationStatus === AuthorizationStatus.Auth;
-  const route = authorized ? AppRoute.Index : AppRoute.Login;
+  const isPrivatePage = pathname === String(AppRoute.Favorites);
+  const logoutRoute = isPrivatePage ? AppRoute.Index : pathname;
+  const route = authorized ? logoutRoute : AppRoute.Login;
 
   const handleLinkLogout = () => {
     if (authorized) {

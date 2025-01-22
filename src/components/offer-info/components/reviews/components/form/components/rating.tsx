@@ -1,18 +1,20 @@
+import { memo } from 'react';
 import { onHandleRatingChangeType } from '../../../../../../../types/handlers';
-import { FormReviewType } from '../../../../../../../types/types';
 import StarsList from './stars-list';
 
 type RatingProps = {
   onHandleRatingChange: onHandleRatingChangeType;
-  formData: FormReviewType;
+  rating: null | number;
 }
 
-function Rating({onHandleRatingChange, formData}: RatingProps):JSX.Element {
+function RatingTemplate({onHandleRatingChange, rating}: RatingProps):JSX.Element {
   return (
     <div className="reviews__rating-form form__rating">
-      <StarsList formData={formData} onHandleRatingChange={onHandleRatingChange}/>
+      <StarsList rating={rating} onHandleRatingChange={onHandleRatingChange}/>
     </div>
   );
 }
+
+const Rating = memo(RatingTemplate);
 
 export default Rating;

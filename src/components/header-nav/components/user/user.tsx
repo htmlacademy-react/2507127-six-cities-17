@@ -4,8 +4,10 @@ import Avatar from '../avatar/avatar';
 import { useAppSelector } from '../../../../hooks';
 import {selectUserInfo } from '../../../../store/user-process/user-process.selectors';
 import { UserInfo } from '../../../../types/api';
+import { selectFavoriteOffers } from '../../../../store/favorite-process/favorite-process.selectors';
 
 function User():JSX.Element{
+  const favoriteOffers = useAppSelector(selectFavoriteOffers);
   const {email, avatarUrl} = useAppSelector(selectUserInfo) as UserInfo;
 
   return (
@@ -18,7 +20,7 @@ function User():JSX.Element{
         <span className="header__user-name user__name">
           {email}
         </span>
-        <span className="header__favorite-count">3</span>
+        <span className="header__favorite-count">{favoriteOffers.length}</span>
       </Link>
     </li>
   );

@@ -2,15 +2,15 @@ import Header from '../../components/header/header';
 import LocationsItem from '../../components/locations-item/locations-item';
 import LoginForm from '../../components/login-form/login-form';
 import Title from '../../components/title/title';
-import { PagesList } from '../../const';
-import { useAppSelector } from '../../hooks';
-import { selectCity } from '../../store/offers-process/offers-process.selectors';
+import { CITIES, PagesList } from '../../const';
+import { getRandomArrayElement } from '../../utils/common';
 
 function CurrentLocation():JSX.Element {
-  const currentCity = useAppSelector(selectCity);
+  const randomCity = getRandomArrayElement(CITIES);
+
   return (
     <section className="locations locations--login locations--current">
-      <LocationsItem city={currentCity} isSingle/>
+      <LocationsItem city={randomCity} isSingle/>
     </section>
   );
 }

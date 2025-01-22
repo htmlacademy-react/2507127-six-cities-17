@@ -23,7 +23,7 @@ function MainPageContent():JSX.Element {
     )}
     >
       <h1 className="visually-hidden">Cities</h1>
-      <LocationsList currentCity={currentCity}/>
+      <LocationsList />
       <Cities filteredOFfers={sortedOffers} currentCity={currentCity}/>
     </main>
   );

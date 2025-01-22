@@ -20,11 +20,10 @@ export const useOfferInfo = (): OfferInfoData => {
   useEffect(() => {
     if (id) {
       dispatch(getOfferByIdAction(id))
-        .then((response) => {
-          if (response.meta.requestStatus !== 'rejected') {
-            dispatch(fetchNearbyOffersAction(id));
-            dispatch(fetchOfferCommentsAction(id));
-          }
+        .unwrap()
+        .then(() => {
+          dispatch(fetchNearbyOffersAction(id));
+          dispatch(fetchOfferCommentsAction(id));
         });
     }
   }, [id, dispatch]);

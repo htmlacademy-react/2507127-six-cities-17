@@ -4,14 +4,22 @@ import { PagesList } from '../../const';
 import OfferPageContent from '../../components/offer-page-content/offer-page-content';
 import { useOfferInfo } from '../../hooks/use-offer-info';
 import NotFoundPage from '../not-found-page/not-found-page';
-import { useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import LoadingScreen from '../../components/common/loading-screen/loading-screen';
 import { selectIsNearbyOffersLoading, selectIsOfferLoading, selectOffer } from '../../store/app-data/app-data.selectors';
+import { useEffect } from 'react';
+import { changeActiveOfferId } from '../../store/offers-process/offers-process.slice';
 
 function OfferPage(): JSX.Element{
+  const dispatch = useAppDispatch();
   const isOfferLoading = useAppSelector(selectIsOfferLoading);
   const isNearbyOffersLoading = useAppSelector(selectIsNearbyOffersLoading);
   const currentOffer = useAppSelector(selectOffer);
+
+  //Сброс состояния при размонтировании комопнента
+  useEffect(() =>() => {
+    dispatch(changeActiveOfferId(null));
+  }, [dispatch]);
 
   const [slicedNearbyOffers] = useOfferInfo();
 

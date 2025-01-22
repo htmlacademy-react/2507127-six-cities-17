@@ -12,7 +12,6 @@ function PlaceCardsList({offers}: PlaceCardsListProps): JSX.Element{
   //На странице offer карточка с текущим id не будет отрисована. На странице main содержимое id всегда будет undefined
   const filteredOffers = offers.filter((offer) => offer.id !== id);
 
-
   const cardsList = filteredOffers.map((offer) => <PlaceCardItem offer={offer} isInteractiveMap cardClass={GeneralCategory.Cities} key={offer.id}/>);
 
   return (

@@ -6,10 +6,18 @@ export const STAR_RATING_MULTIPLIER = 20;
 
 export const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
 
+export enum Status {
+  Idle = 'IDLE',
+  Loading = 'LOADING',
+  Success = 'SUCCESS',
+  Error = 'ERROR'
+}
+
 export enum NameSpace {
-  Data = 'DATA',
-  User = 'USER',
-  Offers = 'OFFERS'
+  Data = 'data',
+  Favorite = 'favorite',
+  User = 'user',
+  Offers = 'offers'
 }
 
 export enum SortOption {
@@ -71,5 +79,6 @@ export enum APIRoute {
   Offers = '/offers',
   Login = '/login',
   Logout = '/logout',
-  Comments = '/comments'
+  Comments = '/comments',
+  Favorite = '/favorite'
 }

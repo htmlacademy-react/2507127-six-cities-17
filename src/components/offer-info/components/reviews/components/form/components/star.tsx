@@ -1,15 +1,15 @@
+import { memo } from 'react';
 import { onHandleRatingChangeType } from '../../../../../../../types/handlers';
-import { FormReviewType } from '../../../../../../../types/types';
 
 type InputProps = {
   starNumber: number;
   gradation: string;
   onHandleRatingChange: onHandleRatingChangeType;
-  formData: FormReviewType;
+  rating: null | number;
 }
 
-function Star({starNumber, gradation, onHandleRatingChange, formData}: InputProps):JSX.Element {
-  const isChecked = !!(formData.rating && starNumber <= formData.rating);
+function StarTemplate({starNumber, gradation, onHandleRatingChange, rating}: InputProps):JSX.Element {
+  const isChecked = !!(rating && starNumber <= rating);
   const starColor = isChecked ? '#ff9000' : '#c7c7c7';
 
   return (
@@ -34,5 +34,7 @@ function Star({starNumber, gradation, onHandleRatingChange, formData}: InputProp
     </>
   );
 }
+
+const Star = memo(StarTemplate);
 
 export default Star;

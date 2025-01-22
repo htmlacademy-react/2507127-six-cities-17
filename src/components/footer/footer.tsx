@@ -1,11 +1,14 @@
+import { memo } from 'react';
 import Logo from '../common/logo/logo';
 
-function Footer():JSX.Element {
+function FooterTemplate():JSX.Element {
   return (
-    <footer className="footer container">
+    <footer className="footer">
       <Logo logoClass='footer'/>
     </footer>
   );
 }
+
+const Footer = memo(FooterTemplate);
 
 export default Footer;

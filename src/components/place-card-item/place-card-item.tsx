@@ -7,7 +7,7 @@ import { AppRoute, GeneralCategory } from '../../const';
 import { OffersData } from '../../types/offers';
 import { useAppDispatch } from '../../hooks';
 import { changeActiveOfferId } from '../../store/offers-process/offers-process.slice';
-import { useCallback } from 'react';
+import { memo, useCallback } from 'react';
 
 type PlaceCardItemProps = {
   offer: OffersData;
@@ -15,7 +15,7 @@ type PlaceCardItemProps = {
   isInteractiveMap?: boolean;
 }
 
-function PlaceCardItem({offer, cardClass, isInteractiveMap = false}: PlaceCardItemProps): JSX.Element{
+function PlaceCardItemTemplate({offer, cardClass, isInteractiveMap = false}: PlaceCardItemProps): JSX.Element{
   const dispatch = useAppDispatch();
   const {
     id,
@@ -50,7 +50,7 @@ function PlaceCardItem({offer, cardClass, isInteractiveMap = false}: PlaceCardIt
             <b className='place-card__price-value'>&euro;{price}</b>
             <span className='place-card__price-text'>&#47;&nbsp;night</span>
           </div>
-          <BookmarkButton isFavorite={isFavorite} bookmarkClass={GeneralCategory.PlaceCard}/>
+          <BookmarkButton offerId={id} bookmarkClass={GeneralCategory.PlaceCard}/>
         </div>
         <Rating ratingClass={GeneralCategory.PlaceCard} rating={rating}/>
         <h2 className='place-card__name'>
@@ -61,5 +61,7 @@ function PlaceCardItem({offer, cardClass, isInteractiveMap = false}: PlaceCardIt
     </article>
   );
 }
+
+const PlaceCardItem = memo(PlaceCardItemTemplate);
 
 export default PlaceCardItem;

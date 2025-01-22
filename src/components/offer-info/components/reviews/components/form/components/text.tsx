@@ -1,13 +1,11 @@
 import { onhandleChangeReviewType } from '../../../../../../../types/handlers';
-import { FormReviewType } from '../../../../../../../types/types';
-
 
 type TextProps ={
   onHandleChangeReview: onhandleChangeReviewType;
-  formData: FormReviewType;
+  reviewText: string;
 }
 
-function Text({onHandleChangeReview, formData}: TextProps):JSX.Element {
+function Text({onHandleChangeReview, reviewText}: TextProps):JSX.Element {
   return (
     <textarea
       className="reviews__textarea form__textarea"
@@ -15,7 +13,7 @@ function Text({onHandleChangeReview, formData}: TextProps):JSX.Element {
       name="review"
       placeholder="Tell how was your stay, what you like and what can be improved"
       onChange={onHandleChangeReview}
-      value={formData.review}
+      value={reviewText}
     />
   );
 }

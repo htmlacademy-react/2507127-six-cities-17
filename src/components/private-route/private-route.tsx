@@ -5,10 +5,19 @@ import { selectAuthorizationStatus } from '../../store/user-process/user-process
 
 type PrivateRouteProps = {
   children: JSX.Element;
+  isLogin?: boolean;
 }
 
-function PrivateRoute({children}:PrivateRouteProps):JSX.Element {
+function PrivateRoute({children, isLogin = false}:PrivateRouteProps):JSX.Element {
   const authorizationStatus = useAppSelector(selectAuthorizationStatus);
+
+  if (isLogin) {
+    return (
+      authorizationStatus === AuthorizationStatus.Auth
+        ? <Navigate to={AppRoute.Index}/>
+        : children
+    );
+  }
 
   return (
     authorizationStatus === AuthorizationStatus.Auth
