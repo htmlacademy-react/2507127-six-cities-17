@@ -34,8 +34,6 @@ export type OffersProcess = {
   currentCity: string;
   activeOfferId: null | string;
   currentSortOffers: SortOption;
-
-  isCommentLoading: boolean;
 }
 
 export type CommentProcess = {

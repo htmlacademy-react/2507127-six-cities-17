@@ -7,9 +7,10 @@ type FoundPlacesNumber = {
 
 function FoundPlacesNumber({offersCount}: FoundPlacesNumber):JSX.Element{
   const currentCity = useAppSelector(selectCity);
+  const text = offersCount === 1 ? 'place' : 'places';
 
   return (
-    <b className="places__found">{offersCount} places to stay in {currentCity}</b>
+    <b className="places__found">{offersCount} {text} to stay in {currentCity}</b>
   );
 }
 

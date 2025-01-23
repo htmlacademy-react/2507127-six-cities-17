@@ -6,11 +6,17 @@ import Title from '../../components/title/title';
 import { PagesList } from '../../const';
 import { useAppSelector } from '../../hooks';
 import cn from 'classnames';
-import { selectFavoriteOffers } from '../../store/favorite-process/favorite-process.selectors';
+import { selectFavoriteOffers, selectIsFavoriteOffersLoading } from '../../store/favorite-process/favorite-process.selectors';
+import LoadingScreen from '../../components/common/loading-screen/loading-screen';
 
 
 function FavoritesPage(): JSX.Element{
   const favoriteOffers = useAppSelector(selectFavoriteOffers);
+  const isFavoritesLoading = useAppSelector(selectIsFavoriteOffersLoading);
+
+  if (isFavoritesLoading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <div className={

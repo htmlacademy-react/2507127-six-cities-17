@@ -6,8 +6,6 @@ const initialState: OffersProcess = {
   currentCity: CITIES[0],
   activeOfferId: null,
   currentSortOffers: SortOption.Popular,
-
-  isCommentLoading: false
 };
 
 export const offersProcess = createSlice({
