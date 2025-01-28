@@ -2,7 +2,7 @@ import { AuthorizationStatus, SortOption, Status } from '../const';
 import { store } from '../store';
 import { UserInfo } from './api';
 import { ReviewComment } from './comments';
-import { FullOffer, OffersData } from './offers';
+import { FullFavoriteOffer, FullOffer, OffersData } from './offers';
 
 export type State = ReturnType<typeof store.getState>;
 
@@ -24,7 +24,7 @@ export type AppData = {
 }
 
 export type FavoriteProcess = {
-  favoriteOffers: OffersData[];
+  favoriteOffers: (OffersData | FullFavoriteOffer)[];
 
   isFavoriteOffersLoading: boolean;
   uploadingFavoriteStatus: Status;

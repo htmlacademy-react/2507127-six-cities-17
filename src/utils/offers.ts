@@ -66,4 +66,5 @@ function getNearOffers(offers: OffersData[], allOffers: OffersData[], id: string
   return slicedOffers;
 }
 
+
 export {getGroupedOffers, getFilteredOffers, getPointsData, getCurrentCityData, getSelectedPoint, getNearOffers};

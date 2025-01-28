@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { FullOffer, OffersData } from '../types/offers';
+import { FullFavoriteOffer, FullOffer, OffersData } from '../types/offers';
 import { APIRoute, AppRoute, NameSpace,} from '../const';
 import { dropToken, saveToken } from '../services/token';
 import { AsyncThunkArguments, AuthData, FavoriteData, UserInfo } from '../types/api';
@@ -82,18 +82,12 @@ export const logoutAction = createAsyncThunk<void, undefined, AsyncThunkArgument
   }
 );
 
-export const uploadFavoriteStatusAction = createAsyncThunk<OffersData, FavoriteData, AsyncThunkArguments>(
+export const uploadFavoriteStatusAction = createAsyncThunk<FullFavoriteOffer, FavoriteData, AsyncThunkArguments>(
   `${NameSpace.Favorite}/uploadStatus`,
-  async({offerId, isFavorite}, {getState, extra: api}) => {
+  async({offerId, isFavorite}, {extra: api}) => {
     const offerStatus = Number(!isFavorite);
-    const {data} = await api.post<FullOffer>(`${APIRoute.Favorite}/${offerId}/${offerStatus}`);
-    const {offers} = getState().data;
-    const currentOffer = offers.find((offer) => offer.id === data.id);
+    const {data} = await api.post<FullFavoriteOffer>(`${APIRoute.Favorite}/${offerId}/${offerStatus}`);
 
-    if (!currentOffer) {
-      throw new Error(`Offer not found: ${data.id}`);
-    }
-
-    return {...currentOffer, isFavorite: data.isFavorite};
+    return data;
   }
 );
