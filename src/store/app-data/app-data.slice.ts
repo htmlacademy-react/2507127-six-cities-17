@@ -1,8 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { AppData } from '../../types/state';
 import { NameSpace } from '../../const';
-import { fetchNearbyOffersAction, fetchOffersAction, getOfferByIdAction } from '../api-actions';
-import { toast } from 'react-toastify';
+import { fetchNearbyOffersAction, fetchOffersAction, getOfferByIdAction, uploadFavoriteStatusAction } from '../api-actions';
 
 const initialState: AppData = {
   offers: [],
@@ -29,7 +28,17 @@ export const appData = createSlice({
       })
       .addCase(fetchOffersAction.rejected, (state) => {
         state.isOffersDataLoading = false;
-        toast.warn('Error while loading offers');
+      })
+
+      .addCase(uploadFavoriteStatusAction.fulfilled, (state, action) => {
+        const index = state.offers.findIndex((item) => item.id === action.payload.id);
+        if (index !== -1) {
+          state.offers[index].isFavorite = action.payload.isFavorite;
+        }
+
+        if (state.currentOffer && state.currentOffer.id === action.payload.id) {
+          state.currentOffer.isFavorite = action.payload.isFavorite;
+        }
       })
 
       .addCase(getOfferByIdAction.pending, (state) => {

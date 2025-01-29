@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus, GeneralCategory } from '../../../const';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
-import { selectIsOfferFavorite } from '../../../store/favorite-process/favorite-process.selectors';
 import { BookmarkSettings } from './bookmark-settings';
 import cn from 'classnames';
 import { selectAuthorizationStatus } from '../../../store/user-process/user-process.selectors';
@@ -11,16 +10,16 @@ import { uploadFavoriteStatusAction } from '../../../store/api-actions';
 type BookmarkButtonProps = {
   bookmarkClass: GeneralCategory;
   offerId: string;
+  isFavorite: boolean;
 }
 
-function BookmarkButton({bookmarkClass, offerId}: BookmarkButtonProps): JSX.Element{
+function BookmarkButton({bookmarkClass, offerId, isFavorite}: BookmarkButtonProps): JSX.Element{
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const authStatus = useAppSelector(selectAuthorizationStatus);
   const [disableButton, setDisableButton] = useState<boolean>(false);
 
   const isAuthorized = useMemo(() => authStatus === AuthorizationStatus.Auth, [authStatus]);
-  const isFavorite = useAppSelector((state) => selectIsOfferFavorite(state, offerId));
 
   const handleButtonClick = () => {
     if(isAuthorized) {

@@ -27,14 +27,15 @@ function OfferInfo({offer}: OfferInfoProps):JSX.Element{
     maxAdults,
     goods,
     host,
-    description
+    description,
+    isFavorite
   } = offer;
 
   return (
     <div className="offer__container container">
       <div className="offer__wrapper">
         {isPremium && <Mark markClass={GeneralCategory.Offer}/>}
-        <Name offerId={id} title={title} />
+        <Name isFavorite={isFavorite} offerId={id} title={title} />
         <Rating rating={rating} ratingClass={GeneralCategory.Offer}/>
         <Features type={type} bedrooms={bedrooms} maxAdults={maxAdults}/>
         <Price price={price}/>

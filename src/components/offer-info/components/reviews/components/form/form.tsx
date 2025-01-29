@@ -10,6 +10,7 @@ import { postOfferCommentAction } from '../../../../../../store/api-actions';
 import { useParams } from 'react-router-dom';
 import { PostReviewComment } from '../../../../../../types/comments';
 import { selectIsCommentAdding } from '../../../../../../store/comment-process/comment-process.selectors';
+import { toast } from 'react-toastify';
 
 function Form():JSX.Element {
   const dispatch = useAppDispatch();
@@ -49,6 +50,7 @@ function Form():JSX.Element {
       .then((resolve) => {
         if(resolve.meta.requestStatus === 'fulfilled'){
           setFormData(initialState);
+          toast.success('Comment successfully added');
         }
       });
   };
