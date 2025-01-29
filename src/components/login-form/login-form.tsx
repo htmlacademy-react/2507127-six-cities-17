@@ -2,6 +2,7 @@ import { FormEvent, useEffect, useRef } from 'react';
 import { loginAction } from '../../store/api-actions';
 import { useAppDispatch } from '../../hooks';
 import { PASSWORD_MIN_LENGTH } from '../../const';
+import { toast } from 'react-toastify';
 
 function LoginForm():JSX.Element {
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -23,7 +24,12 @@ function LoginForm():JSX.Element {
       dispatch(loginAction({
         login: loginRef.current.value,
         password: passwordRef.current.value.replaceAll(' ', '')
-      }));
+      }))
+        .then((response) => {
+          if (response.meta.requestStatus === 'rejected') {
+            toast.warn('Unable to access server');
+          }
+        });
     }
   };
 
