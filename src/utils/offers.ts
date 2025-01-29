@@ -31,10 +31,17 @@ const getPointCoordinates = (offer: OffersData) => {
 };
 
 function getPointsData(offers: OffersData[]): PointCoordinates[] {
+  if (offers.length === 0) {
+    return [];
+  }
+
   return offers.map((offer) => getPointCoordinates(offer));
 }
 
-function getCurrentCityData(filteredOffers: OffersData[]): CityCoordinates{
+function getCurrentCityData(filteredOffers: OffersData[]): CityCoordinates | null {
+  if(filteredOffers.length === 0) {
+    return null;
+  }
   const city = filteredOffers[0].city;
   const {name, location} = city;
   return {

@@ -1,6 +1,6 @@
 import {layerGroup} from 'leaflet';
 import { GeneralCategory } from '../../const';
-import { OffersData, PointCoordinates } from '../../types/offers';
+import { CityCoordinates, OffersData } from '../../types/offers';
 import { useEffect, useMemo, useRef } from 'react';
 import useMap from '../../hooks/use-map';
 import 'leaflet/dist/leaflet.css';
@@ -20,20 +20,15 @@ function Map({mapClass, offers}: MapProps):JSX.Element {
   const activeOfferId = useAppSelector(selectActiveOfferId);
   const shouldScrollWheelZoom = useMemo(() => mapClass !== GeneralCategory.Offer, [mapClass]);
 
-  const city = useMemo(() => getCurrentCityData(offers), [offers]);
+  const city = useMemo(() => getCurrentCityData(offers), [offers]) as CityCoordinates;
   const points = useMemo(() => getPointsData(offers), [offers]);
   const selectedPoint = activeOfferId !== null ? getSelectedPoint(offers, activeOfferId) : null;
-
-  if (mapClass === GeneralCategory.Offer && id) {
-    const currentPoint = getSelectedPoint(offers, id);
-    points.push(currentPoint as PointCoordinates);
-  }
 
   const mapRef = useRef(null);
   const map = useMap(mapRef, city, shouldScrollWheelZoom);
 
   useEffect(() => {
-    if (map) {
+    if (map && points) {
       const markerLayer = layerGroup().addTo(map);
 
       points.forEach((point) => {
@@ -45,6 +40,7 @@ function Map({mapClass, offers}: MapProps):JSX.Element {
       };
     }
   }, [map, points, selectedPoint, id, mapClass]);
+
 
   return (
     <section ref={mapRef} className={`${mapClass}__map map`}></section>
