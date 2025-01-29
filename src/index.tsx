@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { store } from './store';
 import { checkAuthAction, fetchFavoriteOffersAction, fetchOffersAction } from './store/api-actions';
 import { initLocalStorage } from './services/local-storage';
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import { TIMEOUT_SHOW_ERROR } from './const';
 
 
@@ -21,8 +21,12 @@ store.dispatch(checkAuthAction())
     }
   });
 
-store.dispatch(fetchOffersAction());
-
+store.dispatch(fetchOffersAction())
+  .then((response) => {
+    if (response.meta.requestStatus === 'rejected') {
+      toast.warn('Unable to access server');
+    }
+  });
 //Забираем данные из localStorage и помещаем в хранилище, если они есть
 initLocalStorage();
 
