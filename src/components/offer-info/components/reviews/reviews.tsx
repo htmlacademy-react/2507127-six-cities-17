@@ -5,7 +5,7 @@ import ReviewsList from './components/list/list';
 import { useAppSelector } from '../../../../hooks';
 import NeedToLogin from '../../../need-to-login/need-to-login';
 import { selectAuthorizationStatus } from '../../../../store/user-process/user-process.selectors';
-import { selectOfferComments } from '../../../../store/app-data/app-data.selectors';
+import { selectOfferComments } from '../../../../store/comment-process/comment-process.selectors';
 
 function Reviews():JSX.Element {
   const authorizationStatus = useAppSelector(selectAuthorizationStatus);

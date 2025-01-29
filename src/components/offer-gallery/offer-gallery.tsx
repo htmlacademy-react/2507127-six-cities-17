@@ -14,14 +14,14 @@ function OfferGalleryItem({url}: OfferGalleryItemProps):JSX.Element{
       <img
         className="offer__image"
         src={url}
-        // alt="Photo studio"
       />
     </div>
   );
 }
 
 function OfferGallery({images}: OfferGalleryProps):JSX.Element{
-  const galleryList = images.map((url) => <OfferGalleryItem url={url} key={nanoid()}/>);
+  const slicedImages = images.slice(0,6);
+  const galleryList = slicedImages.map((url) => <OfferGalleryItem url={url} key={nanoid()}/>);
 
   return (
     <div className="offer__gallery-container container">

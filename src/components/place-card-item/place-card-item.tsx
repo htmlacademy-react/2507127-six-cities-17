@@ -50,7 +50,7 @@ function PlaceCardItemTemplate({offer, cardClass, isInteractiveMap = false}: Pla
             <b className='place-card__price-value'>&euro;{price}</b>
             <span className='place-card__price-text'>&#47;&nbsp;night</span>
           </div>
-          <BookmarkButton offerId={id} bookmarkClass={GeneralCategory.PlaceCard}/>
+          <BookmarkButton offerId={id} bookmarkClass={GeneralCategory.PlaceCard} isFavorite={isFavorite}/>
         </div>
         <Rating ratingClass={GeneralCategory.PlaceCard} rating={rating}/>
         <h2 className='place-card__name'>

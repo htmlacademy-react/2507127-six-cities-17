@@ -32,7 +32,7 @@ function App(): JSX.Element{
               <Route
                 path={AppRoute.Login}
                 element={
-                  <PrivateRoute isLogin>
+                  <PrivateRoute isLoginPage>
                     <LoginPage/>
                   </PrivateRoute>
                 }

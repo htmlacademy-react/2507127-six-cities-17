@@ -35,8 +35,7 @@ export const favoriteProcess = createSlice({
         if (action.payload.isFavorite) {
           state.favoriteOffers.push(action.payload);
         } else {
-          const favoriteIndex = state.favoriteOffers.findIndex((offer) => offer.id === action.payload.id);
-          state.favoriteOffers.splice(favoriteIndex, 1);
+          state.favoriteOffers = state.favoriteOffers.filter((item) => item.id !== action.payload.id);
         }
         state.uploadingFavoriteStatus = Status.Idle;
       })

@@ -29,16 +29,26 @@ export type OffersData = {
   rating: number;
 }
 
-export type descriptionOfferData = {
+export type FullFavoriteOffer = {
+  id: string;
+  title: string;
+  type: string;
+  price: number;
+  city: CityType;
+  location: LocationType;
+  isFavorite: boolean;
+  isPremium: boolean;
+  rating: number;
   description: string;
   bedrooms: number;
   goods: [string];
   host: HostType;
   images: [string];
   maxAdults: number;
+  previewImage: string;
 }
 
-export type FullOffer = Omit<OffersData, 'previewImage'> & descriptionOfferData
+export type FullOffer = Omit<FullFavoriteOffer, 'previewImage'>
 
 export type PointCoordinates = {
   id: string;

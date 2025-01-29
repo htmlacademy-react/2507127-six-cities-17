@@ -14,9 +14,11 @@ const root = ReactDOM.createRoot(
 );
 
 store.dispatch(checkAuthAction())
-  .unwrap()
-  .then(() => {
-    store.dispatch(fetchFavoriteOffersAction());
+  //Тесты ругаются на ошибку, если использовать unwrap
+  .then((response) => {
+    if (response.meta.requestStatus === 'fulfilled') {
+      store.dispatch(fetchFavoriteOffersAction());
+    }
   });
 
 store.dispatch(fetchOffersAction());

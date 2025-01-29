@@ -18,7 +18,7 @@ function OfferPageContent({currentOffer, nearbyOffers}: OfferPageContentProps): 
       <section className="offer">
         <OfferGallery images={images}/>
         <OfferInfo offer={currentOffer}/>
-        <Map mapClass={GeneralCategory.Offer} offers={nearbyOffers}/>
+        {nearbyOffers.length && <Map mapClass={GeneralCategory.Offer} offers={nearbyOffers}/>}
       </section>
       <div className="container">
         <NearPlaces offers={nearbyOffers}/>
