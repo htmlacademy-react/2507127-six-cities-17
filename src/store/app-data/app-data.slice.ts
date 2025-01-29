@@ -31,14 +31,20 @@ export const appData = createSlice({
       })
 
       .addCase(uploadFavoriteStatusAction.fulfilled, (state, action) => {
-        const index = state.offers.findIndex((item) => item.id === action.payload.id);
-        if (index !== -1) {
-          state.offers[index].isFavorite = action.payload.isFavorite;
+        const offersIndex = state.offers.findIndex((item) => item.id === action.payload.id);
+        if (offersIndex !== -1) {
+          state.offers[offersIndex].isFavorite = action.payload.isFavorite;
+        }
+
+        const nearbyIndex = state.nearbyOffers.findIndex((item) => item.id === action.payload.id);
+        if (nearbyIndex !== -1) {
+          state.nearbyOffers[nearbyIndex].isFavorite = action.payload.isFavorite;
         }
 
         if (state.currentOffer && state.currentOffer.id === action.payload.id) {
           state.currentOffer.isFavorite = action.payload.isFavorite;
         }
+
       })
 
       .addCase(getOfferByIdAction.pending, (state) => {
