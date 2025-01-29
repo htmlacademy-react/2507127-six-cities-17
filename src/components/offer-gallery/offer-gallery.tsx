@@ -1,4 +1,5 @@
 import { nanoid } from 'nanoid';
+import { OFFER_IMAGES_NUMBER } from '../../const';
 
 type OfferGalleryProps = {
   images: string[];
@@ -20,7 +21,7 @@ function OfferGalleryItem({url}: OfferGalleryItemProps):JSX.Element{
 }
 
 function OfferGallery({images}: OfferGalleryProps):JSX.Element{
-  const slicedImages = images.slice(0,6);
+  const slicedImages = images.slice(0, OFFER_IMAGES_NUMBER);
   const galleryList = slicedImages.map((url) => <OfferGalleryItem url={url} key={nanoid()}/>);
 
   return (

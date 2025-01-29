@@ -3,6 +3,7 @@ export const MAX_REVIEWS = 10;
 export const TIMEOUT_SHOW_ERROR = 3000;
 export const PASSWORD_MIN_LENGTH = 2;
 export const STAR_RATING_MULTIPLIER = 20;
+export const OFFER_IMAGES_NUMBER = 6;
 
 export const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
 
