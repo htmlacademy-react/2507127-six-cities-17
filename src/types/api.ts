@@ -19,12 +19,6 @@ export type UserInfo = {
   token: string;
 }
 
-export type UserData = {
-  id: number;
-  email: string;
-  token: string;
-}
-
 export type AsyncThunkArguments = {
   dispatch: AppDispatch;
   state: State;

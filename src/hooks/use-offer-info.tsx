@@ -20,10 +20,11 @@ export const useOfferInfo = (): OfferInfoData => {
   useEffect(() => {
     if (id) {
       dispatch(getOfferByIdAction(id))
-        .unwrap()
-        .then(() => {
-          dispatch(fetchNearbyOffersAction(id));
-          dispatch(fetchOfferCommentsAction(id));
+        .then((response) => {
+          if (response.meta.requestStatus === 'fulfilled'){
+            dispatch(fetchNearbyOffersAction(id));
+            dispatch(fetchOfferCommentsAction(id));
+          }
         });
     }
   }, [id, dispatch]);
