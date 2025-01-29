@@ -1,3 +1,4 @@
+import { NEARBY_OFFERS_NUMBER } from '../const';
 import { CityCoordinates, PointCoordinates, OffersData } from '../types/offers';
 
 function getGroupedOffers(offers: OffersData[]): OffersData[][]{
@@ -66,7 +67,7 @@ function getNearOffers(offers: OffersData[], allOffers: OffersData[], id: string
   }
 
   const currentOffer = allOffers.find((offer) => offer.id === id);
-  const slicedOffers = offers.slice(0, 3);
+  const slicedOffers = offers.slice(0, NEARBY_OFFERS_NUMBER);
   if (currentOffer) {
     slicedOffers.push(currentOffer);
   }

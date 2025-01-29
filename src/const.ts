@@ -4,6 +4,7 @@ export const TIMEOUT_SHOW_ERROR = 3000;
 export const PASSWORD_MIN_LENGTH = 2;
 export const STAR_RATING_MULTIPLIER = 20;
 export const OFFER_IMAGES_NUMBER = 6;
+export const NEARBY_OFFERS_NUMBER = 3;
 
 export const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
 
@@ -61,7 +62,7 @@ export const TileLayerLink = {
   Attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
 } as const;
 
-export const ratingGradation = ['terribly', 'badly', 'not bad', 'good', 'perfect'];
+export const ratingNames = ['terribly', 'badly', 'not bad', 'good', 'perfect'];
 
 export enum AppRoute {
   Index = '/',

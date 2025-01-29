@@ -8,6 +8,7 @@ import { OffersData } from '../../types/offers';
 import { useAppDispatch } from '../../hooks';
 import { changeActiveOfferId } from '../../store/offers-process/offers-process.slice';
 import { memo, useCallback } from 'react';
+import { getCapitalizedWord } from '../../utils/common';
 
 type PlaceCardItemProps = {
   offer: OffersData;
@@ -56,7 +57,7 @@ function PlaceCardItemTemplate({offer, cardClass, isInteractiveMap = false}: Pla
         <h2 className='place-card__name'>
           <Link to={generatePath(AppRoute.Offer, {id})}>{title}</Link>
         </h2>
-        <p className='place-card__type'>{type}</p>
+        <p className='place-card__type'>{getCapitalizedWord(type)}</p>
       </div>
     </article>
   );

@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { createAPI } from '../services/api';
-import { localStorageSave } from './middlewares/localStorageSave';
+import { localStorageSave } from './middlewares/local-storage-save';
 import { rootReducer } from './root-reducer';
 import { redirect } from './middlewares/redirect';
 
