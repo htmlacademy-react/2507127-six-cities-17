@@ -14,7 +14,6 @@ function OfferGalleryItem({url}: OfferGalleryItemProps):JSX.Element{
       <img
         className="offer__image"
         src={url}
-        // alt="Photo studio"
       />
     </div>
   );
